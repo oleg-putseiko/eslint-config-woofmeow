@@ -1,0 +1,39 @@
+{
+  "name": "eslint-config-woofmeow",
+  "version": "1.0.0",
+  "description": "ESLint config for various projects",
+  "author": "Oleg Putseiko <oleg.putseiko@gmail.com> (https://github.com/oleg-putseiko)",
+  "keywords": [
+    "eslint",
+    "eslintrc",
+    "config",
+    "javascript",
+    "typescript",
+    "next",
+    "react"
+  ],
+  "homepage": "https://gitlab.com/oleg-putseiko-personal/web/projects/eslint-config-woofmeow",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/oleg-putseiko-personal/web/projects/eslint-config-woofmeow"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/oleg-putseiko-personal/web/projects/eslint-config-woofmeow/-/issues"
+  },
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "peerDependencies": {
+    "eslint": "^8.52.0"
+  },
+  "engines": {
+    "node": "18.18.0",
+    "yarn": "3.6.3"
+  },
+  "volta": {
+    "node": "18.18.0",
+    "yarn": "3.6.3"
+  },
+  "packageManager": "yarn@3.6.3"
+}
