@@ -1,5 +1,11 @@
 # WoofMeow ESLint config
 
+<div align="center">
+
+[![Latest Release](https://gitlab.com/oleg-putseiko-personal/web/projects/eslint-config-woofmeow/-/badges/release.svg)](https://gitlab.com/oleg-putseiko-personal/web/projects/eslint-config-woofmeow/-/releases)
+
+</div>
+
 ESLint configuration package for various project. You can use ready-made configuration presets or build your own based on them.
 
 **Table of contents:**
