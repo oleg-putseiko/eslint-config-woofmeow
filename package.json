@@ -22,7 +22,8 @@
   },
   "main": "index.js",
   "exports": {
-    ".": "./index.js"
+    ".": "./index.js",
+    "./typescript": "./presets/typescript.js"
   },
   "scripts": {
     "format": "prettier -w .",
@@ -30,8 +31,22 @@
     "prepare": "husky install"
   },
   "peerDependencies": {
-    "eslint": "^8.52.0",
-    "eslint-config-prettier": "^9.0.0"
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
+    "@typescript-eslint/parser": "^6.9.1",
+    "eslint": "^8.53.0",
+    "eslint-config-prettier": "^9.0.0",
+    "typescript": ">=4.3.5 <5.3.0"
+  },
+  "peerDependenciesMeta": {
+    "@typescript-eslint/eslint-plugin": {
+      "optional": true
+    },
+    "@typescript-eslint/parser": {
+      "optional": true
+    },
+    "typescript": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@commitlint/cli": "^18.2.0",
