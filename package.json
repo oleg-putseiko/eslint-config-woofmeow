@@ -24,6 +24,7 @@
   "exports": {
     ".": "./index.js",
     "./import": "./presets/import-base.js",
+    "./import-atomic": "./presets/import-atomic.js",
     "./react": "./presets/react.js",
     "./typescript": "./presets/typescript.js"
   },
