@@ -1,3 +1,5 @@
 module.exports = {
-  extends: ['./presets/common.js'].map(require.resolve),
+  extends: ['./presets/common.js', './presets/import-base.js'].map(
+    require.resolve,
+  ),
 };
