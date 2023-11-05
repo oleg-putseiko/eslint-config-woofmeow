@@ -25,6 +25,7 @@
     ".": "./index.js",
     "./import": "./presets/import-base.js",
     "./import-atomic": "./presets/import-atomic.js",
+    "./import-fsd": "./presets/import-fsd.js",
     "./react": "./presets/react.js",
     "./typescript": "./presets/typescript.js"
   },
