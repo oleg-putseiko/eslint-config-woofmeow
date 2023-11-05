@@ -1,4 +1,3 @@
 module.exports = {
-  extends: [],
-  rules: {},
+  extends: ['./presets/common.js'].map(require.resolve),
 };
