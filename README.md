@@ -1,6 +1,8 @@
-# WoofMeow ESLint config
-
 <div align="center">
+
+🔨🐶🐱🔧
+
+# WoofMeow ESLint config
 
 [![Latest Release](https://gitlab.com/oleg-putseiko-personal/web/projects/eslint-config-woofmeow/-/badges/release.svg)](https://gitlab.com/oleg-putseiko-personal/web/projects/eslint-config-woofmeow/-/releases)
 
