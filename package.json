@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-woofmeow",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ESLint config for various projects",
   "license": "MIT",
   "author": "Oleg Putseiko <oleg.putseiko@gmail.com> (https://github.com/oleg-putseiko)",
