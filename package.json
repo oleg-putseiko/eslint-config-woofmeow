@@ -13,13 +13,13 @@
     "next",
     "react"
   ],
-  "homepage": "https://gitlab.com/oleg-putseiko-personal/web/projects/eslint-config-woofmeow",
+  "homepage": "https://github.com/oleg-putseiko/eslint-config-woofmeow",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/oleg-putseiko-personal/web/projects/eslint-config-woofmeow"
+    "url": "https://github.com/oleg-putseiko/eslint-config-woofmeow"
   },
   "bugs": {
-    "url": "https://gitlab.com/oleg-putseiko-personal/web/projects/eslint-config-woofmeow/-/issues"
+    "url": "https://github.com/oleg-putseiko/eslint-config-woofmeow/issues"
   },
   "main": "index.js",
   "exports": {
