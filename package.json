@@ -2,6 +2,7 @@
   "name": "eslint-config-woofmeow",
   "version": "1.0.0",
   "description": "ESLint config for various projects",
+  "license": "ISC",
   "author": "Oleg Putseiko <oleg.putseiko@gmail.com> (https://github.com/oleg-putseiko)",
   "keywords": [
     "eslint",
@@ -23,6 +24,7 @@
   "main": "index.js",
   "exports": {
     ".": "./index.js",
+    "./general": "./presets/general.js",
     "./import": "./presets/import-base.js",
     "./import-atomic": "./presets/import-atomic.js",
     "./import-fsd": "./presets/import-fsd.js",

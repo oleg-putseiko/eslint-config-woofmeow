@@ -1,10 +1,10 @@
 <div align="center">
 
-🔨🐶🐱🔧
+# 🔨🐶🐱🔧<br/><br/>WoofMeow ESLint config
 
-# WoofMeow ESLint config
-
-[![Latest Release](https://gitlab.com/oleg-putseiko-personal/web/projects/eslint-config-woofmeow/-/badges/release.svg)](https://gitlab.com/oleg-putseiko-personal/web/projects/eslint-config-woofmeow/-/releases)
+[![Latest Release](https://badgen.net/github/release/oleg-putseiko/eslint-config-woofmeow?icon=github)](https://github.com/oleg-putseiko/eslint-config-woofmeow/releases)
+[![Latest Release](https://badgen.net/npm/dt/eslint-config-woofmeow?icon=npm)](https://www.npmjs.com/package/eslint-config-woofmeow)
+[![Latest Release](https://badgen.net/npm/license/eslint-config-woofmeow?color=black)](./LICENSE.md)
 
 </div>
 
@@ -12,9 +12,19 @@ ESLint configuration package for various project. You can use ready-made configu
 
 **Table of contents:**
 
-[[_TOC_]]
+- [Getting started](#getting-started)
+- [Usage](#usage)
+  - [Default preset](#default-preset)
+  - [General preset](#general-preset)
+  - [Base import preset](#base-import-preset)
+  - [Import preset for Atomic Design](#import-preset-for-atomic-design)
+  - [Import preset for Feature Sliced Design](#import-preset-for-feature-sliced-design)
+  - [TypeScript preset](#typescript-preset)
+  - [React preset](#react-preset)
+  - [Next.js preset](#nextjs-preset)
+  - [Combination of presets](#combination-of-presets)
 
-## Getting Started
+## Getting started
 
 Install `eslint-config-woofmeow` to your repository as dev dependency:
 
@@ -112,7 +122,7 @@ module.exports = {
 };
 ```
 
-### Typescript preset
+### TypeScript preset
 
 ⚠️ Not included in `eslint-config-woofmeow`
 
@@ -169,16 +179,15 @@ Includes the following presets:
 
 - [react](./presets/react.js)
 - [typescript](./presets/typescript.js)
-- [import-base](./presets/import-base.js)
 
 Required peer dependencies:
 
 - [eslint-config-next](https://nextjs.org/docs/app/building-your-application/configuring/eslint#eslint-config)
-- [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react)
-- [eslint-plugin-react-hooks](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)
-- [typescript](https://github.com/Microsoft/TypeScript)
-- [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin)
-- [@typescript-eslint/parser](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/parser)
+- [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) (from [react] preset)
+- [eslint-plugin-react-hooks](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks) (from react preset)
+- [typescript](https://github.com/Microsoft/TypeScript) (from typescript preset)
+- [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin) (from typescript preset)
+- [@typescript-eslint/parser](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/parser) (from typescript preset)
 
 > If you are using npm version 7 or higher, these dependencies will be installed automatically. Otherwise, you need to do it manually.
 
