@@ -1,8 +1,6 @@
 <div align="center">
 
-🔨🐶🐱🔧
-
-# WoofMeow ESLint config
+# 🔨🐶🐱🔧<br/><br/>WoofMeow ESLint config
 
 [![Latest Release](https://gitlab.com/oleg-putseiko-personal/web/projects/eslint-config-woofmeow/-/badges/release.svg)](https://gitlab.com/oleg-putseiko-personal/web/projects/eslint-config-woofmeow/-/releases)
 
@@ -12,9 +10,19 @@ ESLint configuration package for various project. You can use ready-made configu
 
 **Table of contents:**
 
-[[_TOC_]]
+- [Getting started](#getting-started)
+- [Usage](#usage)
+  - [Default preset](#default-preset)
+  - [General preset](#general-preset)
+  - [Base import preset](#base-import-preset)
+  - [Import preset for Atomic Design](#import-preset-for-atomic-design)
+  - [Import preset for Feature Sliced Design](#import-preset-for-feature-sliced-design)
+  - [TypeScript preset](#typescript-preset)
+  - [React preset](#react-preset)
+  - [Next.js preset](#nextjs-preset)
+  - [Combination of presets](#combination-of-presets)
 
-## Getting Started
+## Getting started
 
 Install `eslint-config-woofmeow` to your repository as dev dependency:
 
@@ -112,7 +120,7 @@ module.exports = {
 };
 ```
 
-### Typescript preset
+### TypeScript preset
 
 ⚠️ Not included in `eslint-config-woofmeow`
 
@@ -173,7 +181,7 @@ Includes the following presets:
 Required peer dependencies:
 
 - [eslint-config-next](https://nextjs.org/docs/app/building-your-application/configuring/eslint#eslint-config)
-- [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) (from [react]() preset)
+- [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) (from [react] preset)
 - [eslint-plugin-react-hooks](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks) (from react preset)
 - [typescript](https://github.com/Microsoft/TypeScript) (from typescript preset)
 - [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin) (from typescript preset)
