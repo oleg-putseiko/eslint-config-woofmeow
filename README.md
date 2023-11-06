@@ -2,7 +2,9 @@
 
 # 🔨🐶🐱🔧<br/><br/>WoofMeow ESLint config
 
-[![Latest Release](https://gitlab.com/oleg-putseiko-personal/web/projects/eslint-config-woofmeow/-/badges/release.svg)](https://gitlab.com/oleg-putseiko-personal/web/projects/eslint-config-woofmeow/-/releases)
+[![Latest Release](https://badgen.net/github/release/oleg-putseiko/eslint-config-woofmeow?icon=github)](https://github.com/oleg-putseiko/eslint-config-woofmeow/releases)
+[![Latest Release](https://badgen.net/npm/dt/eslint-config-woofmeow?icon=npm)](https://www.npmjs.com/package/eslint-config-woofmeow)
+[![Latest Release](https://badgen.net/npm/license/eslint-config-woofmeow?color=black)](./LICENSE.md)
 
 </div>
 
