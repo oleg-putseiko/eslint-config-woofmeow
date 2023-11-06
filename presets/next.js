@@ -1,4 +1,4 @@
-const baseConfigs = ['./import-base.js', './react.js', './typescript.js'].map(
+const baseConfigs = ['./react.js', './typescript.js'].map(
   require.resolve,
 );
 
@@ -9,13 +9,6 @@ module.exports = {
     node: true,
   },
   extends: ['next', 'next/core-web-vitals', ...baseConfigs],
-  rules: {
-    // Overridden by `unused-imports/no-unused-vars`
-    'no-unused-vars': 'off',
-
-    // Overridden by `unused-imports/no-unused-vars`
-    '@typescript-eslint/no-unused-vars': 'off',
-  },
   overrides: [
     {
       files: [
