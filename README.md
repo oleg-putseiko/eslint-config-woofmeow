@@ -51,8 +51,8 @@ WoofMeow ESLint configuration has the following required peer dependencies:
 
 Includes the following presets:
 
-- [general](./presets/general.js)
-- [import-base](./presets/import-base.js)
+- [General preset](#general-preset)
+- [Base import preset](#base-import-preset)
 
 To include this preset in your ESLint configuration add `eslint-config-woofmeow` as extension:
 
@@ -94,7 +94,7 @@ module.exports = {
 
 Includes the following presets:
 
-- [import-base](./presets/import-base.js)
+- [Base import preset](#base-import-preset)
 
 To include this preset in your ESLint configuration add `eslint-config-woofmeow/import-atomic` as extension:
 
@@ -112,7 +112,7 @@ Related to [Feature Sliced Design](https://feature-sliced.design/) up to v2.0.0.
 
 Includes the following presets:
 
-- [import-base](./presets/import-base.js)
+- [Base import preset](#base-import-preset)
 
 To include this preset in your ESLint configuration add `eslint-config-woofmeow/import-fsd` as extension:
 
@@ -175,7 +175,7 @@ module.exports = {
 
 Includes the following presets:
 
-- [React](./presets/react.js)
+- [React preset](#react-preset)
 
 Required peer dependencies:
 
