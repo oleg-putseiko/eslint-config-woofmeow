@@ -29,7 +29,7 @@ const aliasedLayerPaths = LAYER_REGEXPS.map((layerRegExps) =>
 );
 
 /**
- * Import Atomic Design preset related to FSD up to v2.0.0
+ * Import Feature Sliced Design preset related to FSD up to v2.0.0
  *
  * @exports import-fsd
  *
