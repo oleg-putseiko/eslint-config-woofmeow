@@ -10,7 +10,6 @@ const basePresetPaths = ['./react.js'].map(require.resolve);
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
     node: true,
   },
   extends: ['next', 'next/core-web-vitals', ...basePresetPaths],
