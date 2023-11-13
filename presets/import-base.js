@@ -6,11 +6,6 @@
  * @type {import('eslint').ESLint.ConfigData}
  */
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-  },
   plugins: ['simple-import-sort', 'unused-imports'],
   rules: {
     'simple-import-sort/exports': 'warn',
