@@ -6,11 +6,6 @@
  * @type {import('eslint').ESLint.ConfigData}
  */
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-  },
   plugins: ['@typescript-eslint'],
   parser: '@typescript-eslint/parser',
   parserOptions: {

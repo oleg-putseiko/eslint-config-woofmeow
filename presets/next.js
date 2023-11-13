@@ -1,4 +1,4 @@
-const baseConfigs = ['./react.js'].map(require.resolve);
+const basePresetPaths = ['./react.js'].map(require.resolve);
 
 /**
  * Next.js preset
@@ -13,7 +13,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['next', 'next/core-web-vitals', ...baseConfigs],
+  extends: ['next', 'next/core-web-vitals', ...basePresetPaths],
   overrides: [
     {
       files: [
