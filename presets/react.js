@@ -1,3 +1,10 @@
+/**
+ * React preset
+ *
+ * @exports react
+ *
+ * @type {import('eslint').ESLint.ConfigData}
+ */
 module.exports = {
   env: {
     browser: true,

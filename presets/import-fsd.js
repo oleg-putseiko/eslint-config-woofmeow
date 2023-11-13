@@ -1,7 +1,3 @@
-/**
- * Related to FSD up to v2.0.0
- */
-
 const SEGMENT_REGEXPS = [
   ['api', 'services?', 'controllers?', 'requests?', '(queries|query)'],
   ['models?', 'stores?', 'states?'],
@@ -32,6 +28,13 @@ const aliasedLayerPaths = LAYER_REGEXPS.map((layerRegExps) =>
   ),
 );
 
+/**
+ * Import Atomic Design preset related to FSD up to v2.0.0
+ *
+ * @exports import-fsd
+ *
+ * @type {import('eslint').ESLint.ConfigData}
+ */
 module.exports = {
   extends: ['./import-base.js'].map(require.resolve),
   rules: {

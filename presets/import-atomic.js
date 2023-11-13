@@ -1,3 +1,10 @@
+/**
+ * Import Atomic Design preset
+ *
+ * @exports import-atomic
+ *
+ * @type {import('eslint').ESLint.ConfigData}
+ */
 module.exports = {
   extends: ['./import-base.js'].map(require.resolve),
   rules: {

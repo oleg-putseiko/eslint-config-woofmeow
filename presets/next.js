@@ -1,5 +1,12 @@
 const baseConfigs = ['./react.js'].map(require.resolve);
 
+/**
+ * Next.js preset
+ *
+ * @exports next
+ *
+ * @type {import('eslint').ESLint.ConfigData}
+ */
 module.exports = {
   env: {
     browser: true,

@@ -1,3 +1,10 @@
+/**
+ * TypeScript preset
+ *
+ * @exports typescript
+ *
+ * @type {import('eslint').ESLint.ConfigData}
+ */
 module.exports = {
   env: {
     browser: true,

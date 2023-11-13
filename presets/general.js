@@ -1,3 +1,10 @@
+/**
+ * General preset
+ *
+ * @exports general
+ *
+ * @type {import('eslint').ESLint.ConfigData}
+ */
 module.exports = {
   env: {
     browser: true,
