@@ -126,8 +126,6 @@ module.exports = {
 
 ⚠️ Not included in `eslint-config-woofmeow`
 
-✔️ Included in `eslint-config-woofmeow/next`
-
 This preset includes TypeScript ESLint configuration.
 
 Required peer dependencies:
@@ -177,17 +175,13 @@ module.exports = {
 
 Includes the following presets:
 
-- [react](./presets/react.js)
-- [typescript](./presets/typescript.js)
+- [React](./presets/react.js)
 
 Required peer dependencies:
 
 - [eslint-config-next](https://nextjs.org/docs/app/building-your-application/configuring/eslint#eslint-config)
-- [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) (from [react] preset)
-- [eslint-plugin-react-hooks](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks) (from react preset)
-- [typescript](https://github.com/Microsoft/TypeScript) (from typescript preset)
-- [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin) (from typescript preset)
-- [@typescript-eslint/parser](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/parser) (from typescript preset)
+- [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) (from [React preset](./presets/react.js))
+- [eslint-plugin-react-hooks](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks) (from [React preset](./presets/react.js))
 
 > If you are using npm version 7 or higher, these dependencies will be installed automatically. Otherwise, you need to do it manually.
 

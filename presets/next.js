@@ -1,6 +1,4 @@
-const baseConfigs = ['./react.js', './typescript.js'].map(
-  require.resolve,
-);
+const baseConfigs = ['./react.js'].map(require.resolve);
 
 module.exports = {
   env: {
@@ -12,8 +10,10 @@ module.exports = {
   overrides: [
     {
       files: [
+        // Pages Router
         'src/pages/**/*{.js,.jsx,.ts,.tsx}',
         'pages/**/*{.js,.jsx,.ts,.tsx}',
+        // App Router
         'src/app/layout{.js,.jsx,.ts,.tsx}',
         'app/layout{.js,.jsx,.ts,.tsx}',
         'app/**/page{.js,.jsx,.ts,.tsx}',
