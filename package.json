@@ -33,8 +33,11 @@
     "./typescript": "./presets/typescript.js"
   },
   "scripts": {
-    "format": "prettier -w .",
-    "format:check": "prettier -c .",
+    "lint": "eslint ./index.{js,ts,json} ./presets/**/*.{js,ts,json} && yarn format",
+    "lint:fix": "eslint ./index.{js,ts,json} ./presets/**/*.{js,ts,json} --fix && yarn format:fix",
+    "lint:strict": "eslint ./index.{js,ts,json} ./presets/**/*.{js,ts,json} --max-warnings=0 && yarn format",
+    "format": "prettier -c .",
+    "format:fix": "prettier -w .",
     "prepare": "husky install"
   },
   "peerDependencies": {
