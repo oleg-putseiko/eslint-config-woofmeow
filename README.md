@@ -40,9 +40,17 @@ yarn add eslint-config-woofmeow --dev
 
 ### Default preset
 
+This preset includes a basic configuration compatible with most projects. Recommended for use both with and without other presets.
+
 Includes the following presets:
 
 - [General preset](#general-preset)
+
+Required peer dependencies:
+
+- [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier) (from [General preset](#general-preset))
+
+> If you are using npm version 7 or higher, these dependencies will be installed automatically. Otherwise, you need to do it manually.
 
 To include this preset in your ESLint configuration add `eslint-config-woofmeow` as extension:
 
@@ -56,11 +64,13 @@ module.exports = {
 
 ✔️ Included in `eslint-config-woofmeow`
 
-This preset includes general non-specific configuration.
+This preset includes general non-specific configuration compatible with most projects.
 
 Required peer dependencies:
 
 - [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
+
+> If you are using npm version 7 or higher, these dependencies will be installed automatically. Otherwise, you need to do it manually.
 
 To include this preset in your ESLint configuration add `eslint-config-woofmeow/general` as extension:
 
@@ -78,6 +88,8 @@ Required peer dependencies:
 
 - [eslint-plugin-simple-import-sort](https://github.com/lydell/eslint-plugin-simple-import-sort)
 - [eslint-plugin-unused-imports](https://github.com/sweepline/eslint-plugin-unused-imports)
+
+> If you are using npm version 7 or higher, these dependencies will be installed automatically. Otherwise, you need to do it manually.
 
 To include this preset in your ESLint configuration add `eslint-config-woofmeow/import` as extension:
 
@@ -177,8 +189,8 @@ Includes the following presets:
 Required peer dependencies:
 
 - [eslint-config-next](https://nextjs.org/docs/app/building-your-application/configuring/eslint#eslint-config)
-- [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) (from [React preset](./presets/react.js))
-- [eslint-plugin-react-hooks](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks) (from [React preset](./presets/react.js))
+- [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) (from [React preset](#react-preset))
+- [eslint-plugin-react-hooks](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks) (from [React preset](#react-preset))
 
 > If you are using npm version 7 or higher, these dependencies will be installed automatically. Otherwise, you need to do it manually.
 
