@@ -80,7 +80,7 @@ module.exports = {
       {
         groups: [
           ['^@?\\w', '^\\u0000'],
-          ...LAYERS.map(
+          LAYERS.map(
             (layer) =>
               `^@/(${layer.actualPaths
                 .concat(layer.deprecatedPaths)
