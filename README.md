@@ -39,9 +39,6 @@ yarn add eslint-config-woofmeow --dev
 WoofMeow ESLint configuration has the following required peer dependencies:
 
 - [eslint](https://github.com/eslint/eslint)
-- [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
-- [eslint-plugin-simple-import-sort](https://github.com/lydell/eslint-plugin-simple-import-sort)
-- [eslint-plugin-unused-imports](https://github.com/sweepline/eslint-plugin-unused-imports)
 
 > If you are using npm version 7 or higher, these dependencies will be installed automatically. Otherwise, you need to do it manually.
 
@@ -68,6 +65,10 @@ module.exports = {
 
 This preset includes general non-specific configuration.
 
+Required peer dependencies:
+
+- [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
+
 To include this preset in your ESLint configuration add `eslint-config-woofmeow/general` as extension:
 
 ```js
@@ -79,6 +80,11 @@ module.exports = {
 ### Base import preset
 
 ✔️ Included in `eslint-config-woofmeow`
+
+Required peer dependencies:
+
+- [eslint-plugin-simple-import-sort](https://github.com/lydell/eslint-plugin-simple-import-sort)
+- [eslint-plugin-unused-imports](https://github.com/sweepline/eslint-plugin-unused-imports)
 
 To include this preset in your ESLint configuration add `eslint-config-woofmeow/import` as extension:
 
@@ -151,8 +157,6 @@ module.exports = {
 ### React preset
 
 ⚠️ Not included in `eslint-config-woofmeow`
-
-✔️ Included in `eslint-config-woofmeow/next`
 
 Required peer dependencies:
 
