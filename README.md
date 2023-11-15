@@ -66,7 +66,7 @@ To include this preset in your ESLint configuration add `eslint-config-woofmeow/
 
 ```js
 module.exports = {
-  extends: 'woofmeow',
+  extends: 'woofmeow/general',
 };
 ```
 
@@ -83,7 +83,7 @@ To include this preset in your ESLint configuration add `eslint-config-woofmeow/
 
 ```js
 module.exports = {
-  extends: ['woofmeow', 'woofmeow/import'],
+  extends: 'woofmeow/import',
 };
 ```
 
@@ -99,7 +99,7 @@ To include this preset in your ESLint configuration add `eslint-config-woofmeow/
 
 ```js
 module.exports = {
-  extends: ['woofmeow', 'woofmeow/import-atomic'],
+  extends: 'woofmeow/import-atomic',
 };
 ```
 
@@ -117,7 +117,7 @@ To include this preset in your ESLint configuration add `eslint-config-woofmeow/
 
 ```js
 module.exports = {
-  extends: ['woofmeow', 'woofmeow/import-fsd'],
+  extends: 'woofmeow/import-fsd',
 };
 ```
 
@@ -139,7 +139,7 @@ To include this preset in your ESLint configuration add `eslint-config-woofmeow/
 
 ```js
 module.exports = {
-  extends: ['woofmeow', 'woofmeow/typescript'],
+  extends: 'woofmeow/typescript',
   parserOptions: {
     project: 'tsconfig.json',
     tsconfigRootDir: __dirname,
@@ -162,7 +162,7 @@ To include this preset in your ESLint configuration add `eslint-config-woofmeow/
 
 ```js
 module.exports = {
-  extends: ['woofmeow', 'woofmeow/react'],
+  extends: 'woofmeow/react',
 };
 ```
 
@@ -186,7 +186,7 @@ To include this preset in your ESLint configuration add `eslint-config-woofmeow/
 
 ```js
 module.exports = {
-  extends: ['woofmeow', 'woofmeow/next'],
+  extends: 'woofmeow/next',
 };
 ```
 
