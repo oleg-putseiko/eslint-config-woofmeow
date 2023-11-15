@@ -4,7 +4,5 @@
  * @type {import('eslint').ESLint.ConfigData}
  */
 module.exports = {
-  extends: ['./presets/general.js', './presets/import-base.js'].map(
-    require.resolve,
-  ),
+  extends: ['./presets/general.js'].map(require.resolve),
 };

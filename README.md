@@ -36,12 +36,6 @@ pnpm install eslint-config-woofmeow --save-dev
 yarn add eslint-config-woofmeow --dev
 ```
 
-WoofMeow ESLint configuration has the following required peer dependencies:
-
-- [eslint](https://github.com/eslint/eslint)
-
-> If you are using npm version 7 or higher, these dependencies will be installed automatically. Otherwise, you need to do it manually.
-
 ## Usage
 
 ### Default preset
@@ -49,7 +43,6 @@ WoofMeow ESLint configuration has the following required peer dependencies:
 Includes the following presets:
 
 - [General preset](#general-preset)
-- [Base import preset](#base-import-preset)
 
 To include this preset in your ESLint configuration add `eslint-config-woofmeow` as extension:
 
@@ -79,7 +72,7 @@ module.exports = {
 
 ### Base import preset
 
-✔️ Included in `eslint-config-woofmeow`
+⚠️ Not included in `eslint-config-woofmeow`
 
 Required peer dependencies:
 
@@ -114,7 +107,7 @@ module.exports = {
 
 ⚠️ Not included in `eslint-config-woofmeow`
 
-Related to [Feature Sliced Design](https://feature-sliced.design/) up to v2.0.0.
+Related to [Feature Sliced Design](https://feature-sliced.design/) up to v2.x.x.
 
 Includes the following presets:
 
