@@ -125,15 +125,15 @@ module.exports = {
   },
   overrides: LAYERS.map((layer, index) => {
     const paths = layer.actualPaths.concat(layer.deprecatedPaths);
-    const prevPaths = LAYERS.slice(0, index).flatMap((prevLayer) =>
+    const deniedPaths = LAYERS.slice(0, index + 1).flatMap((prevLayer) =>
       prevLayer.actualPaths.concat(prevLayer.deprecatedPaths),
     );
 
-    const patterns = BASE_PATTERNS.slice();
+    const patterns = BASE_PATTERNS.slice(0);
 
-    if (prevPaths.length > 0) {
+    if (deniedPaths.length > 0) {
       patterns.push({
-        group: prevPaths.map(globAlias),
+        group: deniedPaths.map(globAlias),
         message: 'Access to this layer from the current one is denied',
       });
     }
