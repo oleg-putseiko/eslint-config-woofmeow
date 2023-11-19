@@ -126,12 +126,9 @@ module.exports = {
       {
         groups: [
           ['^@?\\w', '^\\u0000'],
-          LAYERS.map(
-            (layer) =>
-              `^(src/|@/|@)?(${layer.actualPaths
-                .concat(layer.deprecatedPaths)
-                .join('|')})`,
-          ),
+          ...LAYERS.map((layer) => [
+            `^(src/|@/|@)?(${layerPaths(layer).join('|')})`,
+          ]),
           ['^.+\\.s?css$'],
           ['^@/'],
           ['^\\.\\.?/'],
