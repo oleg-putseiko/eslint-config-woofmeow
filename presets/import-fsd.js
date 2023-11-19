@@ -1,7 +1,8 @@
 /**
- * @typedef { string } Path - Path compatible with both Glob and RegExp
+ * @typedef { string } Path Path compatible with both Glob and RegExp
+ * @typedef { { name: string; actualPaths: Path[]; deprecatedPaths: Path[] } } Layer
  *
- * @type { { name: string; actualPaths: Path[]; deprecatedPaths: Path[] }[] }
+ * @type { Layer[] }
  */
 const LAYERS = [
   {
@@ -48,11 +49,14 @@ const LAYERS = [
   },
 ];
 
-const RELATED_LAYER_NAME_LIST = LAYERS.reduce((acc, { name }, index, array) => {
-  if (index === 0) return name;
-  if (index !== array.length - 1) return `${acc}, ${name}`;
-  return `${acc} or ${name}`;
-}, '');
+const RELATED_LAYER_NAME_LIST = LAYERS.reduce(
+  (list, { name }, index, array) => {
+    if (index === 0) return name;
+    if (index !== array.length - 1) return `${list}, ${name}`;
+    return `${list} or ${name}`;
+  },
+  '',
+);
 
 const DEPRECATED_PATH_GROUP = LAYERS.flatMap((layer) =>
   layer.deprecatedPaths.flatMap((path) => [
@@ -63,6 +67,11 @@ const DEPRECATED_PATH_GROUP = LAYERS.flatMap((layer) =>
   ]),
 );
 const BREAKING_PATH_GROUP = ['/', './', '../'];
+
+/**
+ * @type { (layer: Layer) => Path[] }
+ */
+const layerPaths = (layer) => layer.actualPaths.concat(layer.deprecatedPaths);
 
 const BASE_PATTERNS = [
   {
@@ -75,18 +84,14 @@ const BASE_PATTERNS = [
       'Using a relative and absolute paths may result in using an inaccessible layers. Use an aliased path instead',
   },
   {
-    group: ['src/*', '@/*', '@*'].concat(
+    group: ['src/*', '@/*'].concat(
       LAYERS.flatMap((layer) =>
-        layer.actualPaths
-          .concat(layer.deprecatedPaths)
-          .flatMap((path) => [
-            `!src/${path}`,
-            `!src/${path}/*`,
-            `!@/${path}`,
-            `!@/${path}/*`,
-            `!@${path}`,
-            `!@${path}/*`,
-          ]),
+        layerPaths(layer).flatMap((path) => [
+          `!src/${path}`,
+          `!src/${path}/*`,
+          `!@/${path}`,
+          `!@/${path}/*`,
+        ]),
       ),
     ),
     message: `Unknown layer, use one related to FSD version 2.X.X: ${RELATED_LAYER_NAME_LIST}`,
@@ -137,9 +142,7 @@ module.exports = {
   },
   overrides: LAYERS.map((layer, index) => {
     const paths = layer.actualPaths.concat(layer.deprecatedPaths);
-    const deniedPaths = LAYERS.slice(0, index + 1).flatMap((prevLayer) =>
-      prevLayer.actualPaths.concat(prevLayer.deprecatedPaths),
-    );
+    const deniedPaths = LAYERS.slice(0, index + 1).flatMap(layerPaths);
 
     const patterns = BASE_PATTERNS.slice(0);
 
