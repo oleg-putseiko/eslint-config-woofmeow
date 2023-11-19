@@ -21,6 +21,7 @@ module.exports = {
         'pages/**/*{.js,.jsx,.ts,.tsx}',
         // App Router
         'src/app/layout{.js,.jsx,.ts,.tsx}',
+        'src/app/**/page{.js,.jsx,.ts,.tsx}',
         'app/layout{.js,.jsx,.ts,.tsx}',
         'app/**/page{.js,.jsx,.ts,.tsx}',
       ],
