@@ -49,15 +49,6 @@ const LAYERS = [
   },
 ];
 
-const RELATED_LAYER_NAME_LIST = LAYERS.reduce(
-  (list, { name }, index, array) => {
-    if (index === 0) return name;
-    if (index !== array.length - 1) return `${list}, ${name}`;
-    return `${list} or ${name}`;
-  },
-  '',
-);
-
 const DEPRECATED_PATH_GROUP = LAYERS.flatMap((layer) =>
   layer.deprecatedPaths.flatMap((path) => [
     `src/${path}/**/*`,
@@ -71,22 +62,36 @@ const BREAKING_PATH_GROUP = ['/', './', '../'];
 /**
  * @type { (layer: Layer) => Path[] }
  */
-const layerPaths = (layer) => layer.actualPaths.concat(layer.deprecatedPaths);
+const getLayerPaths = (layer) =>
+  layer.actualPaths.concat(layer.deprecatedPaths);
+
+/**
+ * @type { (layer: Layer[], conjunction?: string) => string }
+ */
+const getLayerNameList = (layers, conjunction = 'and') =>
+  layers.reduce((list, { name }, index, array) => {
+    if (index === 0) return `\`${name}\``;
+    if (index !== array.length - 1) return `${list}, \`${name}\``;
+    return `${list} ${conjunction} \`${name}\``;
+  }, '');
 
 const BASE_PATTERNS = [
   {
     group: DEPRECATED_PATH_GROUP,
-    message: `Layer is deprecated. Instead, use layers related to FSD version 2.X.X: ${RELATED_LAYER_NAME_LIST}`,
+    message: `\n\nLayer is deprecated. Instead, use layers related to FSD version 2.X.X: ${getLayerNameList(
+      LAYERS,
+      'or',
+    )}`,
   },
   {
     group: BREAKING_PATH_GROUP,
     message:
-      'Using a relative and absolute paths may result in using an inaccessible layers. Use an aliased path instead',
+      '\n\nUsing a relative and absolute paths may result in using an inaccessible layers. Use an aliased path instead',
   },
   {
     group: ['src/*', '@/*'].concat(
       LAYERS.flatMap((layer) =>
-        layerPaths(layer).flatMap((path) => [
+        getLayerPaths(layer).flatMap((path) => [
           `!src/${path}`,
           `!src/${path}/*`,
           `!@/${path}`,
@@ -94,7 +99,10 @@ const BASE_PATTERNS = [
         ]),
       ),
     ),
-    message: `Unknown layer, use one related to FSD version 2.X.X: ${RELATED_LAYER_NAME_LIST}`,
+    message: `\n\nUnknown layer, use one related to FSD version 2.X.X: ${getLayerNameList(
+      LAYERS,
+      'or',
+    )}`,
   },
 ];
 
@@ -115,7 +123,7 @@ module.exports = {
           {
             group: BREAKING_PATH_GROUP,
             message:
-              'Use an aliased paths instead of a relative and absolute ones',
+              '\n\nUse an aliased paths instead of a relative and absolute ones',
           },
         ],
       },
@@ -127,7 +135,7 @@ module.exports = {
         groups: [
           ['^@?\\w', '^\\u0000'],
           ...LAYERS.map((layer) => [
-            `^(src/|@/|@)?(${layerPaths(layer).join('|')})`,
+            `^(src/|@/|@)?(${getLayerPaths(layer).join('|')})`,
           ]),
           ['^.+\\.s?css$'],
           ['^@/'],
@@ -139,7 +147,8 @@ module.exports = {
   },
   overrides: LAYERS.map((layer, index) => {
     const paths = layer.actualPaths.concat(layer.deprecatedPaths);
-    const deniedPaths = LAYERS.slice(0, index + 1).flatMap(layerPaths);
+    const deniedPaths = LAYERS.slice(0, index + 1).flatMap(getLayerPaths);
+    const allowedLayers = LAYERS.slice(index + 1);
 
     const patterns = BASE_PATTERNS.slice(0);
 
@@ -151,7 +160,12 @@ module.exports = {
           `@${path}/**/*`,
           `${path}/**/*`,
         ]),
-        message: 'Access to this layer from the current one is denied',
+        message:
+          index < LAYERS.length - 1
+            ? `\n\nAccess to this layer from the current one is denied. Layers allowed for use in the current one: ${getLayerNameList(
+                allowedLayers,
+              )}`
+            : '\n\nAccess to this layer from the current one is denied. This layer cannot use other layers.',
       });
     }
 
