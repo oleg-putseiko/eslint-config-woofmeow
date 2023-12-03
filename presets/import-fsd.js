@@ -1,24 +1,26 @@
+const fs = require('fs');
+
 /**
- * @typedef { string } Path Path compatible with both Glob and RegExp
- * @typedef { { name: string; actualPaths: Path[]; deprecatedPaths: Path[] } } Layer
+ * @typedef { string } NamePattern Name pattern compatible with Glob, RegExp and gitignore syntax
+ * @typedef { { name: string; actualNames: NamePattern[]; deprecatedNames: NamePattern[] } } Layer
  *
  * @type { Layer[] }
  */
 const LAYERS = [
   {
     name: 'app',
-    actualPaths: ['app', 'apps'],
-    deprecatedPaths: ['core', 'init'],
+    actualNames: ['app', 'apps'],
+    deprecatedNames: ['core', 'init'],
   },
   {
     name: 'processes',
-    actualPaths: ['process', 'processes'],
-    deprecatedPaths: ['flow', 'flows', 'workflow', 'workflows'],
+    actualNames: ['process', 'processes'],
+    deprecatedNames: ['flow', 'flows', 'workflow', 'workflows'],
   },
   {
     name: 'pages',
-    actualPaths: ['page', 'pages'],
-    deprecatedPaths: [
+    actualNames: ['page', 'pages'],
+    deprecatedNames: [
       'screen',
       'screens',
       'view',
@@ -29,44 +31,68 @@ const LAYERS = [
   },
   {
     name: 'widgets',
-    actualPaths: ['widget', 'widgets'],
-    deprecatedPaths: [],
+    actualNames: ['widget', 'widgets'],
+    deprecatedNames: [],
   },
   {
     name: 'features',
-    actualPaths: ['feature', 'features'],
-    deprecatedPaths: ['component', 'components', 'container', 'containers'],
+    actualNames: ['feature', 'features'],
+    deprecatedNames: ['component', 'components', 'container', 'containers'],
   },
   {
     name: 'entities',
-    actualPaths: ['entity', 'entities'],
-    deprecatedPaths: ['model', 'models'],
+    actualNames: ['entity', 'entities'],
+    deprecatedNames: ['model', 'models'],
   },
   {
     name: 'shared',
-    actualPaths: ['shared'],
-    deprecatedPaths: ['common', 'lib', 'libs'],
+    actualNames: ['shared'],
+    deprecatedNames: ['common', 'lib', 'libs'],
   },
 ];
 
 const DEPRECATED_PATH_GROUP = LAYERS.flatMap((layer) =>
-  layer.deprecatedPaths.flatMap((path) => [
-    `src/${path}/**/*`,
-    `@/${path}/**/*`,
-    `@${path}/**/*`,
-    `${path}/**/*`,
+  layer.deprecatedNames.flatMap((layerName) => [
+    `src/${layerName}/**/*`,
+    `@/${layerName}/**/*`,
+    `@${layerName}/**/*`,
+    `${layerName}/**/*`,
   ]),
 );
 const BREAKING_PATH_GROUP = ['/', './', '../'];
 
 /**
- * @type { (layer: Layer) => Path[] }
+ * @param { Layer } layer
+ *
+ * @returns { NamePattern[] } Layer name patterns
  */
-const getLayerPaths = (layer) =>
-  layer.actualPaths.concat(layer.deprecatedPaths);
+const getLayerNames = (layer) =>
+  layer.actualNames.concat(layer.deprecatedNames);
 
 /**
- * @type { (layer: Layer[], conjunction?: string) => string }
+ * @param { NamePattern } layerName
+ *
+ * @returns { string[] } Layer slice names
+ */
+const getLayerSliceNames = (layerName) => {
+  try {
+    return fs.readdirSync(`./src/${layerName}`);
+  } catch {
+    // Fall through to the next search
+  }
+
+  try {
+    return fs.readdirSync(`./${layerName}`);
+  } catch {
+    return [];
+  }
+};
+
+/**
+ * @param { Layer[] } layers
+ * @param { string | undefined } conjunction
+ *
+ * @returns { string } User-readable list of layer names
  */
 const getLayerNameList = (layers, conjunction = 'and') =>
   layers.reduce((list, { name }, index, array) => {
@@ -74,6 +100,47 @@ const getLayerNameList = (layers, conjunction = 'and') =>
     if (index !== array.length - 1) return `${list}, \`${name}\``;
     return `${list} ${conjunction} \`${name}\``;
   }, '');
+
+/**
+ * @param { Layer } layer
+ * @param { string } sliceName
+ *
+ * @returns { Linter.ConfigOverride<Linter.RulesRecord> } ESLint config overriding pattern
+ */
+const buildDeniedLayersPattern = (layer, sliceName) => {
+  const index = LAYERS.indexOf(layer);
+
+  const deniedLayerNames = LAYERS.slice(0, index + 1).flatMap(getLayerNames);
+  const allowedLayers = LAYERS.slice(index + 1);
+
+  if (deniedLayerNames.length < 1) return null;
+
+  return {
+    group: deniedLayerNames
+      .flatMap((layerName) => [
+        `src/${layerName}/*`,
+        `@/${layerName}/*`,
+        `@${layerName}/*`,
+        `${layerName}/*`,
+      ])
+      .concat([
+        `!src/${layer.name}/${sliceName}`,
+        `!src/${layer.name}/${sliceName}/*`,
+        `!@/${layer.name}/${sliceName}`,
+        `!@/${layer.name}/${sliceName}/*`,
+        `!@${layer.name}/${sliceName}`,
+        `!@${layer.name}/${sliceName}/*`,
+        `!${layer.name}/${sliceName}`,
+        `!${layer.name}/${sliceName}/*`,
+      ]),
+    message:
+      index < LAYERS.length - 1
+        ? `\n\nAccess to this layer from the current one is denied. Layers allowed for use in the current one: ${getLayerNameList(
+            allowedLayers,
+          )}`
+        : '\n\nAccess to this layer from the current one is denied. This layer cannot use other layers.',
+  };
+};
 
 const BASE_PATTERNS = [
   {
@@ -91,11 +158,11 @@ const BASE_PATTERNS = [
   {
     group: ['src/*', '@/*'].concat(
       LAYERS.flatMap((layer) =>
-        getLayerPaths(layer).flatMap((path) => [
-          `!src/${path}`,
-          `!src/${path}/*`,
-          `!@/${path}`,
-          `!@/${path}/*`,
+        getLayerNames(layer).flatMap((name) => [
+          `!src/${name}`,
+          `!src/${name}/*`,
+          `!@/${name}`,
+          `!@/${name}/*`,
         ]),
       ),
     ),
@@ -135,7 +202,7 @@ module.exports = {
         groups: [
           ['^@?\\w', '^\\u0000'],
           ...LAYERS.map((layer) => [
-            `^(src/|@/|@)?(${getLayerPaths(layer).join('|')})`,
+            `^(src/|@/|@)?(${getLayerNames(layer).join('|')})`,
           ]),
           ['^.+\\.s?css$'],
           ['^@/'],
@@ -145,35 +212,29 @@ module.exports = {
       },
     ],
   },
-  overrides: LAYERS.map((layer, index) => {
-    const paths = layer.actualPaths.concat(layer.deprecatedPaths);
-    const deniedPaths = LAYERS.slice(0, index + 1).flatMap(getLayerPaths);
-    const allowedLayers = LAYERS.slice(index + 1);
+  overrides: LAYERS.flatMap((layer) => {
+    const layerNames = layer.actualNames.concat(layer.deprecatedNames);
 
-    const patterns = BASE_PATTERNS.slice(0);
+    return layerNames.flatMap((layerName) => {
+      const sliceNames = getLayerSliceNames(layerName);
 
-    if (deniedPaths.length > 0) {
-      patterns.push({
-        group: deniedPaths.flatMap((path) => [
-          `src/${path}/**/*`,
-          `@/${path}/**/*`,
-          `@${path}/**/*`,
-          `${path}/**/*`,
-        ]),
-        message:
-          index < LAYERS.length - 1
-            ? `\n\nAccess to this layer from the current one is denied. Layers allowed for use in the current one: ${getLayerNameList(
-                allowedLayers,
-              )}`
-            : '\n\nAccess to this layer from the current one is denied. This layer cannot use other layers.',
+      return sliceNames.flatMap((sliceName) => {
+        const deniedLayersPatterns = buildDeniedLayersPattern(layer, sliceName);
+
+        return {
+          files: [`./{,src/}${layerName}/${sliceName}/**/*`],
+          rules: {
+            'no-restricted-imports': [
+              'error',
+              {
+                patterns: deniedLayersPatterns
+                  ? [...BASE_PATTERNS, deniedLayersPatterns]
+                  : BASE_PATTERNS,
+              },
+            ],
+          },
+        };
       });
-    }
-
-    return {
-      files: paths.map((path) => `./{,src/}${path}/**/*`),
-      rules: {
-        'no-restricted-imports': ['error', { patterns }],
-      },
-    };
+    });
   }),
 };
