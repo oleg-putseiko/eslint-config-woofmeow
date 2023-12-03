@@ -102,10 +102,12 @@ const getLayerNameList = (layers, conjunction = 'and') =>
   }, '');
 
 /**
+ * @typedef { { group: string[]; message: string} } ImportPattern
+ *
  * @param { Layer } layer
  * @param { string } sliceName
  *
- * @returns { Linter.ConfigOverride<Linter.RulesRecord> } ESLint config overriding pattern
+ * @returns { ImportPattern | null } ESLint config import pattern
  */
 const buildDeniedLayersPattern = (layer, sliceName) => {
   const index = LAYERS.indexOf(layer);
@@ -142,6 +144,9 @@ const buildDeniedLayersPattern = (layer, sliceName) => {
   };
 };
 
+/**
+ * @type { ImportPattern[] }
+ */
 const BASE_PATTERNS = [
   {
     group: DEPRECATED_PATH_GROUP,
@@ -178,7 +183,7 @@ const BASE_PATTERNS = [
  *
  * @exports import-fsd
  *
- * @type {import('eslint').ESLint.ConfigData}
+ * @type { import('eslint').ESLint.ConfigData }
  */
 module.exports = {
   extends: ['./import-base.js'].map(require.resolve),
