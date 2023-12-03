@@ -135,10 +135,10 @@ const buildDeniedLayersPattern = (layer, sliceName) => {
       ]),
     message:
       index < LAYERS.length - 1
-        ? `\n\nAccess to this layer from the current one is denied. Layers allowed for use in the current one: ${getLayerNameList(
+        ? `\n\nAccess to this layer or slice from the current one is denied. Layers allowed for use: ${getLayerNameList(
             allowedLayers,
-          )}`
-        : '\n\nAccess to this layer from the current one is denied. This layer cannot use other layers.',
+          )}.`
+        : '\n\nAccess to this layer from the current one is denied. \nThis layer cannot use other layers.',
   };
 };
 
