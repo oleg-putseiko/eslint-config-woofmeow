@@ -40,7 +40,7 @@
     "lint:strict": "eslint ./index.{js,ts,json} ./presets/**/*.{js,ts,json} --max-warnings=0 && yarn format",
     "format": "prettier -c .",
     "format:fix": "prettier -w .",
-    "prepare": "husky install"
+    "prepare": "husky install | chmod +x ./.husky/*"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^8.17.0",
@@ -64,9 +64,11 @@
   "devDependencies": {
     "@commitlint/cli": "^18.2.0",
     "@commitlint/config-conventional": "^18.1.0",
+    "eslint": "^9.16.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.0.2",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "typescript": "^5.7.2"
   },
   "engines": {
     "node": "^18.18.0 || ^20.9.0 || >=21.1.0",
