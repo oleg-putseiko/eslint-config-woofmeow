@@ -35,7 +35,7 @@
     "./typescript": "./presets/typescript.js"
   },
   "scripts": {
-    "lint": "eslint ./index.{js,ts,json} ./presets/**/*.{js,ts,json} && yarn format",
+    "lint": "eslint ./index.{js,ts} ./presets/**/*.{js,ts}",
     "lint:fix": "eslint ./index.{js,ts,json} ./presets/**/*.{js,ts,json} --fix && yarn format:fix",
     "lint:strict": "eslint ./index.{js,ts,json} ./presets/**/*.{js,ts,json} --max-warnings=0 && yarn format",
     "format": "prettier -c .",
