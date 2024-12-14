@@ -27,7 +27,6 @@ export const config: Linter.Config = {
       },
     },
   },
-
   rules: {
     'react/button-has-type': 'error',
 

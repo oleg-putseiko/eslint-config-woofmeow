@@ -1,21 +1,8 @@
-import typescriptEslint from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
-import { ESLint, type Linter } from 'eslint';
+import { type Linter } from 'eslint';
+import tseslint from 'typescript-eslint';
 
 export const config: Linter.Config = {
-  plugins: {
-    '@typescript-eslint': typescriptEslint as unknown as ESLint.Plugin,
-  },
-
-  languageOptions: {
-    parser: tsParser,
-    ecmaVersion: 5,
-    sourceType: 'module',
-  },
-
   settings: {
-    'import/parsers': { '@typescript-eslint/parser': ['.ts', '.tsx', '.d.ts'] },
-
     'import/resolver': {
       node: { extensions: ['.js', '.mjs', '.cjs', '.ts', '.d.ts', '.json'] },
     },
@@ -31,7 +18,6 @@ export const config: Linter.Config = {
     ],
     'import/external-module-folders': ['node_modules', 'node_modules/@types'],
   },
-
   rules: {
     '@typescript-eslint/consistent-type-imports': [
       'error',
@@ -59,4 +45,15 @@ export const config: Linter.Config = {
   },
 };
 
-export default [config];
+export default tseslint.config(
+  { files: ['**/*{ts,tsx}', '**/*[cm]ts'] },
+  {
+    plugins: { '@typescript-eslint': tseslint.plugin },
+    languageOptions: {
+      parser: tseslint.parser,
+      ecmaVersion: 5,
+      sourceType: 'module',
+    },
+  },
+  config,
+);
