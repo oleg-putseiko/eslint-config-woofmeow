@@ -1,29 +1,64 @@
+import { FlatCompat } from '@eslint/eslintrc';
+import js from '@eslint/js';
+import typescriptEslint from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
 import globals from 'globals';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-// eslint-disable-next-line no-restricted-exports
+const fileUrl = fileURLToPath(import.meta.url);
+const dirName = path.dirname(fileUrl);
+
+const compat = new FlatCompat({
+  baseDirectory: dirName,
+  recommendedConfig: js.configs.recommended,
+  allConfig: js.configs.all,
+});
+
 export default [
+  ...compat.extends('prettier', 'eslint:recommended'),
   {
+    files: ['**/*.[cm]{js,ts}', '**/*.{js,ts,json,md,yml}', '**/!(*.*)'],
     ignores: [
+      // Dependencies
       '**/node_modules',
       '**/.pnp',
       '**/.pnp.js',
       '**/.yarn',
       '**/yarn.lock',
+      '**/package-lock.json',
+
+      // Debug
       '**/npm-debug.log*',
       '**/yarn-debug.log*',
       '**/yarn-error.log*',
       '**/.pnpm-debug.log*',
+
+      // Testing
       '**/coverage',
+
+      // Artifacts
       '**/build',
       '**/dist',
       '**/.cache',
+
+      // Linting
       '**/.husky',
       '**/.eslintignore',
       '**/.prettierignore',
+
+      // CI/CD
+      '**/.github',
+
+      // Misc
       '**/.DS_Store',
       '**/*.pem',
+
+      // Environment
       '**/.env',
       '**/.env*.local',
+
+      // Code editors
       '.vscode/*',
       '!.vscode/extensions.json',
       '**/.idea',
@@ -35,9 +70,17 @@ export default [
     ],
   },
   {
+    plugins: {
+      '@typescript-eslint': typescriptEslint,
+    },
     languageOptions: {
       globals: { ...globals.node },
-      ecmaVersion: 'latest',
+      parser: tsParser,
+      parserOptions: {
+        project: 'tsconfig.eslint.json',
+        tsconfigRootDir: dirName,
+      },
+      ecmaVersion: 5,
       sourceType: 'module',
     },
   },

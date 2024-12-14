@@ -15,7 +15,7 @@ yarn-error.log*
 # testing
 coverage
 
-# production
+# artifacts
 build
 dist
 .cache

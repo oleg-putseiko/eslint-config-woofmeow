@@ -1,29 +1,53 @@
-/**
- * React preset
- *
- * @exports react
- *
- * @type {import('eslint').ESLint.ConfigData}
- */
-module.exports = {
-  env: {
-    browser: true,
-    node: true,
-  },
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
+import { type Linter } from 'eslint';
+import globals from 'globals';
+import { ConfigCompat } from '../../utils/config-compat';
+
+const compat = new ConfigCompat({ fileUrl: import.meta.url });
+
+export const configsToExtend: string[] = [
+  'plugin:react/recommended',
+  'plugin:react/jsx-runtime',
+];
+
+export const config: Linter.Config = {
+  languageOptions: {
+    globals: {
+      ...globals.browser,
+      ...globals.node,
+      React: true,
+      JSX: true,
+    },
+
+    ecmaVersion: 5,
+    sourceType: 'commonjs',
+
+    parserOptions: {
+      ecmaFeatures: {
+        jsx: true,
+      },
     },
   },
-  extends: ['plugin:react/recommended', 'plugin:react/jsx-runtime'],
+
   rules: {
     'react/button-has-type': 'error',
+
     'react/jsx-curly-brace-presence': [
       'warn',
-      { props: 'never', children: 'never' },
+      {
+        props: 'never',
+        children: 'never',
+      },
     ],
-    'react/no-unescaped-entities': ['warn', { forbid: ['>', '}'] }],
+
+    'react/no-unescaped-entities': [
+      'warn',
+      {
+        forbid: ['>', '}'],
+      },
+    ],
+
     'react/display-name': 'off',
+
     'react/boolean-prop-naming': [
       'warn',
       {
@@ -32,6 +56,7 @@ module.exports = {
           "Add one of the 'is', 'are', 'has', 'can' or 'should' prefixes",
       },
     ],
+
     'react/function-component-definition': [
       'warn',
       {
@@ -39,12 +64,27 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
-    'react/hook-use-state': ['warn', { allowDestructuredState: true }],
+
+    'react/hook-use-state': [
+      'warn',
+      {
+        allowDestructuredState: true,
+      },
+    ],
+
     'react/iframe-missing-sandbox': 'error',
     'react/jsx-boolean-value': 'warn',
-    'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
+
+    'react/jsx-filename-extension': [
+      'error',
+      {
+        extensions: ['.jsx', '.tsx'],
+      },
+    ],
+
     'react/jsx-fragments': 'error',
     'react/jsx-handler-names': 'warn',
+
     'react/jsx-key': [
       'error',
       {
@@ -53,8 +93,16 @@ module.exports = {
         warnOnDuplicates: true,
       },
     ],
+
     'react/jsx-no-constructed-context-values': 'warn',
-    'react/jsx-no-useless-fragment': ['warn', { allowExpressions: true }],
+
+    'react/jsx-no-useless-fragment': [
+      'warn',
+      {
+        allowExpressions: true,
+      },
+    ],
+
     'react/jsx-pascal-case': 'error',
     'react/no-access-state-in-setstate': 'warn',
     'react/no-array-index-key': 'warn',
@@ -66,6 +114,7 @@ module.exports = {
     'react/no-this-in-sfc': 'error',
     'react/no-unstable-nested-components': 'warn',
     'react/no-unused-prop-types': 'warn',
+
     'react/self-closing-comp': [
       'warn',
       {
@@ -73,12 +122,11 @@ module.exports = {
         html: true,
       },
     ],
+
     'react/void-dom-elements-no-children': 'error',
     'react/prop-types': 'off',
     'react-hooks/exhaustive-deps': 'off',
   },
-  globals: {
-    React: true,
-    JSX: true,
-  },
 };
+
+export default [...compat.extends(...configsToExtend), config];

@@ -1,12 +1,11 @@
-/**
- * Import Atomic Design preset
- *
- * @exports import-atomic
- *
- * @type {import('eslint').ESLint.ConfigData}
- */
-module.exports = {
-  extends: ['./import-base.js'].map(require.resolve),
+import { type Linter } from 'eslint';
+import { ConfigCompat } from '../../utils/config-compat';
+
+const compat = new ConfigCompat({ fileUrl: import.meta.url });
+
+export const configsToExtend: string[] = ['./import-base.ts'];
+
+export const config: Linter.Config = {
   rules: {
     'no-restricted-imports': [
       'warn',
@@ -51,3 +50,5 @@ module.exports = {
     ],
   },
 };
+
+export default [...compat.extends(...configsToExtend), config];

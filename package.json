@@ -35,14 +35,18 @@
     "./typescript": "./presets/typescript.js"
   },
   "scripts": {
-    "lint": "eslint ./index.{js,ts} ./presets/**/*.{js,ts}",
-    "lint:fix": "eslint ./index.{js,ts,json} ./presets/**/*.{js,ts,json} --fix && yarn format:fix",
-    "lint:strict": "eslint ./index.{js,ts,json} ./presets/**/*.{js,ts,json} --max-warnings=0 && yarn format",
+    "build": "tsc",
+    "lint": "eslint ./src/**/*.ts -c ./eslint.config.mjs",
+    "lint:fix": "yarn lint --fix && yarn format:fix",
+    "lint:strict": "yarn lint --max-warnings=0 && yarn format",
     "format": "prettier -c .",
     "format:fix": "prettier -w .",
+    "typecheck": "tsc --noEmit --incremental false",
     "prepare": "husky install | chmod +x ./.husky/*"
   },
   "dependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.16.0",
     "@typescript-eslint/eslint-plugin": "^8.17.0",
     "@typescript-eslint/parser": "^8.17.0",
     "eslint-config-next": "^15.0.4",
@@ -64,6 +68,9 @@
   "devDependencies": {
     "@commitlint/cli": "^18.2.0",
     "@commitlint/config-conventional": "^18.1.0",
+    "@types/eslint__eslintrc": "^2.1.2",
+    "@types/eslint__js": "^8.42.3",
+    "@types/node": "^22.10.1",
     "eslint": "^9.16.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.0.2",
