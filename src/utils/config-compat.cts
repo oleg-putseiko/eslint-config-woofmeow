@@ -21,7 +21,7 @@ type FlatCompatOptions = {
 
 const isPathRelative = (path: string) => /\.{1,2}\//.test(path);
 
-const resolveConfig = (baseDirectory: string) => (config: string) =>
+const createConfigResolver = (baseDirectory: string) => (config: string) =>
   isPathRelative(config) ? path.resolve(baseDirectory, config) : config;
 
 export class ConfigCompat extends FlatCompat {
@@ -29,7 +29,7 @@ export class ConfigCompat extends FlatCompat {
 
   constructor(options?: ConfigCompatOptions) {
     const filename = options?.fileUrl
-      ? fileURLToPath(options?.fileUrl)
+      ? fileURLToPath(`file:${options.fileUrl}`)
       : undefined;
     const baseDirectory = filename ? path.dirname(filename) : undefined;
 
@@ -68,7 +68,9 @@ export class ConfigCompat extends FlatCompat {
     };
 
     const peerProps: Linter.LegacyConfig = {
-      extends: configsToExtend?.map(resolveConfig(this._baseDirectory ?? './')),
+      extends: configsToExtend?.map(
+        createConfigResolver(this._baseDirectory ?? './'),
+      ),
       ignorePatterns: ignores,
     };
 

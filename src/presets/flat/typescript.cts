@@ -1,7 +1,8 @@
+import { type TSESLint } from '@typescript-eslint/utils';
 import { type Linter } from 'eslint';
 import tseslint from 'typescript-eslint';
 
-export const config: Linter.Config = {
+const config: Linter.Config = {
   settings: {
     'import/resolver': {
       node: { extensions: ['.js', '.mjs', '.cjs', '.ts', '.d.ts', '.json'] },
@@ -45,7 +46,8 @@ export const config: Linter.Config = {
   },
 };
 
-export default tseslint.config(
+export = tseslint.config(
+  config,
   { files: ['**/*{ts,tsx}', '**/*[cm]ts'] },
   {
     plugins: { '@typescript-eslint': tseslint.plugin },
@@ -55,5 +57,4 @@ export default tseslint.config(
       sourceType: 'module',
     },
   },
-  config,
-);
+) as [Linter.Config, ...TSESLint.FlatConfig.ConfigArray];

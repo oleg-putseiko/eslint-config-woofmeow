@@ -2,7 +2,7 @@ import { type Linter } from 'eslint';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
 
-export const config: Linter.Config = {
+const config: Linter.Config = {
   plugins: {
     'simple-import-sort': simpleImportSort,
     'unused-imports': unusedImports,
@@ -23,4 +23,4 @@ export const config: Linter.Config = {
   },
 };
 
-export default [config];
+export = [config] satisfies Linter.Config[];

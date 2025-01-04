@@ -23,20 +23,27 @@
   "bugs": {
     "url": "https://github.com/oleg-putseiko/eslint-config-woofmeow/issues"
   },
-  "main": "index.js",
   "exports": {
-    ".": "./index.js",
-    "./general": "./presets/general.js",
-    "./import": "./presets/import-base.js",
-    "./import-atomic": "./presets/import-atomic.js",
-    "./import-fsd": "./presets/import-fsd.js",
-    "./next": "./presets/next.js",
-    "./react": "./presets/react.js",
-    "./typescript": "./presets/typescript.js"
+    ".": "./dist/presets/flat/general.cjs",
+    "./general": "./dist/presets/flat/general.cjs",
+    "./import": "./dist/presets/flat/import-base.cjs",
+    "./import-atomic": "./dist/presets/flat/import-atomic.cjs",
+    "./import-fsd": "./dist/presets/flat/import-fsd.cjs",
+    "./next": "./dist/presets/flat/next.cjs",
+    "./react": "./dist/presets/flat/react.cjs",
+    "./typescript": "./dist/presets/flat/typescript.cjs",
+    "./legacy": "./dist/presets/legacy/general.cjs",
+    "./general-legacy": "./dist/presets/legacy/general.cjs",
+    "./import-legacy": "./dist/presets/legacy/import-base.cjs",
+    "./import-atomic-legacy": "./dist/presets/legacy/import-atomic.cjs",
+    "./import-fsd-legacy": "./dist/presets/legacy/import-fsd.cjs",
+    "./next-legacy": "./dist/presets/legacy/next.cjs",
+    "./react-legacy": "./dist/presets/legacy/react.cjs",
+    "./typescript-legacy": "./dist/presets/legacy/typescript.cjs"
   },
   "scripts": {
-    "build": "tsc",
-    "lint": "eslint ./src/**/*.ts -c ./eslint.config.mjs",
+    "build": "swc src -d dist --strip-leading-paths --out-file-extension cjs",
+    "lint": "eslint ./src/**/*.cts -c ./eslint.config.mjs",
     "lint:fix": "yarn lint --fix && yarn format:fix",
     "lint:strict": "yarn lint --max-warnings=0 && yarn format",
     "format": "prettier -c .",
@@ -69,6 +76,8 @@
   "devDependencies": {
     "@commitlint/cli": "^18.2.0",
     "@commitlint/config-conventional": "^18.1.0",
+    "@swc/cli": "^0.5.2",
+    "@swc/core": "^1.10.1",
     "@types/eslint__eslintrc": "^2.1.2",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "^22.10.1",

@@ -1,16 +1,16 @@
 import globals from 'globals';
-import { ConfigCompat } from '../../utils/config-compat';
+import { ConfigCompat } from '../../utils/config-compat.cjs';
 import { type Linter } from 'eslint';
 
-const compat = new ConfigCompat({ fileUrl: import.meta.url });
+const compat = new ConfigCompat({ fileUrl: __filename });
 
-export const configsToExtend: string[] = [
+const configsToExtend: string[] = [
   'next',
   'next/core-web-vitals',
-  './react.ts',
+  './react.cjs',
 ];
 
-export const config: Linter.Config = {
+const config: Linter.Config = {
   files: [
     'src/pages/**/*{.js,.jsx,.ts,.tsx}',
     'pages/**/*{.js,.jsx,.ts,.tsx}',
@@ -38,4 +38,7 @@ export const config: Linter.Config = {
   },
 };
 
-export default [...compat.extends(...configsToExtend), config];
+export = [
+  config,
+  ...compat.extends(...configsToExtend),
+] satisfies Linter.Config[];

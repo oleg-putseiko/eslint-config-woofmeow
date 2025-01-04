@@ -6,13 +6,15 @@
     "isolatedModules": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
+    "noEmit": true,
     "skipLibCheck": true,
     "outDir": "dist",
     "rootDir": "src",
     "strict": true,
     "stripInternal": true,
-    "target": "ES5"
+    "target": "ES6",
+    "allowImportingTsExtensions": true
   },
   "exclude": ["node_modules"],
-  "include": ["src/**/*.ts", "*.js", "*.mjs"]
+  "include": ["src/**/*.ts", "src/**/*.cts", "src/**/*.d.ts"]
 }

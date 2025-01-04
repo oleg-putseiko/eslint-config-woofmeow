@@ -1,11 +1,11 @@
 import { type Linter } from 'eslint';
-import { ConfigCompat } from '../../utils/config-compat';
+import { ConfigCompat } from '../../utils/config-compat.cjs';
 
-const compat = new ConfigCompat({ fileUrl: import.meta.url });
+const compat = new ConfigCompat({ fileUrl: __filename });
 
-export const configsToExtend: string[] = ['./import-base.ts'];
+const configsToExtend: string[] = ['./import-base.cjs'];
 
-export const config: Linter.Config = {
+const config: Linter.Config = {
   rules: {
     'no-restricted-imports': [
       'warn',
@@ -51,4 +51,7 @@ export const config: Linter.Config = {
   },
 };
 
-export default [...compat.extends(...configsToExtend), config];
+export = [
+  config,
+  ...compat.extends(...configsToExtend),
+] satisfies Linter.Config[];
