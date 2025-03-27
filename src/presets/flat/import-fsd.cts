@@ -1,5 +1,5 @@
 import { type Linter } from 'eslint';
-import { ConfigCompat } from '../../utils/config-compat.cjs';
+import importBaseConfig from './import-base.cjs';
 
 type RestrictedImportPattern = {
   group: string[];
@@ -36,10 +36,6 @@ const RESTRICTED_IMPORT_PATTERNS: RestrictedImportPattern[] = [
   },
 ];
 
-const compat = new ConfigCompat({ fileUrl: __filename });
-
-const configsToExtend: string[] = ['./import-base.cjs'];
-
 const config: Linter.Config = {
   rules: {
     'no-restricted-imports': ['warn', { patterns: RESTRICTED_IMPORT_PATTERNS }],
@@ -47,7 +43,4 @@ const config: Linter.Config = {
   },
 };
 
-export = [
-  config,
-  ...compat.extends(...configsToExtend),
-] satisfies Linter.Config[];
+export = [config, ...importBaseConfig] satisfies Linter.Config[];

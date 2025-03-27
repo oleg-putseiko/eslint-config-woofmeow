@@ -1,9 +1,5 @@
 import { type Linter } from 'eslint';
-import { ConfigCompat } from '../../utils/config-compat.cjs';
-
-const compat = new ConfigCompat({ fileUrl: __filename });
-
-const configsToExtend: string[] = ['./import-base.cjs'];
+import importBaseConfig from './import-base.cjs';
 
 const config: Linter.Config = {
   rules: {
@@ -51,7 +47,4 @@ const config: Linter.Config = {
   },
 };
 
-export = [
-  config,
-  ...compat.extends(...configsToExtend),
-] satisfies Linter.Config[];
+export = [config, ...importBaseConfig] satisfies Linter.Config[];

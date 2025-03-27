@@ -4,7 +4,7 @@ import { Linter } from 'eslint';
 
 const compat = new ConfigCompat();
 
-const eslintrcConfig = compat.eslintrc(flatConfig[0]);
+const eslintrcConfig = compat.toEslintrc(flatConfig[0]);
 
 export = {
   ...eslintrcConfig,

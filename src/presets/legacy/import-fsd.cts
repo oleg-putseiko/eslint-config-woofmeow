@@ -3,6 +3,4 @@ import { ConfigCompat } from '../../utils/config-compat.cjs';
 
 const compat = new ConfigCompat({ fileUrl: __filename });
 
-const configsToExtend: string[] = ['./import-base.cjs'];
-
-export = compat.eslintrc(flatConfig[0], configsToExtend);
+export = compat.toEslintrc(flatConfig[0], { extends: ['./import-base.cjs'] });

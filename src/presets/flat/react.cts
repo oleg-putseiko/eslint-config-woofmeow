@@ -3,12 +3,7 @@ import reactPlugin from 'eslint-plugin-react';
 import globals from 'globals';
 import { ConfigCompat } from '../../utils/config-compat.cjs';
 
-const compat = new ConfigCompat({ fileUrl: __filename });
-
-const configsToExtend: string[] = [
-  'plugin:react/recommended',
-  'plugin:react/jsx-runtime',
-];
+const compat = new ConfigCompat();
 
 const config: Linter.Config = {
   plugins: { react: reactPlugin },
@@ -84,5 +79,5 @@ const config: Linter.Config = {
 
 export = [
   config,
-  ...compat.extends(...configsToExtend),
+  ...compat.toFlat('plugin:react/recommended', 'plugin:react/jsx-runtime'),
 ] satisfies Linter.Config[];

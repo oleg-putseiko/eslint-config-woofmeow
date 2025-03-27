@@ -19,6 +19,10 @@ type FlatCompatOptions = {
   allConfig: Config;
 };
 
+type ESLintrcConfigOptions = {
+  extends?: string[];
+};
+
 const isPathRelative = (path: string) => /\.{1,2}\//.test(path);
 
 const createConfigResolver = (baseDirectory: string) => (config: string) =>
@@ -42,9 +46,13 @@ export class ConfigCompat extends FlatCompat {
     this._baseDirectory = baseDirectory;
   }
 
-  eslintrc(
+  toFlat(...configs: string[]) {
+    return super.extends(...configs);
+  }
+
+  toEslintrc(
     flatConfig: Linter.Config,
-    configsToExtend?: string[],
+    options?: ESLintrcConfigOptions,
   ): Linter.LegacyConfig {
     const {
       plugins,
@@ -68,7 +76,7 @@ export class ConfigCompat extends FlatCompat {
     };
 
     const peerProps: Linter.LegacyConfig = {
-      extends: configsToExtend?.map(
+      extends: options?.extends?.map(
         createConfigResolver(this._baseDirectory ?? './'),
       ),
       ignorePatterns: ignores,
@@ -82,5 +90,32 @@ export class ConfigCompat extends FlatCompat {
     }
 
     return { ...baseConfig, ...peerProps };
+  }
+
+  excludePlugins<TConfig extends Linter.Config | Linter.LegacyConfig>(
+    config: TConfig,
+    pluginsToBeExcluded: string[],
+  ): TConfig {
+    const { plugins, ...delegatedConfig } = config;
+
+    if (plugins === undefined) return config;
+
+    if (Array.isArray(plugins)) {
+      return {
+        ...delegatedConfig,
+        plugins: plugins.filter(
+          (plugin) => !pluginsToBeExcluded.includes(plugin),
+        ),
+      } as TConfig;
+    }
+
+    return {
+      ...delegatedConfig,
+      plugins: Object.entries(plugins).reduce(
+        (acc, [key, value]) =>
+          pluginsToBeExcluded.includes(key) ? acc : { ...acc, [key]: value },
+        {},
+      ),
+    } as TConfig;
   }
 }

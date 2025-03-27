@@ -1,9 +1,7 @@
 import { type Linter } from 'eslint';
 import { ConfigCompat } from '../../utils/config-compat.cjs';
 
-const compat = new ConfigCompat({ fileUrl: __filename });
-
-const configsToExtend: string[] = ['prettier', 'eslint:recommended'];
+const compat = new ConfigCompat();
 
 const config: Linter.Config = {
   rules: {
@@ -45,5 +43,5 @@ const config: Linter.Config = {
 
 export = [
   config,
-  ...compat.extends(...configsToExtend),
+  ...compat.toFlat('prettier', 'eslint:recommended'),
 ] satisfies Linter.Config[];

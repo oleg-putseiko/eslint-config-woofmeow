@@ -1,14 +1,13 @@
 import globals from 'globals';
 import { ConfigCompat } from '../../utils/config-compat.cjs';
 import { type Linter } from 'eslint';
+import reactFlatConfig from './react.cjs';
 
-const compat = new ConfigCompat({ fileUrl: __filename });
+const compat = new ConfigCompat();
 
-const configsToExtend: string[] = [
-  'next',
-  'next/core-web-vitals',
-  './react.cjs',
-];
+const mergeableReactConfig: Linter.Config[] = reactFlatConfig.map((config) =>
+  compat.excludePlugins(config, ['react']),
+);
 
 const config: Linter.Config = {
   files: [
@@ -40,5 +39,6 @@ const config: Linter.Config = {
 
 export = [
   config,
-  ...compat.extends(...configsToExtend),
+  ...mergeableReactConfig,
+  ...compat.toFlat('next', 'next/core-web-vitals'),
 ] satisfies Linter.Config[];

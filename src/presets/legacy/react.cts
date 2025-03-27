@@ -1,11 +1,8 @@
 import flatConfig from '../flat/react.cjs';
 import { ConfigCompat } from '../../utils/config-compat.cjs';
 
-const compat = new ConfigCompat({ fileUrl: __filename });
+const compat = new ConfigCompat();
 
-const configsToExtend: string[] = [
-  'plugin:react/recommended',
-  'plugin:react/jsx-runtime',
-];
-
-export = compat.eslintrc(flatConfig[0], configsToExtend);
+export = compat.toEslintrc(flatConfig[0], {
+  extends: ['plugin:react/recommended', 'plugin:react/jsx-runtime'],
+});
