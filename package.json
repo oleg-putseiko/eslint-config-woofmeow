@@ -43,7 +43,9 @@
     "./typescript-legacy": "./dist/presets/legacy/typescript.cjs"
   },
   "scripts": {
-    "build": "swc src -d dist --strip-leading-paths --out-file-extension cjs",
+    "build": "yarn build:swc && yarn build:tsc",
+    "build:swc": "swc src -d dist --strip-leading-paths --out-file-extension cjs",
+    "build:tsc": "tsc --emitDeclarationOnly --outDir dist",
     "lint": "eslint ./src/**/*.cts -c ./eslint.config.mjs",
     "lint:fix": "yarn lint --fix && yarn format:fix",
     "lint:strict": "yarn lint --max-warnings=0 && yarn format",

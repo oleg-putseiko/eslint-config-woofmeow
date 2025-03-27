@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "declaration": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "noEmit": true,
     "skipLibCheck": true,
     "outDir": "dist",
     "rootDir": "src",
