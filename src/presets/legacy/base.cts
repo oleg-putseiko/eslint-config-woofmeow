@@ -1,4 +1,4 @@
-import flatConfig from '../flat/general.cjs';
+import flatConfig from '../flat/base.cjs';
 import { ConfigCompat } from '../../utils/config-compat.cjs';
 
 const compat = new ConfigCompat();

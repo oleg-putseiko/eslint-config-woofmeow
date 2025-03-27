@@ -24,8 +24,9 @@
     "url": "https://github.com/oleg-putseiko/eslint-config-woofmeow/issues"
   },
   "exports": {
-    ".": "./dist/presets/flat/base.cjs",
-    "./legacy": "./dist/presets/legacy/base.cjs",
+    ".": "./dist/presets/index.cjs",
+    "./flat": "./dist/presets/flat/index.cjs",
+    "./legacy": "./dist/presets/legacy/index.cjs",
     "./base": "./dist/presets/flat/base.cjs",
     "./base-legacy": "./dist/presets/legacy/base.cjs",
     "./import": "./dist/presets/flat/import-base.cjs",
