@@ -1,6 +1,7 @@
 import { type TSESLint } from '@typescript-eslint/utils';
 import { type Linter } from 'eslint';
 import tseslint from 'typescript-eslint';
+import baseConfig from './base.cjs';
 
 const config: Linter.Config = {
   settings: {
@@ -57,4 +58,5 @@ export = tseslint.config(
       sourceType: 'module',
     },
   },
+  ...baseConfig,
 ) as [Linter.Config, ...TSESLint.FlatConfig.ConfigArray];

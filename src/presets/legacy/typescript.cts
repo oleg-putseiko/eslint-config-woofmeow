@@ -2,9 +2,11 @@ import flatConfig from '../flat/typescript.cjs';
 import { ConfigCompat } from '../../utils/config-compat.cjs';
 import { Linter } from 'eslint';
 
-const compat = new ConfigCompat();
+const compat = new ConfigCompat({ fileUrl: __filename });
 
-const eslintrcConfig = compat.toEslintrc(flatConfig[0]);
+const eslintrcConfig = compat.toEslintrc(flatConfig[0], {
+  extends: ['./base.cjs'],
+});
 
 export = {
   ...eslintrcConfig,
