@@ -1,6 +1,6 @@
+import { Linter } from 'eslint';
 import flatConfig from '../flat/typescript.cjs';
 import { ConfigCompat } from '../../utils/config-compat.cjs';
-import { Linter } from 'eslint';
 
 const compat = new ConfigCompat({ fileUrl: __filename });
 
@@ -19,7 +19,21 @@ export = {
   settings: {
     ...eslintrcConfig.settings,
     'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.cts', '.mts', '.tsx', '.d.ts'],
+      '@typescript-eslint/parser': [
+        '.ts',
+        '.cts',
+        '.mts',
+        '.d.ts',
+        '.d.cts',
+        '.d.mts',
+        '.tsx',
+        '.js',
+        '.cjs',
+        '.mjs',
+        '.jsx',
+        '.json',
+        '.node',
+      ],
     },
   },
 } satisfies Linter.LegacyConfig;

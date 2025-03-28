@@ -1,7 +1,7 @@
-import globals from 'globals';
-import { ConfigCompat } from '../../utils/config-compat.cjs';
 import { type Linter } from 'eslint';
+import globals from 'globals';
 import reactFlatConfig from './react.cjs';
+import { ConfigCompat } from '../../utils/config-compat.cjs';
 
 const compat = new ConfigCompat();
 

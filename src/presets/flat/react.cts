@@ -1,8 +1,8 @@
 import { type Linter } from 'eslint';
 import reactPlugin from 'eslint-plugin-react';
 import globals from 'globals';
-import { ConfigCompat } from '../../utils/config-compat.cjs';
 import baseConfig from './base.cjs';
+import { ConfigCompat } from '../../utils/config-compat.cjs';
 
 const compat = new ConfigCompat();
 
