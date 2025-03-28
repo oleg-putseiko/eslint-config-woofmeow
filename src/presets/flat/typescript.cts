@@ -54,6 +54,10 @@ export = tseslint.config(
     plugins: { '@typescript-eslint': tseslint.plugin },
     languageOptions: {
       parser: tseslint.parser,
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: __dirname,
+      },
       ecmaVersion: 5,
       sourceType: 'module',
     },
