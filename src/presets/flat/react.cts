@@ -1,13 +1,11 @@
 import { type Linter } from 'eslint';
 import reactPlugin from 'eslint-plugin-react';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import globals from 'globals';
 import baseConfig from './base.cjs';
-import { ConfigCompat } from '../../utils/config-compat.cjs';
-
-const compat = new ConfigCompat();
 
 const config: Linter.Config = {
-  plugins: { react: reactPlugin },
+  plugins: { react: reactPlugin, 'react-hooks': reactHooksPlugin },
   languageOptions: {
     globals: {
       ...globals.browser,
@@ -22,21 +20,16 @@ const config: Linter.Config = {
     },
   },
   rules: {
-    'react/button-has-type': 'error',
-    'react/jsx-curly-brace-presence': [
-      'warn',
-      { props: 'never', children: 'never' },
-    ],
-    'react/no-unescaped-entities': ['warn', { forbid: ['>', '}'] }],
-    'react/display-name': 'off',
     'react/boolean-prop-naming': [
       'warn',
       {
         rule: '^(is|are|has|can|should)[A-Z]([A-Za-z0-9]?)+',
         message:
-          "Add one of the 'is', 'are', 'has', 'can' or 'should' prefixes",
+          "Use one of the 'is', 'are', 'has', 'can' or 'should' prefixes",
       },
     ],
+    'react/button-has-type': 'error',
+    'react/display-name': 'off',
     'react/function-component-definition': [
       'warn',
       {
@@ -47,6 +40,10 @@ const config: Linter.Config = {
     'react/hook-use-state': ['warn', { allowDestructuredState: true }],
     'react/iframe-missing-sandbox': 'error',
     'react/jsx-boolean-value': 'warn',
+    'react/jsx-curly-brace-presence': [
+      'warn',
+      { props: 'never', children: 'never' },
+    ],
     'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
     'react/jsx-fragments': 'error',
     'react/jsx-handler-names': 'warn',
@@ -58,28 +55,48 @@ const config: Linter.Config = {
         warnOnDuplicates: true,
       },
     ],
-    'react/jsx-no-constructed-context-values': 'warn',
+    'react/jsx-no-comment-textnodes': 'error',
+    'react/jsx-no-constructed-context-values': 'error',
+    'react/jsx-no-duplicate-props': 'error',
+    'react/jsx-no-target-blank': 'error',
+    'react/jsx-no-undef': 'error',
     'react/jsx-no-useless-fragment': ['warn', { allowExpressions: true }],
     'react/jsx-pascal-case': 'error',
-    'react/no-access-state-in-setstate': 'warn',
+    'react/jsx-uses-vars': 'error',
+    'react/no-access-state-in-setstate': 'error',
     'react/no-array-index-key': 'warn',
+    'react/no-children-prop': 'error',
     'react/no-danger': 'error',
+    'react/no-danger-with-children': 'error',
+    'react/no-deprecated': 'error',
+    'react/no-direct-mutation-state': 'error',
+    'react/no-find-dom-node': 'error',
     'react/no-invalid-html-attribute': 'error',
+    'react/no-is-mounted': 'error',
     'react/no-multi-comp': 'warn',
     'react/no-namespace': 'warn',
-    'react/no-object-type-as-default-prop': 'warn',
+    'react/no-object-type-as-default-prop': 'error',
+    'react/no-render-return-value': 'error',
+    'react/no-string-refs': 'error',
     'react/no-this-in-sfc': 'error',
-    'react/no-unstable-nested-components': 'warn',
-    'react/no-unused-prop-types': 'warn',
+    'react/no-unescaped-entities': 'error',
+    'react/no-unknown-property': 'error',
+    'react/no-unsafe': 'off',
+    'react/no-unstable-nested-components': 'error',
+    'react/no-unused-prop-types': 'error',
+    'react/prop-types': 'error',
+    'react/require-render-return': 'error',
     'react/self-closing-comp': ['warn', { component: true, html: true }],
     'react/void-dom-elements-no-children': 'error',
-    'react/prop-types': 'off',
+
+    /* JSX Runtime */
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-uses-react': 'off',
+
+    /* React Hooks */
+    'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'off',
   },
 };
 
-export = [
-  config,
-  ...baseConfig,
-  ...compat.toFlat('plugin:react/recommended', 'plugin:react/jsx-runtime'),
-] satisfies Linter.Config[];
+export = [config, ...baseConfig] satisfies Linter.Config[];
