@@ -1,4 +1,5 @@
 import { type Linter } from 'eslint';
+import importFsdPlugin from 'eslint-plugin-import-fsd';
 import importBaseConfig from './import-base.cjs';
 import { ConfigCompat } from '../../utils/config-compat.cjs';
 
@@ -40,10 +41,22 @@ const RESTRICTED_IMPORT_PATTERNS: RestrictedImportPattern[] = [
 const compat = new ConfigCompat();
 
 const config: Linter.Config[] = compat.compatible({
+  settings: {
+    fsd: {
+      rootDir: './src',
+    },
+    aliases: {
+      '@/*': './src/*',
+    },
+  },
   rules: {
     'no-restricted-imports': ['warn', { patterns: RESTRICTED_IMPORT_PATTERNS }],
     'simple-import-sort/imports': ['warn', { groups: IMPORT_GROUPS }],
   },
 });
 
-export = [...importBaseConfig, ...config] satisfies Linter.Config[];
+export = [
+  ...importBaseConfig,
+  importFsdPlugin.configs.recommended,
+  ...config,
+] satisfies Linter.Config[];

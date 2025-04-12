@@ -2273,6 +2273,7 @@ __metadata:
     eslint: ^9.16.0
     eslint-config-next: ^15.2.4
     eslint-config-prettier: ^10.1.1
+    eslint-plugin-import-fsd: ^2.0.0
     eslint-plugin-react: ~7.34.0
     eslint-plugin-react-hooks: ^5.2.0
     eslint-plugin-simple-import-sort: ^12.1.1
@@ -2336,6 +2337,15 @@ __metadata:
     eslint:
       optional: true
   checksum: be3ac52e0971c6f46daeb1a7e760e45c7c45f820c8cc211799f85f10f04ccbf7afc17039165d56cb2da7f7ca9cec2b3a777013cddf0b976784b37eb9efa24180
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-import-fsd@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "eslint-plugin-import-fsd@npm:2.0.0"
+  peerDependencies:
+    eslint: ">=0.8.0"
+  checksum: fd954760fba1dadb2c07c9d5518d7f27e596f141476a4a9accc7ddaae646d1148df6333df2365b314c24632aa7fbfe65d52bb565b5b660a54398157a3af0789a
   languageName: node
   linkType: hard
 
