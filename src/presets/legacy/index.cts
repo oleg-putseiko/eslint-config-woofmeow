@@ -8,8 +8,8 @@ import typescriptConfig from './typescript.cjs';
 
 export = {
   base: baseConfig,
+  import: importBaseConfig,
   'import-atomic': importAtomicConfig,
-  'import-base': importBaseConfig,
   'import-fsd': importFsdConfig,
   next: nextConfig,
   react: reactConfig,
