@@ -21,7 +21,9 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - name: Install dependencies
-        run: npm install
+        # Since version 7.35.0 the `eslint-plugin-react` package contains a cyclic structure of the plugin object.
+        # The `eslint-plugin-react@~7.34.0` package specifies the required `eslint` version up to 9, but not including it.
+        run: npm install --legacy-peer-deps
 
       - name: Build
         run: npm run build:swc && npm run build:tsc
