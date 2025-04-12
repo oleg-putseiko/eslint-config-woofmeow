@@ -1,5 +1,10 @@
-module.exports = {
-  extends: ['./import-base.js'].map(require.resolve),
+import { type Linter } from 'eslint';
+import importBaseConfig from './import-base.cjs';
+import { ConfigCompat } from '../../utils/config-compat.cjs';
+
+const compat = new ConfigCompat();
+
+const config: Linter.Config[] = compat.compatible({
   rules: {
     'no-restricted-imports': [
       'warn',
@@ -43,4 +48,6 @@ module.exports = {
       },
     ],
   },
-};
+});
+
+export = [...importBaseConfig, ...config] satisfies Linter.Config[];
