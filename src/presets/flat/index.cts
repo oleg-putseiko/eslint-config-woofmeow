@@ -2,7 +2,7 @@ import baseConfig from './base.cjs';
 import importAtomicConfig from './import-atomic.cjs';
 import importBaseConfig from './import-base.cjs';
 import importFsdConfig from './import-fsd.cjs';
-import nextConfig from './next.cjs';
+import nextConfig from './next/next.cjs';
 import reactConfig from './react.cjs';
 import typescriptConfig from './typescript.cjs';
 

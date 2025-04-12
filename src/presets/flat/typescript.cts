@@ -1,118 +1,48 @@
-import { type TSESLint } from '@typescript-eslint/utils';
-import { type Linter } from 'eslint';
+import { ESLint, type Linter } from 'eslint';
 import tseslint from 'typescript-eslint';
-
 import baseConfig from './base.cjs';
+import { ConfigCompat } from '../../utils/config-compat.cjs';
 
-const config: Linter.Config = {
+const FILE_EXTENSIONS: string[] = [
+  '.ts',
+  '.cts',
+  '.mts',
+  '.d.ts',
+  '.d.cts',
+  '.d.mts',
+  '.tsx',
+  '.js',
+  '.cjs',
+  '.mjs',
+  '.jsx',
+  '.json',
+  '.node',
+];
+
+const compat = new ConfigCompat();
+
+const config: Linter.Config[] = compat.compatible({
   settings: {
-    'import/resolver': {
-      node: {
-        extensions: [
-          '.ts',
-          '.cts',
-          '.mts',
-          '.d.ts',
-          '.d.cts',
-          '.d.mts',
-          '.tsx',
-          '.js',
-          '.cjs',
-          '.mjs',
-          '.jsx',
-          '.json',
-          '.node',
-        ],
-      },
-    },
-    'import/extensions': [
-      '.ts',
-      '.cts',
-      '.mts',
-      '.d.ts',
-      '.d.cts',
-      '.d.mts',
-      '.tsx',
-      '.js',
-      '.cjs',
-      '.mjs',
-      '.jsx',
-      '.json',
-      '.node',
-    ],
+    'import/extensions': FILE_EXTENSIONS,
     'import/external-module-folders': ['node_modules', 'node_modules/@types'],
+    'import/parsers': { '@typescript-eslint/parser': FILE_EXTENSIONS },
+    'import/resolver': { node: { extensions: FILE_EXTENSIONS } },
+  },
+  plugins: { '@typescript-eslint': tseslint.plugin as ESLint.Plugin },
+  languageOptions: {
+    parser: tseslint.parser as Linter.Parser,
+    parserOptions: {
+      ecmaVersion: 5,
+      sourceType: 'module',
+      projectService: true,
+    },
   },
   rules: {
-    /* Recommended by TypeScript ESLint */
-    '@typescript-eslint/await-thenable': 'error',
-    '@typescript-eslint/ban-ts-comment': 'error',
-    'no-array-constructor': 'off',
-    '@typescript-eslint/no-array-constructor': 'error',
-    '@typescript-eslint/no-array-delete': 'error',
-    '@typescript-eslint/no-base-to-string': 'error',
-    '@typescript-eslint/no-duplicate-enum-values': 'error',
-    '@typescript-eslint/no-duplicate-type-constituents': 'error',
-    '@typescript-eslint/no-empty-object-type': 'error',
-    '@typescript-eslint/no-explicit-any': 'error',
-    '@typescript-eslint/no-extra-non-null-assertion': 'error',
-    '@typescript-eslint/no-floating-promises': 'error',
-    '@typescript-eslint/no-for-in-array': 'error',
-    'no-implied-eval': 'off',
-    '@typescript-eslint/no-implied-eval': 'error',
-    '@typescript-eslint/no-misused-new': 'error',
-    '@typescript-eslint/no-misused-promises': 'error',
-    '@typescript-eslint/no-namespace': 'error',
-    '@typescript-eslint/no-non-null-asserted-optional-chain': 'error',
-    '@typescript-eslint/no-redundant-type-constituents': 'error',
-    '@typescript-eslint/no-require-imports': 'error',
-    '@typescript-eslint/no-this-alias': 'error',
-    '@typescript-eslint/no-unnecessary-type-assertion': 'error',
-    '@typescript-eslint/no-unnecessary-type-constraint': 'error',
-    '@typescript-eslint/no-unsafe-argument': 'error',
-    '@typescript-eslint/no-unsafe-assignment': 'error',
-    '@typescript-eslint/no-unsafe-call': 'error',
-    '@typescript-eslint/no-unsafe-declaration-merging': 'error',
-    '@typescript-eslint/no-unsafe-enum-comparison': 'error',
-    '@typescript-eslint/no-unsafe-function-type': 'error',
-    '@typescript-eslint/no-unsafe-member-access': 'error',
-    '@typescript-eslint/no-unsafe-return': 'error',
-    '@typescript-eslint/no-unsafe-unary-minus': 'error',
-    'no-unused-expressions': 'off',
-    '@typescript-eslint/no-unused-expressions': 'error',
-    'no-unused-vars': 'off',
-    '@typescript-eslint/no-wrapper-object-types': 'error',
-    'no-throw-literal': 'off',
-    '@typescript-eslint/only-throw-error': 'error',
-    '@typescript-eslint/prefer-namespace-keyword': 'error',
-    'prefer-promise-reject-errors': 'off',
-    '@typescript-eslint/prefer-promise-reject-errors': 'error',
-    'require-await': 'off',
-    '@typescript-eslint/require-await': 'error',
-    '@typescript-eslint/restrict-plus-operands': 'error',
-    '@typescript-eslint/restrict-template-expressions': 'error',
-    '@typescript-eslint/triple-slash-reference': 'error',
-    '@typescript-eslint/unbound-method': 'error',
-
-    /* Stylistic rules */
-    '@typescript-eslint/adjacent-overload-signatures': 'error',
-    '@typescript-eslint/array-type': 'error',
-    '@typescript-eslint/ban-tslint-comment': 'error',
-    '@typescript-eslint/class-literal-property-style': 'error',
-    '@typescript-eslint/consistent-generic-constructors': 'error',
-    '@typescript-eslint/consistent-indexed-object-style': 'error',
-    '@typescript-eslint/consistent-type-assertions': 'error',
     '@typescript-eslint/consistent-type-imports': [
       'error',
       { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
     ],
-    'dot-notation': 'off',
-    '@typescript-eslint/dot-notation': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-confusing-non-null-assertion': 'error',
-    'no-empty-function': 'off',
-    '@typescript-eslint/no-empty-function': 'error',
-    '@typescript-eslint/no-inferrable-types': 'warn',
-    'no-undef': 'off',
     '@typescript-eslint/no-unused-vars': [
       'warn',
       {
@@ -122,32 +52,15 @@ const config: Linter.Config = {
         argsIgnorePattern: '^_',
       },
     ],
-    '@typescript-eslint/non-nullable-type-assertion-style': 'error',
-    '@typescript-eslint/prefer-as-const': 'error',
-    '@typescript-eslint/prefer-find': 'error',
-    '@typescript-eslint/prefer-for-of': 'error',
-    '@typescript-eslint/prefer-function-type': 'error',
-    '@typescript-eslint/prefer-includes': 'error',
-    '@typescript-eslint/prefer-optional-chain': 'error',
-    '@typescript-eslint/prefer-regexp-exec': 'error',
-    '@typescript-eslint/prefer-string-starts-ends-with': 'error',
     '@typescript-eslint/switch-exhaustiveness-check': 'error',
+    'no-undef': 'off',
+    'no-unused-vars': 'off',
   },
-};
+});
 
-export = tseslint.config(
-  config,
-  {
-    files: ['**/*.{ts,tsx}', '**/*.[cm]ts'],
-    plugins: { '@typescript-eslint': tseslint.plugin },
-    languageOptions: {
-      parser: tseslint.parser,
-      parserOptions: {
-        ecmaVersion: 5,
-        sourceType: 'module',
-        projectService: true,
-      },
-    },
-  },
+export = [
   ...baseConfig,
-) as [Linter.Config, ...TSESLint.FlatConfig.ConfigArray];
+  ...tseslint.configs.recommendedTypeChecked,
+  ...tseslint.configs.stylisticTypeChecked,
+  ...config,
+] as Linter.Config[];

@@ -3,20 +3,21 @@ import { ConfigCompat } from '../../utils/config-compat.cjs';
 
 const compat = new ConfigCompat();
 
-const config: Linter.Config = {
+const config: Linter.Config[] = compat.compatible({
   rules: {
     'array-callback-return': ['error', { checkForEach: true }],
-
     eqeqeq: 'error',
+    'max-classes-per-file': ['error', { ignoreExpressions: true }],
+    'no-console': 'warn',
+    'no-duplicate-imports': ['error', { includeExports: true }],
+    'no-else-return': 'error',
     'no-empty-function': 'error',
-
+    'no-floating-decimal': 'warn',
+    'no-nested-ternary': 'warn',
     'no-restricted-exports': [
       'error',
       { restrictDefaultExports: { direct: true, named: true } },
     ],
-
-    'no-console': 'warn',
-
     'no-unused-vars': [
       'warn',
       {
@@ -26,22 +27,14 @@ const config: Linter.Config = {
         argsIgnorePattern: '^_',
       },
     ],
-
-    'no-duplicate-imports': ['error', { includeExports: true }],
-
-    'max-classes-per-file': ['error', { ignoreExpressions: true }],
-
-    'no-floating-decimal': 'warn',
-    'prefer-template': 'warn',
-    'no-nested-ternary': 'warn',
-    'no-else-return': 'error',
     'one-var': ['warn', 'never'],
     'prefer-exponentiation-operator': 'warn',
+    'prefer-template': 'warn',
     'require-unicode-regexp': 'warn',
   },
-};
+});
 
 export = [
-  config,
   ...compat.toFlat('prettier', 'eslint:recommended'),
+  ...config,
 ] satisfies Linter.Config[];

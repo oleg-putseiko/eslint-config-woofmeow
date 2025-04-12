@@ -1,7 +1,10 @@
 import { type Linter } from 'eslint';
 import importBaseConfig from './import-base.cjs';
+import { ConfigCompat } from '../../utils/config-compat.cjs';
 
-const config: Linter.Config = {
+const compat = new ConfigCompat();
+
+const config: Linter.Config[] = compat.compatible({
   rules: {
     'no-restricted-imports': [
       'warn',
@@ -45,6 +48,6 @@ const config: Linter.Config = {
       },
     ],
   },
-};
+});
 
-export = [config, ...importBaseConfig] satisfies Linter.Config[];
+export = [...importBaseConfig, ...config] satisfies Linter.Config[];

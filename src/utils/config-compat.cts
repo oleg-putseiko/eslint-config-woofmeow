@@ -1,8 +1,12 @@
 import js from '@eslint/js';
 import { FlatCompat } from '@eslint/eslintrc';
-import { type Linter } from 'eslint';
+import { Linter } from 'eslint';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+
+enum Compatibility {
+  ESLINTRC,
+}
 
 type Config = {
   readonly rules: Readonly<Linter.RulesRecord>;
@@ -20,6 +24,7 @@ type FlatCompatOptions = {
 };
 
 type ESLintrcConfigOptions = {
+  flatConfig: Linter.Config[];
   extends?: string[];
 };
 
@@ -50,10 +55,20 @@ export class ConfigCompat extends FlatCompat {
     return super.extends(...configs);
   }
 
-  toEslintrc(
-    flatConfig: Linter.Config,
-    options?: ESLintrcConfigOptions,
-  ): Linter.LegacyConfig {
+  toEslintrc(options: ESLintrcConfigOptions): Linter.LegacyConfig {
+    const { flatConfig } = options;
+
+    const compatibleConfig = this._findCompatibleConfig(
+      flatConfig,
+      Compatibility.ESLINTRC,
+    );
+
+    if (!compatibleConfig) {
+      throw new Error(
+        'No compatible configurations found with eslintrc format',
+      );
+    }
+
     const {
       plugins,
       processor,
@@ -62,7 +77,7 @@ export class ConfigCompat extends FlatCompat {
       files,
       ignores,
       ...baseConfigProps
-    } = flatConfig;
+    } = compatibleConfig;
 
     const baseConfig: Linter.BaseConfig = {
       ...baseConfigProps,
@@ -117,5 +132,31 @@ export class ConfigCompat extends FlatCompat {
         {},
       ),
     } as TConfig;
+  }
+
+  compatible(...configs: Linter.Config[]) {
+    return configs.map((config) => ({
+      ...config,
+      settings: {
+        ...config.settings,
+        __COMPATIBILITY__: Compatibility.ESLINTRC,
+      },
+    }));
+  }
+
+  private _findCompatibleConfig(
+    configs: Linter.Config[],
+    compatibility: Compatibility,
+  ) {
+    return configs.reduce<Linter.Config | undefined>((acc, config) => {
+      return this._isConfigCompatible(config, compatibility) ? config : acc;
+    }, undefined);
+  }
+
+  private _isConfigCompatible(
+    config: Linter.Config,
+    compatibility: Compatibility,
+  ) {
+    return config.settings?.__COMPATIBILITY__ === compatibility;
   }
 }
