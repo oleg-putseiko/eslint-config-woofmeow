@@ -7,7 +7,7 @@ import { ConfigCompat } from '../../utils/config-compat.cjs';
 
 const compat = new ConfigCompat();
 
-const config: Linter.Config[] = compat.compatible({
+const config: Linter.Config = {
   plugins: { react: reactPlugin },
   languageOptions: {
     globals: {
@@ -75,12 +75,12 @@ const config: Linter.Config[] = compat.compatible({
     'react/void-dom-elements-no-children': 'error',
     'react-hooks/exhaustive-deps': 'off',
   },
-});
+};
 
 export = [
   reactHooksPlugin.configs['recommended-latest'],
   // NOTE: Since version 7.35.0 the React plugin object contains a cyclic structure
   ...compat.toFlat('plugin:react/recommended', 'plugin:react/jsx-runtime'),
   ...baseConfig,
-  ...config,
+  config,
 ] satisfies Linter.Config[];

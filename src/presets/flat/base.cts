@@ -3,7 +3,7 @@ import { ConfigCompat } from '../../utils/config-compat.cjs';
 
 const compat = new ConfigCompat();
 
-const config: Linter.Config[] = compat.compatible({
+const config: Linter.Config = {
   rules: {
     'array-callback-return': ['error', { checkForEach: true }],
     eqeqeq: 'error',
@@ -32,9 +32,9 @@ const config: Linter.Config[] = compat.compatible({
     'prefer-template': 'warn',
     'require-unicode-regexp': 'warn',
   },
-});
+};
 
 export = [
   ...compat.toFlat('prettier', 'eslint:recommended'),
-  ...config,
+  config,
 ] satisfies Linter.Config[];

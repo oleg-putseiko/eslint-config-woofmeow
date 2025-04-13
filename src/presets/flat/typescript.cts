@@ -1,7 +1,6 @@
 import { ESLint, type Linter } from 'eslint';
 import tseslint from 'typescript-eslint';
 import baseConfig from './base.cjs';
-import { ConfigCompat } from '../../utils/config-compat.cjs';
 
 const FILE_EXTENSIONS: string[] = [
   '.ts',
@@ -19,9 +18,7 @@ const FILE_EXTENSIONS: string[] = [
   '.node',
 ];
 
-const compat = new ConfigCompat();
-
-const config: Linter.Config[] = compat.compatible({
+const config: Linter.Config = {
   settings: {
     'import/extensions': FILE_EXTENSIONS,
     'import/external-module-folders': ['node_modules', 'node_modules/@types'],
@@ -56,11 +53,11 @@ const config: Linter.Config[] = compat.compatible({
     'no-undef': 'off',
     'no-unused-vars': 'off',
   },
-});
+};
 
 export = [
   ...baseConfig,
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
-  ...config,
+  config,
 ] as Linter.Config[];

@@ -55,16 +55,6 @@ import configs from 'eslint-config-woofmeow/flat';
 export default [...configs.base];
 ```
 
-Or the same for the eslintrc format:
-
-```js
-/* .eslintrc.js */
-
-module.exports = {
-  extends: 'woofmeow/base-legacy',
-};
-```
-
 ### Base import preset
 
 This preset includes a basic non-specific import configuration compatible with most projects.
@@ -80,18 +70,6 @@ export default [...configs.import];
 ```
 
 > Includes the preset `base`
-
-Or the same for the eslintrc format:
-
-```js
-/* .eslintrc.js */
-
-module.exports = {
-  extends: 'woofmeow/import-legacy',
-};
-```
-
-> Includes the preset `base-legacy`
 
 ### Import preset for Atomic Design
 
@@ -109,18 +87,6 @@ export default [...configs['import-atomic']];
 
 > Includes presets `base` and `import`
 
-Or the same for the eslintrc format:
-
-```js
-/* .eslintrc.js */
-
-module.exports = {
-  extends: 'woofmeow/import-atomic-legacy',
-};
-```
-
-> Includes presets `base-legacy` and `import-legacy`
-
 ### Import preset for Feature-Sliced Design
 
 This preset includes a configuration specific to Feature-Sliced Design imports. Related to [Feature-Sliced Design](https://feature-sliced.design/) up to v2.x.x.
@@ -136,18 +102,6 @@ export default [...configs['import-fsd']];
 ```
 
 > Includes presets `base` and `import`
-
-Or the same for the eslintrc format:
-
-```js
-/* .eslintrc.js */
-
-module.exports = {
-  extends: 'woofmeow/import-fsd-legacy',
-};
-```
-
-> Includes presets `base-legacy` and `import-legacy`
 
 ### TypeScript preset
 
@@ -165,18 +119,6 @@ export default [...configs.typescript];
 
 > Includes the preset `base`
 
-Or the same for the eslintrc format:
-
-```js
-/* .eslintrc.js */
-
-module.exports = {
-  extends: 'woofmeow/typescript-legacy',
-};
-```
-
-> Includes the preset `base-legacy`
-
 ### React preset
 
 This preset includes a configuration specific to projects using React.
@@ -192,18 +134,6 @@ export default [...configs.react];
 ```
 
 > Includes the preset `base`
-
-Or the same for the eslintrc format:
-
-```js
-/* .eslintrc.js */
-
-module.exports = {
-  extends: 'woofmeow/react-legacy',
-};
-```
-
-> Includes the preset `base-legacy`
 
 ### Next.js preset
 
@@ -221,18 +151,6 @@ export default [...configs.next];
 
 > Includes presets `base` and `react`
 
-Or the same for the eslintrc format:
-
-```js
-/* .eslintrc.js */
-
-module.exports = {
-  extends: 'woofmeow/next-legacy',
-};
-```
-
-> Includes presets `base-legacy` and `react-legacy`
-
 ### Combination of presets
 
 You can combine presets to create your own ESLint configuration.
@@ -249,18 +167,4 @@ export default [
   ...configs.typescript,
   ...configs['import-fsd'],
 ];
-```
-
-Or the same for the eslintrc format:
-
-```js
-/* .eslintrc.js */
-
-module.exports = {
-  extends: [
-    'woofmeow/next-legacy',
-    'woofmeow/typescript-legacy',
-    'woofmeow/import-fsd-legacy',
-  ],
-};
 ```
