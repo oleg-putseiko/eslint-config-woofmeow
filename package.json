@@ -26,6 +26,10 @@
   "bugs": {
     "url": "https://github.com/oleg-putseiko/eslint-config-woofmeow/issues"
   },
+  "main": "./dist/presets/index.cjs",
+  "files": [
+    "./dist/**/*"
+  ],
   "exports": {
     ".": "./dist/presets/index.cjs",
     "./flat": "./dist/presets/flat/index.cjs",
