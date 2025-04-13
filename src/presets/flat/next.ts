@@ -1,10 +1,12 @@
+import { FlatCompat } from '@eslint/eslintrc';
 import { Linter } from 'eslint';
 import globals from 'globals';
-import reactConfig from './react.cjs';
-import { ConfigCompat } from '../../utils/config-compat.cjs';
-import { deduplicateConfigPlugins } from '../../utils/plugins.cjs';
+import reactConfig from './react.js';
+import { deduplicateConfigPlugins } from '../../utils/plugins.js';
 
-const compat = new ConfigCompat({ fileUrl: __filename });
+const compat = new FlatCompat({
+  baseDirectory: import.meta.dirname,
+});
 
 const config: Linter.Config = {
   files: ['src/pages/**/*.{js,jsx,ts,tsx}', 'src/app/**/*.{js,jsx,ts,tsx}'],
@@ -27,8 +29,8 @@ const config: Linter.Config = {
   },
 };
 
-export = deduplicateConfigPlugins([
-  ...compat.toFlat('next', 'next/core-web-vitals'),
+export default deduplicateConfigPlugins([
+  ...compat.config({ extends: ['next/core-web-vitals'] }),
   ...reactConfig,
   config,
 ]);

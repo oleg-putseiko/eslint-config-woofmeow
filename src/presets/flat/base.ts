@@ -1,7 +1,6 @@
+import eslint from '@eslint/js';
 import { type Linter } from 'eslint';
-import { ConfigCompat } from '../../utils/config-compat.cjs';
-
-const compat = new ConfigCompat();
+import prettierConfig from 'eslint-config-prettier/flat';
 
 const config: Linter.Config = {
   rules: {
@@ -34,7 +33,8 @@ const config: Linter.Config = {
   },
 };
 
-export = [
-  ...compat.toFlat('prettier', 'eslint:recommended'),
+export default [
+  eslint.configs.recommended,
+  prettierConfig,
   config,
 ] satisfies Linter.Config[];

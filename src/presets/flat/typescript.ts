@@ -1,6 +1,6 @@
 import { ESLint, type Linter } from 'eslint';
 import tseslint from 'typescript-eslint';
-import baseConfig from './base.cjs';
+import baseConfig from './base.js';
 
 const FILE_EXTENSIONS: string[] = [
   '.ts',
@@ -55,7 +55,7 @@ const config: Linter.Config = {
   },
 };
 
-export = [
+export default [
   ...baseConfig,
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,

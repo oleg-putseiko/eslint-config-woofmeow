@@ -1,6 +1,6 @@
 import { type Linter } from 'eslint';
 import importFsdPlugin from 'eslint-plugin-import-fsd';
-import importBaseConfig from './import-base.cjs';
+import importBaseConfig from './import-base.js';
 
 type RestrictedImportPattern = {
   group: string[];
@@ -52,7 +52,7 @@ const config: Linter.Config = {
   },
 };
 
-export = [
+export default [
   ...importBaseConfig,
   importFsdPlugin.configs.recommended,
   config,

@@ -1,5 +1,5 @@
 import { type Linter } from 'eslint';
-import importBaseConfig from './import-base.cjs';
+import importBaseConfig from './import-base.js';
 
 const config: Linter.Config = {
   rules: {
@@ -47,4 +47,4 @@ const config: Linter.Config = {
   },
 };
 
-export = [...importBaseConfig, config] satisfies Linter.Config[];
+export default [...importBaseConfig, config] satisfies Linter.Config[];

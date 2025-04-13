@@ -26,27 +26,28 @@
   "bugs": {
     "url": "https://github.com/oleg-putseiko/eslint-config-woofmeow/issues"
   },
-  "main": "./dist/presets/index.cjs",
+  "type": "module",
+  "main": "./dist/presets/index.js",
   "files": [
     "./dist/presets/**/*",
     "./dist/utils/**/*"
   ],
   "exports": {
-    ".": "./dist/presets/index.cjs",
-    "./flat": "./dist/presets/flat/index.cjs",
-    "./base": "./dist/presets/flat/base.cjs",
-    "./import": "./dist/presets/flat/import-base.cjs",
-    "./import-atomic": "./dist/presets/flat/import-atomic.cjs",
-    "./import-fsd": "./dist/presets/flat/import-fsd.cjs",
-    "./next": "./dist/presets/flat/next.cjs",
-    "./react": "./dist/presets/flat/react.cjs",
-    "./typescript": "./dist/presets/flat/typescript.cjs"
+    ".": "./dist/presets/index.js",
+    "./flat": "./dist/presets/flat/index.js",
+    "./base": "./dist/presets/flat/base.js",
+    "./import": "./dist/presets/flat/import-base.js",
+    "./import-atomic": "./dist/presets/flat/import-atomic.js",
+    "./import-fsd": "./dist/presets/flat/import-fsd.js",
+    "./next": "./dist/presets/flat/next.js",
+    "./react": "./dist/presets/flat/react.js",
+    "./typescript": "./dist/presets/flat/typescript.js"
   },
   "scripts": {
     "build": "yarn build:swc && yarn build:tsc",
-    "build:swc": "swc src -d dist --strip-leading-paths --out-file-extension cjs",
+    "build:swc": "swc src -d dist --strip-leading-paths",
     "build:tsc": "tsc",
-    "lint": "eslint ./src/**/*.cts -c ./eslint.config.mjs",
+    "lint": "eslint ./src/**/*.ts -c ./eslint.config.mjs",
     "lint:fix": "yarn lint --fix && yarn format:fix",
     "lint:strict": "yarn lint --max-warnings=0 && yarn format",
     "format": "prettier -c .",
@@ -93,11 +94,11 @@
     "typescript": "^5.7.2"
   },
   "engines": {
-    "node": "^18.18.0 || ^20.9.0 || >=21.1.0",
+    "node": "^20.9.0 || >=21.1.0",
     "yarn": ">=3.6.3"
   },
   "volta": {
-    "node": "18.18.0",
+    "node": "20.9.0",
     "yarn": "3.6.4"
   }
 }

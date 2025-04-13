@@ -1,11 +1,13 @@
+import { FlatCompat } from '@eslint/eslintrc';
 import { type Linter } from 'eslint';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import globals from 'globals';
-import baseConfig from './base.cjs';
-import { ConfigCompat } from '../../utils/config-compat.cjs';
+import baseConfig from './base.js';
 
-const compat = new ConfigCompat();
+const compat = new FlatCompat({
+  baseDirectory: import.meta.dirname,
+});
 
 const config: Linter.Config = {
   plugins: { react: reactPlugin },
@@ -77,10 +79,12 @@ const config: Linter.Config = {
   },
 };
 
-export = [
+export default [
   reactHooksPlugin.configs['recommended-latest'],
   // NOTE: Since version 7.35.0 the React plugin object contains a cyclic structure
-  ...compat.toFlat('plugin:react/recommended', 'plugin:react/jsx-runtime'),
+  ...compat.config({
+    extends: ['plugin:react/recommended', 'plugin:react/jsx-runtime'],
+  }),
   ...baseConfig,
   config,
 ] satisfies Linter.Config[];
