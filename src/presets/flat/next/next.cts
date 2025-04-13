@@ -1,7 +1,8 @@
-import { type Linter } from 'eslint';
+import { Linter } from 'eslint';
 import globals from 'globals';
 import reactConfig from '../react.cjs';
 import { ConfigCompat } from '../../../utils/config-compat.cjs';
+import { deduplicateConfigPlugins } from '../../../utils/plugins.cjs';
 
 const compat = new ConfigCompat({ fileUrl: __filename });
 
@@ -26,11 +27,8 @@ const config: Linter.Config[] = compat.compatible({
   },
 });
 
-export = [
-  ...compat.toFlat(
-    './compatible/next.cjs',
-    './compatible/next-core-web-vitals.cjs',
-  ),
+export = deduplicateConfigPlugins([
+  ...compat.toFlat('next', 'next/core-web-vitals'),
   ...reactConfig,
   ...config,
-] satisfies Linter.Config[];
+]) satisfies Linter.Config[];

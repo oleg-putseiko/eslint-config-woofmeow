@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowImportingTsExtensions": true,
     "declaration": true,
     "emitDeclarationOnly": true,
     "esModuleInterop": true,
@@ -12,8 +13,7 @@
     "rootDir": "src",
     "strict": true,
     "stripInternal": true,
-    "target": "ES6",
-    "allowImportingTsExtensions": true
+    "target": "ES6"
   },
   "exclude": ["node_modules"],
   "include": ["src/**/*.ts", "src/**/*.cts", "src/**/*.d.ts"]
