@@ -1,8 +1,6 @@
 <div align="center">
 
-<img src="./public/logo.png" alt="WoofMeow ESLint config logo" width="250px" />
-
-<br/>
+<img src="./public/logo.png" alt="WoofMeow ESLint config logo" width="250px" style="padding: 50px 0"/>
 
 # WoofMeow ESLint config
 
@@ -21,7 +19,7 @@ ESLint configuration containing multiple presets for different projects.
   - [Base preset](#base-preset)
   - [Base import preset](#base-import-preset)
   - [Import preset for Atomic Design](#import-preset-for-atomic-design)
-  - [Import preset for Feature Sliced Design](#import-preset-for-feature-sliced-design)
+  - [Import preset for Feature-Sliced Design](#import-preset-for-feature-sliced-design)
   - [TypeScript preset](#typescript-preset)
   - [React preset](#react-preset)
   - [Next.js preset](#nextjs-preset)
@@ -69,6 +67,8 @@ module.exports = {
 
 ### Base import preset
 
+This preset includes a basic non-specific import configuration compatible with most projects.
+
 To include this preset in your ESLint configuration, add it as an extension:
 
 ```js
@@ -95,6 +95,8 @@ module.exports = {
 
 ### Import preset for Atomic Design
 
+This preset includes a configuration specific to atomic design imports.
+
 To include this preset in your ESLint configuration, add it as an extension:
 
 ```js
@@ -102,7 +104,7 @@ To include this preset in your ESLint configuration, add it as an extension:
 
 import configs from 'eslint-config-woofmeow/flat';
 
-export default [...configs.['import-atomic']];
+export default [...configs['import-atomic']];
 ```
 
 > Includes presets `base` and `import`
@@ -119,9 +121,9 @@ module.exports = {
 
 > Includes presets `base-legacy` and `import-legacy`
 
-### Import preset for Feature Sliced Design
+### Import preset for Feature-Sliced Design
 
-Related to [Feature Sliced Design](https://feature-sliced.design/) up to v2.x.x.
+This preset includes a configuration specific to Feature-Sliced Design imports. Related to [Feature-Sliced Design](https://feature-sliced.design/) up to v2.x.x.
 
 To include this preset in your ESLint configuration, add it as an extension:
 
@@ -130,7 +132,7 @@ To include this preset in your ESLint configuration, add it as an extension:
 
 import configs from 'eslint-config-woofmeow/flat';
 
-export default [...configs.['import-fsd']];
+export default [...configs['import-fsd']];
 ```
 
 > Includes presets `base` and `import`
@@ -148,6 +150,8 @@ module.exports = {
 > Includes presets `base-legacy` and `import-legacy`
 
 ### TypeScript preset
+
+This preset includes a configuration specific to projects using TypeScript.
 
 To include this preset in your ESLint configuration, add it as an extension:
 
@@ -175,6 +179,8 @@ module.exports = {
 
 ### React preset
 
+This preset includes a configuration specific to projects using React.
+
 To include this preset in your ESLint configuration, add it as an extension:
 
 ```js
@@ -200,6 +206,8 @@ module.exports = {
 > Includes the preset `base-legacy`
 
 ### Next.js preset
+
+This preset includes a configuration specific to projects using Next.js.
 
 To include this preset in your ESLint configuration, add it as an extension:
 
