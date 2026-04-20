@@ -1,12 +1,11 @@
 import { Linter } from 'eslint';
-import { defineConfig } from 'eslint/config';
 import nextVitals from 'eslint-config-next/core-web-vitals';
 import nextTs from 'eslint-config-next/typescript';
 import globals from 'globals';
 
 import reactConfig from './react.js';
 
-const configs: Linter.Config[] = defineConfig([
+const configs: Linter.Config[] = [
   ...reactConfig,
   ...nextVitals,
   ...nextTs,
@@ -18,6 +17,6 @@ const configs: Linter.Config[] = defineConfig([
       },
     },
   },
-]);
+];
 
 export default configs;

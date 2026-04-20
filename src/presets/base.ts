@@ -1,9 +1,8 @@
 import eslintJs from '@eslint/js';
 import { type Linter } from 'eslint';
-import { defineConfig } from 'eslint/config';
 import unicornPlugin from 'eslint-plugin-unicorn';
 
-const configs: Linter.Config[] = defineConfig([
+const configs: Linter.Config[] = [
   /* --- Internal --- */
   eslintJs.configs.recommended,
   {
@@ -68,6 +67,6 @@ const configs: Linter.Config[] = defineConfig([
       'unicorn/prefer-classlist-toggle': 'off',
     },
   },
-]);
+];
 
 export default configs;
