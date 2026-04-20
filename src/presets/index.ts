@@ -1,12 +1,12 @@
 import { type Linter } from 'eslint';
 
-import baseConfig from './base';
-import importAtomicConfig from './import/atomic';
-import importBaseConfig from './import/base';
-import importFsdConfig from './import/fsd';
-import nextConfig from './next';
-import reactConfig from './react';
-import typescriptConfig from './typescript';
+import baseConfig from './base.js';
+import importAtomicConfig from './import/atomic.js';
+import importBaseConfig from './import/base.js';
+import importFsdConfig from './import/fsd.js';
+import nextConfig from './next.js';
+import reactConfig from './react.js';
+import typescriptConfig from './typescript.js';
 
 type FlatPresetKey =
   | 'base'

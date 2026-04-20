@@ -1,6 +1,6 @@
 import { type Linter } from 'eslint';
 
-import baseImportConfig from '../base';
+import baseImportConfig from './base.js';
 
 const LAYER_GROUPS: string[][] = [
   ['types?', 'declarations?', 'definitions?'],

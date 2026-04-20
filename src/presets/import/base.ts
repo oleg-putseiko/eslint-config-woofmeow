@@ -3,10 +3,7 @@ import relativeImportPlugin from 'eslint-plugin-no-relative-import-paths';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
 
-import baseConfig from '../base';
-
 const configs: Linter.Config[] = [
-  ...baseConfig,
   {
     plugins: {
       'no-relative-import-paths': relativeImportPlugin,

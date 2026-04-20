@@ -1,7 +1,7 @@
 import { type Linter } from 'eslint';
 import importFsdPlugin from 'eslint-plugin-import-fsd';
 
-import baseImportConfig from './base';
+import baseImportConfig from './base.js';
 
 const LAYER_GROUPS: string[][] = [
   ['app', 'apps', 'core', 'init'],
