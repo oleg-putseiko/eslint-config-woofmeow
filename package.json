@@ -66,6 +66,11 @@
       "import": "./dist/presets/react.js",
       "require": "./dist/presets/react.js"
     },
+    "./tailwindcss": {
+      "types": "./dist/presets/tailwindcss.d.ts",
+      "import": "./dist/presets/tailwindcss.js",
+      "require": "./dist/presets/tailwindcss.js"
+    },
     "./typescript": {
       "types": "./dist/presets/typescript.d.ts",
       "import": "./dist/presets/typescript.js",
@@ -95,6 +100,7 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-simple-import-sort": "^13.0.0",
+    "eslint-plugin-tailwindcss": "^3.18.3",
     "eslint-plugin-unicorn": "^64.0.0",
     "eslint-plugin-unused-imports": "^4.4.1",
     "globals": "^17.5.0",
@@ -114,6 +120,7 @@
     "@commitlint/config-conventional": "^20.5.0",
     "@swc/cli": "^0.5.2",
     "@swc/core": "^1.10.1",
+    "@types/eslint-plugin-tailwindcss": "^3",
     "@types/eslint__eslintrc": "^3.3.0",
     "@types/eslint__js": "^9.14.0",
     "@types/node": "^24.12.2",
