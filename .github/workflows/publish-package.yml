@@ -33,6 +33,9 @@ jobs:
             echo "NPM_TAG=latest" >> $GITHUB_ENV
           fi
 
+      - name: Setup npm auth
+        run: echo "//registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}" > .npmrc
+
       - name: Publish
         run: npm publish --provenance --access public --tag ${{ env.NPM_TAG }}
         env:
