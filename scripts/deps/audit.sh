@@ -10,6 +10,7 @@
 #   --npm          : Run 'yarn npm audit' before scanning.
 #   --pin-unstable : Automatically write ignore rules to .github/dependabot.yml.
 #   --silent       : Suppress standard output logs (useful for CI/CD).
+#   --meta         : Emit state markers (__UPDATED__, __SKIPPED__) for automation workflows.
 #
 # Usage:
 # bash scripts/yarn/check-unstable.sh [--npm] [--pin-unstable] [--silent]
@@ -25,6 +26,7 @@ DEPENDABOT_FILE_PATH=".github/dependabot.yml"
 RUN_NPM_AUDIT=false
 PIN_UNSTABLE=false
 SILENT_MODE=false
+EMIT_META=false
 
 for arg in "$@"; do
   case $arg in
@@ -37,8 +39,17 @@ for arg in "$@"; do
     --silent)
       SILENT_MODE=true
       ;;
+    --meta)
+      EMIT_META=true
+      ;;
   esac
 done
+
+emit_meta() {
+  if [ "$EMIT_META" = true ]; then
+    echo "$1"
+  fi
+}
 
 if [ "$RUN_NPM_AUDIT" = true ]; then
   log -ic "🛡️" -m "Running yarn npm audit...\n"
@@ -64,6 +75,7 @@ PACKAGE_INFO=$(awk '/^[^[:space:]]/ {pkg=$0} /^[[:space:]]*version: "?0\./ {
 
 if [ -z "$PACKAGE_INFO" ]; then
   log -cl -s -m "No packages with 0.x.x version found."
+  emit_meta "__SKIPPED__"
   exit 0
 fi
 
@@ -96,8 +108,10 @@ if [ "$PIN_UNSTABLE" = true ]; then
   if [ $? -eq 0 ]; then
     if [[ "$NODE_RESULT" == *"__UPDATED__"* ]]; then
       log -cl -s -m "Package update exceptions written to dependabot.yml"
-    else
+      emit_meta "__UPDATED__"
+    elif [[ "$NODE_RESULT" == *"__SKIPPED__"* ]]; then
       log -cl -i -ic "⏩" -m "The dependabot.yml file has not been modified"
+      emit_meta "__SKIPPED__"
     fi
   else
     log -cl -e -m "Error: $NODE_RESULT"
