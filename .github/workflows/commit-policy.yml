@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Setup Node and Yarn via Volta
-        uses: volta-cli/action@v4
+        uses: volta-cli/action@v5
 
       - name: Install dependencies
         run: yarn install --immutable
