@@ -6,7 +6,6 @@
   "author": "Oleg Putseiko <oleg.putseiko@gmail.com> (https://github.com/oleg-putseiko)",
   "keywords": [
     "eslint",
-    "eslintrc",
     "config",
     "preset",
     "prettier",
@@ -29,24 +28,54 @@
   "type": "module",
   "main": "./dist/presets/index.js",
   "files": [
-    "./dist/presets/**/*",
-    "./dist/utils/**/*"
+    "./dist/presets/**/*"
   ],
   "exports": {
-    ".": "./dist/presets/index.js",
-    "./flat": "./dist/presets/flat/index.js",
-    "./base": "./dist/presets/flat/base.js",
-    "./import": "./dist/presets/flat/import-base.js",
-    "./import-atomic": "./dist/presets/flat/import-atomic.js",
-    "./import-fsd": "./dist/presets/flat/import-fsd.js",
-    "./next": "./dist/presets/flat/next.js",
-    "./react": "./dist/presets/flat/react.js",
-    "./typescript": "./dist/presets/flat/typescript.js"
+    ".": {
+      "types": "./dist/presets/index.d.ts",
+      "import": "./dist/presets/index.js",
+      "require": "./dist/presets/index.js"
+    },
+    "./base": {
+      "types": "./dist/presets/base.d.ts",
+      "import": "./dist/presets/base.js",
+      "require": "./dist/presets/base.js"
+    },
+    "./import/base": {
+      "types": "./dist/presets/import/base.d.ts",
+      "import": "./dist/presets/import/base.js",
+      "require": "./dist/presets/import/base.js"
+    },
+    "./import/atomic": {
+      "types": "./dist/presets/import/atomic.d.ts",
+      "import": "./dist/presets/import/atomic.js",
+      "require": "./dist/presets/import/atomic.js"
+    },
+    "./import/fsd": {
+      "types": "./dist/presets/import/fsd.d.ts",
+      "import": "./dist/presets/import/fsd.js",
+      "require": "./dist/presets/import/fsd.js"
+    },
+    "./next": {
+      "types": "./dist/presets/next.d.ts",
+      "import": "./dist/presets/next.js",
+      "require": "./dist/presets/next.js"
+    },
+    "./react": {
+      "types": "./dist/presets/react.d.ts",
+      "import": "./dist/presets/react.js",
+      "require": "./dist/presets/react.js"
+    },
+    "./typescript": {
+      "types": "./dist/presets/typescript.d.ts",
+      "import": "./dist/presets/typescript.js",
+      "require": "./dist/presets/typescript.js"
+    }
   },
   "scripts": {
-    "build": "yarn build:swc && yarn build:tsc",
-    "build:swc": "swc src -d dist --strip-leading-paths",
-    "build:tsc": "tsc",
+    "build": "yarn build:js && yarn build:ts",
+    "build:js": "swc src -d dist --strip-leading-paths --ignore \"node_modules,**/*.test.ts,**/*.d.ts\"",
+    "build:ts": "tsc && mkdir -p dist && find src -name \"*.d.ts\" -exec cp {} dist/ \\;",
     "lint": "eslint ./src -c ./eslint.config.mjs",
     "lint:fix": "yarn lint --fix && yarn format:fix",
     "lint:strict": "yarn lint --max-warnings=0 && yarn format",
