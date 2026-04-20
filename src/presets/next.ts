@@ -2,7 +2,7 @@
 import { Linter } from 'eslint';
 import globals from 'globals';
 import reactConfig from './react.js';
-import { deduplicateConfigPlugins } from '../../utils/plugins.js';
+import { deduplicateConfigPlugins } from '../utils/plugins.js';
 
 // const compat = new FlatCompat({
 //   baseDirectory: import.meta.dirname,
