@@ -1,4 +1,5 @@
 import { type Linter } from 'eslint';
+import { defineConfig } from 'eslint/config';
 import importFsdPlugin from 'eslint-plugin-import-fsd';
 
 import baseImportConfig from './base';
@@ -26,7 +27,7 @@ const IMPORT_GROUPS: string[][] = [
   ['^'],
 ];
 
-const configs: Linter.Config[] = [
+const configs: Linter.Config[] = defineConfig([
   ...baseImportConfig,
   importFsdPlugin.configs.recommended,
   {
@@ -40,6 +41,6 @@ const configs: Linter.Config[] = [
       'simple-import-sort/imports': ['warn', { groups: IMPORT_GROUPS }],
     },
   },
-];
+]);
 
 export default configs;

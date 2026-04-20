@@ -1,11 +1,12 @@
 import { type Linter } from 'eslint';
+import { defineConfig } from 'eslint/config';
 import relativeImportPlugin from 'eslint-plugin-no-relative-import-paths';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
 
 import baseConfig from '../base';
 
-const configs: Linter.Config[] = [
+const configs: Linter.Config[] = defineConfig([
   ...baseConfig,
   {
     plugins: {
@@ -26,6 +27,6 @@ const configs: Linter.Config[] = [
       'unused-imports/no-unused-imports': 'warn',
     },
   },
-];
+]);
 
 export default configs;

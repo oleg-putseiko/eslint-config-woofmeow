@@ -1,4 +1,5 @@
 import { type Linter } from 'eslint';
+import { defineConfig } from 'eslint/config';
 
 import baseImportConfig from '../base';
 
@@ -27,13 +28,13 @@ const IMPORT_GROUPS: string[][] = [
   ['^'],
 ];
 
-const configs: Linter.Config[] = [
+const configs: Linter.Config[] = defineConfig([
   ...baseImportConfig,
   {
     rules: {
       'simple-import-sort/imports': ['warn', { groups: IMPORT_GROUPS }],
     },
   },
-];
+]);
 
 export default configs;
