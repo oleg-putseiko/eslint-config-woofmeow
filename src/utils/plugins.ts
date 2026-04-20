@@ -2,7 +2,9 @@ import { Linter } from 'eslint';
 
 const keys = <T extends object>(value: T) => Object.keys(value) as (keyof T)[];
 
-export const deduplicateConfigPlugins = (configs: Linter.Config[]) => {
+export const deduplicateConfigPlugins = (
+  configs: Linter.Config[],
+): Linter.Config[] => {
   const plugins: string[] = [];
 
   return configs.map<Linter.Config>((config) => {

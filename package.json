@@ -47,7 +47,7 @@
     "build": "yarn build:swc && yarn build:tsc",
     "build:swc": "swc src -d dist --strip-leading-paths",
     "build:tsc": "tsc",
-    "lint": "eslint ./src/**/*.ts -c ./eslint.config.mjs",
+    "lint": "eslint ./src -c ./eslint.config.mjs",
     "lint:fix": "yarn lint --fix && yarn format:fix",
     "lint:strict": "yarn lint --max-warnings=0 && yarn format",
     "format": "prettier -c .",
@@ -56,23 +56,23 @@
     "prepare": "husky install | chmod +x ./.husky/*"
   },
   "dependencies": {
-    "@eslint/eslintrc": "^3.3.1",
-    "@eslint/js": "^9.23.0",
-    "@typescript-eslint/eslint-plugin": "^8.28.0",
-    "@typescript-eslint/parser": "^8.28.0",
-    "eslint-config-next": "^15.2.4",
-    "eslint-config-prettier": "^10.1.1",
-    "eslint-plugin-import-fsd": "^2.0.0",
-    "eslint-plugin-react": "~7.34.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
-    "eslint-plugin-unused-imports": "^4.1.4",
-    "globals": "^16.0.0",
-    "typescript-eslint": "^8.28.0"
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^9.39.4",
+    "@typescript-eslint/eslint-plugin": "^8.57.2",
+    "@typescript-eslint/parser": "^8.57.2",
+    "eslint-config-next": "^16.2.4",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import-fsd": "^3.0.0-canary.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-simple-import-sort": "^13.0.0",
+    "eslint-plugin-unused-imports": "^4.4.1",
+    "globals": "^17.5.0",
+    "typescript-eslint": "^8.58.2"
   },
   "peerDependencies": {
-    "eslint": ">=3.0.0",
-    "typescript": ">=3.3.1"
+    "eslint": ">=9.0.0 <10.0.0",
+    "typescript": ">=3.3.1 <6.0.0"
   },
   "peerDependenciesMeta": {
     "typescript": {
@@ -84,21 +84,20 @@
     "@commitlint/config-conventional": "^18.1.0",
     "@swc/cli": "^0.5.2",
     "@swc/core": "^1.10.1",
-    "@types/eslint__eslintrc": "^2.1.2",
-    "@types/eslint__js": "^8.42.3",
-    "@types/node": "^22.10.1",
-    "eslint": "^9.16.0",
+    "@types/eslint__eslintrc": "^3.3.0",
+    "@types/eslint__js": "^9.14.0",
+    "@types/node": "^24.12.2",
+    "eslint": "^9.39.4",
     "husky": "^8.0.3",
     "lint-staged": "^15.0.2",
     "prettier": "^3.0.3",
-    "typescript": "^5.7.2"
+    "typescript": "^5.9.2"
   },
   "engines": {
-    "node": "^20.9.0 || >=21.1.0",
-    "yarn": ">=3.6.3"
+    "node": "^20.9.0 || >=21.1.0 <25.0.0"
   },
   "volta": {
-    "node": "20.9.0",
-    "yarn": "3.6.4"
+    "node": "24.14.1",
+    "yarn": "4.13.0"
   }
 }

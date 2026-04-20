@@ -37,4 +37,4 @@ export default [
   eslint.configs.recommended,
   prettierConfig,
   config,
-] satisfies Linter.Config[];
+] satisfies Linter.Config[] as Linter.Config[];

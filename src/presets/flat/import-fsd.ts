@@ -56,4 +56,4 @@ export default [
   ...importBaseConfig,
   importFsdPlugin.configs.recommended,
   config,
-] satisfies Linter.Config[];
+] satisfies Linter.Config[] as Linter.Config[];

@@ -60,4 +60,4 @@ export default [
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
   config,
-] as Linter.Config[];
+] as Linter.Config[] as Linter.Config[];

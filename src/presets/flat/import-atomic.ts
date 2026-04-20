@@ -47,4 +47,7 @@ const config: Linter.Config = {
   },
 };
 
-export default [...importBaseConfig, config] satisfies Linter.Config[];
+export default [
+  ...importBaseConfig,
+  config,
+] satisfies Linter.Config[] as Linter.Config[];
