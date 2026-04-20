@@ -80,8 +80,8 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.2.0",
-    "@commitlint/config-conventional": "^18.1.0",
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
     "@swc/cli": "^0.5.2",
     "@swc/core": "^1.10.1",
     "@types/eslint__eslintrc": "^3.3.0",
