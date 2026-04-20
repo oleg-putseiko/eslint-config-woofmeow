@@ -12,10 +12,10 @@ jobs:
       id-token: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node via Volta
-        uses: volta-cli/action@v4
+        uses: volta-cli/action@v5
 
       - name: Install dependencies
         run: npm install --legacy-peer-deps
