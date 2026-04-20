@@ -5,262 +5,135 @@
 # WoofMeow ESLint config
 
 [![Latest Release](https://badgen.net/github/release/oleg-putseiko/eslint-config-woofmeow?icon=github&cache=240)](https://github.com/oleg-putseiko/eslint-config-woofmeow/releases)
-[![Latest Release](https://badgen.net/npm/dt/eslint-config-woofmeow?icon=npm&cache=240)](https://www.npmjs.com/package/eslint-config-woofmeow)
-[![Latest Release](https://badgen.net/npm/license/eslint-config-woofmeow?color=black&cache=240)](./LICENSE.md)
+[![Downloads](https://badgen.net/npm/dt/eslint-config-woofmeow?icon=npm&cache=240)](https://www.npmjs.com/package/eslint-config-woofmeow)
+[![License](https://badgen.net/npm/license/eslint-config-woofmeow?color=black&cache=240)](./LICENSE.md)
 
 </div>
 
-ESLint configuration containing multiple presets for different projects.
+A modular ESLint Flat Config containing multiple configurations for modern JavaScript and TypeScript projects.
 
 **Table of contents:**
 
-- [Getting started](#getting-started)
-- [Usage](#usage)
-  - [Base preset](#base-preset)
-  - [Base import preset](#base-import-preset)
-  - [Import preset for Atomic Design](#import-preset-for-atomic-design)
-  - [Import preset for Feature-Sliced Design](#import-preset-for-feature-sliced-design)
-  - [TypeScript preset](#typescript-preset)
-  - [React preset](#react-preset)
-  - [Next.js preset](#nextjs-preset)
-  - [Combination of presets](#combination-of-presets)
+- [Getting started](#-getting-started)
+- [How it works](#️-how-it-works)
+- [Available Configs](#-available-configs)
+  - [Core Configs](#core-configs)
+  - [Frameworks](#frameworks)
+  - [Styling](#styling)
+  - [Architecture & Imports](#architecture--imports)
+  - [Data & Configuration](#data--configuration)
+- [Usage Examples](#-usage-examples)
+  - [Using the configure function (Recommended)](#using-the-configure-function-recommended)
+  - [Manual Composition (Without configure)](#manual-composition-without-configure)
+- [Included Plugins (Out of the box)](#-included-plugins-out-of-the-box)
 
-## Getting started
+## 🚀 Getting started
 
-Install `eslint-config-woofmeow` to your repository as dev dependency:
+Install `eslint-config-woofmeow` as a dev dependency.
+_Note: This package requires `eslint >= 9.0.0` as a peer dependency._
 
 ```bash
 npm install eslint-config-woofmeow --save-dev
-
 # or
 pnpm install eslint-config-woofmeow --save-dev
-
 # or
 yarn add eslint-config-woofmeow --dev
 ```
 
-## Usage
+> **💡 Tip: File Extensions**
+> ESLint Flat Config requires ES Modules (`import`/`export`). If your project does not have `"type": "module"` in its `package.json`, name your configuration file `eslint.config.mjs` instead of `eslint.config.js` to avoid module errors.
 
-### Base preset
+## ⚙️ How it works
 
-This preset includes a basic non-specific configuration compatible with most projects.
+This package exports a `configs` object containing all available configurations, and an optional smart `configure` helper function.
 
-To include this preset in your ESLint configuration, add it as an extension:
+When using the `configure` function, it automatically injects the `recommended` configuration at the very beginning of the array. This ensures that fundamental rules (like base JS rules and strict core plugins) are always applied in the correct order without duplication.
 
-```js
-/* eslint.config.js */
+## 🧩 Available Configs
 
-import configs from 'eslint-config-woofmeow/flat';
+You can mix and match the following configs from the `configs` object to suit your stack:
 
-export default [...configs.base];
+### Core Configs
+
+- **`recommended`**: The foundation. A configuration compatible with most projects, including best practices and `unicorn` rules. _(Injected automatically if you use the `configure` helper)_.
+- **`typescript`**: Specific rules and parser settings for projects using TypeScript.
+
+### Frameworks
+
+- **`react`**: Configuration for React projects (Hooks, JSX accessibility, etc.).
+- **`next`**: Specific configuration for Next.js projects. _> Includes the `react` config._
+
+### Styling
+
+- **`tailwind`**: Enforces class sorting and best practices using `eslint-plugin-tailwindcss`.
+
+### Architecture & Imports
+
+- **`import/base`**: Basic import configuration (sorting, removing unused imports).
+- **`import/atomic`**: Specific configuration for Atomic Design architecture. _> Includes the `import/base` config._
+- **`import/fsd`**: Specific configuration for [Feature-Sliced Design](https://feature-sliced.design/) (up to v2.x.x). _> Includes the `import/base` config._
+
+### Data & Configuration
+
+- **`json`**: Configuration for `.json`, `.jsonc` (like `tsconfig.json` or `.vscode/settings.json`), and `.json5` files. It applies the appropriate parser and safely validates editor settings without breaking your JavaScript rules.
+
+## 📖 Usage Examples
+
+### Using the configure function (Recommended)
+
+You can combine any number of configs to create a robust configuration. The `recommended` config is applied automatically. You can also easily override specific rules (like those from `unicorn`) by appending your own configuration object at the end.
+
+```javascript
+// eslint.config.js
+import { configure, configs } from 'eslint-config-woofmeow';
+
+export default configure(
+  configs.typescript,
+  configs.next,
+  configs.tailwind,
+  configs['import/fsd'],
+
+  // Custom overrides (optional)
+  {
+    rules: {
+      'no-console': 'warn',
+      // Override a default unicorn rule if it's too strict for your project
+      'unicorn/prefer-string-slice': 'off',
+    },
+  },
+);
 ```
 
-Or the same for the eslintrc format:
+### Manual Composition (Without configure)
 
-```js
-/* .eslintrc.js */
+If you prefer full control over the array structure, you can bypass the `configure` helper and manually spread the configs.
+**Note:** When doing this, you _must_ explicitly include `configs.recommended` if you want the base rules applied.
 
-module.exports = {
-  extends: 'woofmeow/base-legacy',
-};
-```
-
-### Base import preset
-
-This preset includes a basic non-specific import configuration compatible with most projects.
-
-To include this preset in your ESLint configuration, add it as an extension:
-
-```js
-/* eslint.config.js */
-
-import configs from 'eslint-config-woofmeow/flat';
-
-export default [...configs.import];
-```
-
-> Includes the preset `base`
-
-Or the same for the eslintrc format:
-
-```js
-/* .eslintrc.js */
-
-module.exports = {
-  extends: 'woofmeow/import-legacy',
-};
-```
-
-> Includes the preset `base-legacy`
-
-### Import preset for Atomic Design
-
-This preset includes a configuration specific to atomic design imports.
-
-To include this preset in your ESLint configuration, add it as an extension:
-
-```js
-/* eslint.config.js */
-
-import configs from 'eslint-config-woofmeow/flat';
-
-export default [...configs['import-atomic']];
-```
-
-> Includes presets `base` and `import`
-
-Or the same for the eslintrc format:
-
-```js
-/* .eslintrc.js */
-
-module.exports = {
-  extends: 'woofmeow/import-atomic-legacy',
-};
-```
-
-> Includes presets `base-legacy` and `import-legacy`
-
-### Import preset for Feature-Sliced Design
-
-This preset includes a configuration specific to Feature-Sliced Design imports. Related to [Feature-Sliced Design](https://feature-sliced.design/) up to v2.x.x.
-
-To include this preset in your ESLint configuration, add it as an extension:
-
-```js
-/* eslint.config.js */
-
-import configs from 'eslint-config-woofmeow/flat';
-
-export default [...configs['import-fsd']];
-```
-
-> Includes presets `base` and `import`
-
-Or the same for the eslintrc format:
-
-```js
-/* .eslintrc.js */
-
-module.exports = {
-  extends: 'woofmeow/import-fsd-legacy',
-};
-```
-
-> Includes presets `base-legacy` and `import-legacy`
-
-### TypeScript preset
-
-This preset includes a configuration specific to projects using TypeScript.
-
-To include this preset in your ESLint configuration, add it as an extension:
-
-```js
-/* eslint.config.js */
-
-import configs from 'eslint-config-woofmeow/flat';
-
-export default [...configs.typescript];
-```
-
-> Includes the preset `base`
-
-Or the same for the eslintrc format:
-
-```js
-/* .eslintrc.js */
-
-module.exports = {
-  extends: 'woofmeow/typescript-legacy',
-};
-```
-
-> Includes the preset `base-legacy`
-
-### React preset
-
-This preset includes a configuration specific to projects using React.
-
-To include this preset in your ESLint configuration, add it as an extension:
-
-```js
-/* eslint.config.js */
-
-import configs from 'eslint-config-woofmeow/flat';
-
-export default [...configs.react];
-```
-
-> Includes the preset `base`
-
-Or the same for the eslintrc format:
-
-```js
-/* .eslintrc.js */
-
-module.exports = {
-  extends: 'woofmeow/react-legacy',
-};
-```
-
-> Includes the preset `base-legacy`
-
-### Next.js preset
-
-This preset includes a configuration specific to projects using Next.js.
-
-To include this preset in your ESLint configuration, add it as an extension:
-
-```js
-/* eslint.config.js */
-
-import configs from 'eslint-config-woofmeow/flat';
-
-export default [...configs.next];
-```
-
-> Includes presets `base` and `react`
-
-Or the same for the eslintrc format:
-
-```js
-/* .eslintrc.js */
-
-module.exports = {
-  extends: 'woofmeow/next-legacy',
-};
-```
-
-> Includes presets `base-legacy` and `react-legacy`
-
-### Combination of presets
-
-You can combine presets to create your own ESLint configuration.
-
-For example, to create an ESLint configuration for a project using Next.js, TypeScript and Feature Sliced Design you need to add the following presets to your ESLint configuration:
-
-```js
-/* eslint.config.js */
-
-import configs from 'eslint-config-woofmeow/flat';
+```javascript
+// eslint.config.js
+import { configs } from 'eslint-config-woofmeow';
 
 export default [
-  ...configs.next,
+  ...configs.recommended,
   ...configs.typescript,
-  ...configs['import-fsd'],
+  ...configs.react,
+
+  {
+    rules: {
+      'no-console': 'warn',
+    },
+  },
 ];
 ```
 
-Or the same for the eslintrc format:
+## 📦 Included Plugins (Out of the box)
 
-```js
-/* .eslintrc.js */
+You do **not** need to install these plugins separately; they are already bundled and managed by this configuration:
 
-module.exports = {
-  extends: [
-    'woofmeow/next-legacy',
-    'woofmeow/typescript-legacy',
-    'woofmeow/import-fsd-legacy',
-  ],
-};
-```
+- **Core:** `@eslint/js`, `eslint-plugin-unicorn`
+- **TypeScript:** `typescript-eslint`
+- **React & Next.js:** `eslint-plugin-react`, `eslint-plugin-react-hooks`, `eslint-config-next`
+- **Imports Management:** `eslint-plugin-import`, `eslint-plugin-simple-import-sort`, `eslint-plugin-unused-imports`, `eslint-plugin-no-relative-import-paths`
+- **Architecture:** `eslint-plugin-import-fsd`
+- **Styling:** `eslint-plugin-tailwindcss`
+- **Data & Config:** `eslint-plugin-jsonc`

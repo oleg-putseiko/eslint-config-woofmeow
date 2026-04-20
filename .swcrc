@@ -6,10 +6,10 @@
       "syntax": "typescript",
       "tsx": false
     },
-    "target": "es2016"
+    "target": "es2020"
   },
   "module": {
     "strict": true,
-    "type": "commonjs"
+    "type": "es6"
   }
 }

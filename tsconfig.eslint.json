@@ -5,9 +5,9 @@
     "src/**/*.cts",
     "src/**/*.d.ts",
     "*.js",
-    "*.cjs",
     "*.mjs",
     ".*.js",
-    "*.json"
+    "*.json",
+    "scripts/**/*.js"
   ]
 }

@@ -1,12 +1,11 @@
 {
   "name": "eslint-config-woofmeow",
-  "version": "2.0.0-canary.1",
+  "version": "2.0.0-canary.3",
   "description": "ESLint configuration containing multiple presets for different projects",
   "license": "MIT",
   "author": "Oleg Putseiko <oleg.putseiko@gmail.com> (https://github.com/oleg-putseiko)",
   "keywords": [
     "eslint",
-    "eslintrc",
     "config",
     "preset",
     "prettier",
@@ -21,64 +20,106 @@
   "homepage": "https://github.com/oleg-putseiko/eslint-config-woofmeow",
   "repository": {
     "type": "git",
-    "url": "https://github.com/oleg-putseiko/eslint-config-woofmeow"
+    "url": "git+https://github.com/oleg-putseiko/eslint-config-woofmeow.git"
   },
   "bugs": {
     "url": "https://github.com/oleg-putseiko/eslint-config-woofmeow/issues"
   },
-  "main": "./dist/presets/index.cjs",
+  "type": "module",
+  "main": "./dist/index.js",
   "files": [
-    "./dist/**/*"
+    "dist"
   ],
   "exports": {
-    ".": "./dist/presets/index.cjs",
-    "./flat": "./dist/presets/flat/index.cjs",
-    "./legacy": "./dist/presets/legacy/index.cjs",
-    "./base": "./dist/presets/flat/base.cjs",
-    "./base-legacy": "./dist/presets/legacy/base.cjs",
-    "./import": "./dist/presets/flat/import-base.cjs",
-    "./import-legacy": "./dist/presets/legacy/import-base.cjs",
-    "./import-atomic": "./dist/presets/flat/import-atomic.cjs",
-    "./import-atomic-legacy": "./dist/presets/legacy/import-atomic.cjs",
-    "./import-fsd": "./dist/presets/flat/import-fsd.cjs",
-    "./import-fsd-legacy": "./dist/presets/legacy/import-fsd.cjs",
-    "./next": "./dist/presets/flat/next/next.cjs",
-    "./next-legacy": "./dist/presets/legacy/next.cjs",
-    "./react": "./dist/presets/flat/react.cjs",
-    "./react-legacy": "./dist/presets/legacy/react.cjs",
-    "./typescript": "./dist/presets/flat/typescript.cjs",
-    "./typescript-legacy": "./dist/presets/legacy/typescript.cjs"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./recommended": {
+      "types": "./dist/configs/recommended.d.ts",
+      "import": "./dist/configs/recommended.js",
+      "default": "./dist/configs/recommended.js"
+    },
+    "./import/base": {
+      "types": "./dist/configs/import/base.d.ts",
+      "import": "./dist/configs/import/base.js",
+      "default": "./dist/configs/import/base.js"
+    },
+    "./import/atomic": {
+      "types": "./dist/configs/import/atomic.d.ts",
+      "import": "./dist/configs/import/atomic.js",
+      "default": "./dist/configs/import/atomic.js"
+    },
+    "./import/fsd": {
+      "types": "./dist/configs/import/fsd.d.ts",
+      "import": "./dist/configs/import/fsd.js",
+      "default": "./dist/configs/import/fsd.js"
+    },
+    "./json": {
+      "types": "./dist/configs/json.d.ts",
+      "import": "./dist/configs/json.js",
+      "default": "./dist/configs/json.js"
+    },
+    "./next": {
+      "types": "./dist/configs/next.d.ts",
+      "import": "./dist/configs/next.js",
+      "default": "./dist/configs/next.js"
+    },
+    "./react": {
+      "types": "./dist/configs/react.d.ts",
+      "import": "./dist/configs/react.js",
+      "default": "./dist/configs/react.js"
+    },
+    "./tailwindcss": {
+      "types": "./dist/configs/tailwindcss.d.ts",
+      "import": "./dist/configs/tailwindcss.js",
+      "default": "./dist/configs/tailwindcss.js"
+    },
+    "./typescript": {
+      "types": "./dist/configs/typescript.d.ts",
+      "import": "./dist/configs/typescript.js",
+      "default": "./dist/configs/typescript.js"
+    }
   },
   "scripts": {
-    "build": "yarn build:swc && yarn build:tsc",
-    "build:swc": "swc src -d dist --strip-leading-paths --out-file-extension cjs",
-    "build:tsc": "tsc",
-    "lint": "eslint ./src/**/*.cts -c ./eslint.config.mjs",
+    "build": "npm run build:js && npm run build:ts",
+    "build:js": "swc src -d dist --strip-leading-paths --ignore \"node_modules,**/*.test.ts,**/*.d.ts\"",
+    "build:ts": "tsc && mkdir -p dist && find src -name \"*.d.ts\" -exec cp {} dist/ \\;",
+    "lint": "eslint ./src -c ./eslint.config.mjs",
     "lint:fix": "yarn lint --fix && yarn format:fix",
     "lint:strict": "yarn lint --max-warnings=0 && yarn format",
     "format": "prettier -c .",
     "format:fix": "prettier -w .",
     "typecheck": "tsc --noEmit --incremental false",
-    "prepare": "husky install | chmod +x ./.husky/*"
+    "setup": "yarn install && yarn setup:husky",
+    "setup:husky": "husky && chmod +x ./.husky/*",
+    "deps:audit": "bash ./scripts/deps/audit.sh",
+    "scripts:perms": "find ./scripts -type f -name \"*.sh\" -exec chmod +x {} +",
+    "scripts:perms:track": "find ./scripts -type f -name \"*.sh\" -exec git update-index --chmod=+x {} +"
   },
   "dependencies": {
-    "@eslint/eslintrc": "^3.3.1",
-    "@eslint/js": "^9.23.0",
-    "@typescript-eslint/eslint-plugin": "^8.28.0",
-    "@typescript-eslint/parser": "^8.28.0",
-    "eslint-config-next": "^15.2.4",
-    "eslint-config-prettier": "^10.1.1",
-    "eslint-plugin-import-fsd": "^2.0.0",
-    "eslint-plugin-react": "~7.34.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
-    "eslint-plugin-unused-imports": "^4.1.4",
-    "globals": "^16.0.0",
-    "typescript-eslint": "^8.28.0"
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^9.39.4",
+    "@typescript-eslint/eslint-plugin": "^8.57.2",
+    "@typescript-eslint/parser": "^8.57.2",
+    "eslint-config-next": "^16.2.4",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-import-fsd": "^3.0.0-canary.0",
+    "eslint-plugin-jsonc": "^3.1.2",
+    "eslint-plugin-no-relative-import-paths": "^1.6.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-simple-import-sort": "^13.0.0",
+    "eslint-plugin-tailwindcss": "^3.18.3",
+    "eslint-plugin-unicorn": "^64.0.0",
+    "eslint-plugin-unused-imports": "^4.4.1",
+    "globals": "^17.5.0",
+    "typescript-eslint": "^8.58.2"
   },
   "peerDependencies": {
-    "eslint": ">=3.0.0",
-    "typescript": ">=3.3.1"
+    "eslint": ">=9.0.0 <10.0.0",
+    "typescript": ">=3.3.1 <6.0.0"
   },
   "peerDependenciesMeta": {
     "typescript": {
@@ -86,25 +127,27 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.2.0",
-    "@commitlint/config-conventional": "^18.1.0",
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
     "@swc/cli": "^0.5.2",
     "@swc/core": "^1.10.1",
-    "@types/eslint__eslintrc": "^2.1.2",
-    "@types/eslint__js": "^8.42.3",
-    "@types/node": "^22.10.1",
-    "eslint": "^9.16.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.0.2",
-    "prettier": "^3.0.3",
-    "typescript": "^5.7.2"
+    "@types/eslint-plugin-tailwindcss": "^3",
+    "@types/eslint__eslintrc": "^3.3.0",
+    "@types/eslint__js": "^9.14.0",
+    "@types/node": "^24.12.2",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.3",
+    "prettier-plugin-sh": "^0.18.1",
+    "typescript": "^5.9.2"
   },
   "engines": {
-    "node": "^18.18.0 || ^20.9.0 || >=21.1.0",
-    "yarn": ">=3.6.3"
+    "node": "^20.9.0 || >=21.1.0 <25.0.0"
   },
   "volta": {
-    "node": "18.18.0",
-    "yarn": "3.6.4"
+    "node": "24.14.1",
+    "yarn": "4.13.0"
   }
 }
