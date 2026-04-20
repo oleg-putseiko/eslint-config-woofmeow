@@ -10,6 +10,7 @@ Before writing your first line of code, you **MUST** read and understand the fol
 - **[SECURITY.md](./SECURITY.md)**: To learn how to report vulnerabilities privately and handle security patches.
 - **[CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)**: To understand our professional standards and communication etiquette.
 - **[README.md](./README.md)**: For a deep dive into the project's architecture, presets, and usage.
+- **[scripts/README.md](./scripts/README.md)**: For a deep dive into the project's automation scripts, maintenance workflows, and internal DevOps tools.
 
 ## 🛠️ Prerequisites
 
