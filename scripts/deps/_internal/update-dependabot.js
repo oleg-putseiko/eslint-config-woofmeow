@@ -24,7 +24,7 @@ try {
 
   const ignoreText = ignoreLines.join('\n');
 
-  const npmSectionMatch = yamlContent.match(/package-ecosystem:\s*[\"']npm[\"']/);
+  const npmSectionMatch = yamlContent.match(/package-ecosystem:\s*["']npm["']/);
   if (!npmSectionMatch) {
     console.error('npm ecosystem block not found in Dependabot config.');
     process.exit(1);
