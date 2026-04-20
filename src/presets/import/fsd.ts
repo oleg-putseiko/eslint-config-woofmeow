@@ -32,9 +32,7 @@ const configs: Linter.Config[] = [
   {
     settings: {
       rootDir: './src',
-      aliases: {
-        '@/*': './src/*',
-      },
+      aliases: { '@/*': './src/*' },
     },
     rules: {
       'simple-import-sort/imports': ['warn', { groups: IMPORT_GROUPS }],

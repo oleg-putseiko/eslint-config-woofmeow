@@ -34,6 +34,7 @@ const configs: Linter.Config[] = [
       },
     },
     rules: {
+      '@typescript-eslint/consistent-type-definitions': 'off',
       '@typescript-eslint/consistent-type-imports': [
         'error',
         { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
@@ -42,6 +43,10 @@ const configs: Linter.Config[] = [
       '@typescript-eslint/no-unused-vars': [
         'warn',
         { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
+      ],
+      '@typescript-eslint/prefer-nullish-coalescing': [
+        'warn',
+        { ignorePrimitives: true, ignoreBooleanCoercion: true },
       ],
       '@typescript-eslint/switch-exhaustiveness-check': 'error',
       'no-undef': 'off',
