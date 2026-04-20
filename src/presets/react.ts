@@ -8,7 +8,7 @@ const configs: Linter.Config[] = [
   reactPlugin.configs.flat['jsx-runtime'],
   reactHooksPlugin.configs.flat.recommended,
   {
-    files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
+    files: ['**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
     languageOptions: {
       globals: {
         ...globals.browser,
