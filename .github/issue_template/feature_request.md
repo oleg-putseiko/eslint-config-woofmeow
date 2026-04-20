@@ -13,7 +13,7 @@ Before submitting a feature request, please search the existing issues to ensure
 
 ✨ **Feature description**
 
-<!-- A clear and concise description of what you want to achieve or add to the project (e.g., "Add a new preset for Jest", "Change the strictness of the `no-console` rule in the base preset"). -->
+<!-- A clear and concise description of what you want to achieve or add to the project (e.g., "Add a new config for Jest", "Change the strictness of the `no-console` rule in the recommended config"). -->
 
 🎯 **Motivation and use case**
 

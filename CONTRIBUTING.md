@@ -9,7 +9,7 @@ Before writing your first line of code, you **MUST** read and understand the fol
 - **[LICENSE](./LICENSE.md)**: To understand the terms under which this project is distributed.
 - **[SECURITY.md](./SECURITY.md)**: To learn how to report vulnerabilities privately and handle security patches.
 - **[CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)**: To understand our professional standards and communication etiquette.
-- **[README.md](./README.md)**: For a deep dive into the project's architecture, presets, and usage.
+- **[README.md](./README.md)**: For a deep dive into the project's architecture, configs, and usage.
 - **[scripts/README.md](./scripts/README.md)**: For a deep dive into the project's automation scripts, maintenance workflows, and internal DevOps tools.
 
 ## 🛠️ Prerequisites
@@ -45,7 +45,7 @@ This project enforces the [**Conventional Commits**](https://www.conventionalcom
 
 ### Allowed Types:
 
-- `feat`: A new feature or preset (Triggers a MINOR version bump).
+- `feat`: A new feature or config (Triggers a MINOR version bump).
 - `fix`: A bug fix or rule correction (Triggers a PATCH version bump).
 - `docs`: Documentation only changes.
 - `style`: Changes that do not affect the meaning of the code.
@@ -59,7 +59,7 @@ This project enforces the [**Conventional Commits**](https://www.conventionalcom
 
 ## 🏗️ Project Structure
 
-- **`src/`**: Source code for all ESLint configuration presets.
+- **`src/`**: Source code for all ESLint configurations.
 - **`dist/`**: Compiled output directory (ignored by Git).
 - **`scripts/`**: Internal utility scripts used for development (e.g., dependency audits). These are not published to npm.
 
@@ -70,7 +70,7 @@ Run these commands from the root directory:
 ### 🛠️ Core Commands
 
 - `yarn setup` — Initialize the environment (installs dependencies and configures Husky hooks).
-- `yarn build` — Compile the presets and generate TypeScript definitions.
+- `yarn build` — Compile the configs and generate TypeScript definitions.
 - `yarn lint` — Run ESLint to check for code issues.
 - `yarn lint:fix` — Run ESLint and Prettier, automatically fixing auto-fixable issues.
 - `yarn format` — Check if files are formatted correctly.

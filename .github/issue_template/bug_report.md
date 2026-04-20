@@ -37,7 +37,7 @@ Refer to the SECURITY.md file in the root directory for instructions on private 
 - Node.js Version:
 - ESLint Version: <!-- e.g., 9.39.4 -->
 - `eslint-config-woofmeow` Version: <!-- e.g., 2.0.0 or 2.0.0-canary.2 -->
-- Preset(s) used: <!-- e.g., base, react, typescript, next, fsd -->
+- Configs(s) used: <!-- e.g., recommended, react, typescript, next, fsd -->
 
 📄 **ESLint Configuration**
 

@@ -26,9 +26,9 @@
     "url": "https://github.com/oleg-putseiko/eslint-config-woofmeow/issues"
   },
   "type": "module",
-  "main": "./dist/presets/index.js",
+  "main": "./dist/index.js",
   "files": [
-    "./dist/presets/**/*"
+    "./dist/configs/**/*"
   ],
   "exports": {
     ".": {
@@ -37,44 +37,44 @@
       "require": "./dist/index.js"
     },
     "./recommended": {
-      "types": "./dist/presets/recommended.d.ts",
-      "import": "./dist/presets/recommended.js",
-      "require": "./dist/presets/recommended.js"
+      "types": "./dist/configs/recommended.d.ts",
+      "import": "./dist/configs/recommended.js",
+      "require": "./dist/configs/recommended.js"
     },
     "./import/base": {
-      "types": "./dist/presets/import/base.d.ts",
-      "import": "./dist/presets/import/base.js",
-      "require": "./dist/presets/import/base.js"
+      "types": "./dist/configs/import/base.d.ts",
+      "import": "./dist/configs/import/base.js",
+      "require": "./dist/configs/import/base.js"
     },
     "./import/atomic": {
-      "types": "./dist/presets/import/atomic.d.ts",
-      "import": "./dist/presets/import/atomic.js",
-      "require": "./dist/presets/import/atomic.js"
+      "types": "./dist/configs/import/atomic.d.ts",
+      "import": "./dist/configs/import/atomic.js",
+      "require": "./dist/configs/import/atomic.js"
     },
     "./import/fsd": {
-      "types": "./dist/presets/import/fsd.d.ts",
-      "import": "./dist/presets/import/fsd.js",
-      "require": "./dist/presets/import/fsd.js"
+      "types": "./dist/configs/import/fsd.d.ts",
+      "import": "./dist/configs/import/fsd.js",
+      "require": "./dist/configs/import/fsd.js"
     },
     "./next": {
-      "types": "./dist/presets/next.d.ts",
-      "import": "./dist/presets/next.js",
-      "require": "./dist/presets/next.js"
+      "types": "./dist/configs/next.d.ts",
+      "import": "./dist/configs/next.js",
+      "require": "./dist/configs/next.js"
     },
     "./react": {
-      "types": "./dist/presets/react.d.ts",
-      "import": "./dist/presets/react.js",
-      "require": "./dist/presets/react.js"
+      "types": "./dist/configs/react.d.ts",
+      "import": "./dist/configs/react.js",
+      "require": "./dist/configs/react.js"
     },
     "./tailwindcss": {
-      "types": "./dist/presets/tailwindcss.d.ts",
-      "import": "./dist/presets/tailwindcss.js",
-      "require": "./dist/presets/tailwindcss.js"
+      "types": "./dist/configs/tailwindcss.d.ts",
+      "import": "./dist/configs/tailwindcss.js",
+      "require": "./dist/configs/tailwindcss.js"
     },
     "./typescript": {
-      "types": "./dist/presets/typescript.d.ts",
-      "import": "./dist/presets/typescript.js",
-      "require": "./dist/presets/typescript.js"
+      "types": "./dist/configs/typescript.d.ts",
+      "import": "./dist/configs/typescript.js",
+      "require": "./dist/configs/typescript.js"
     }
   },
   "scripts": {

@@ -17,10 +17,10 @@
 <!-- Please delete options that are not relevant. -->
 
 - [ ] 🐛 Bug fix (non-breaking change which fixes an issue, e.g., fixing a false positive)
-- [ ] ✨ New feature (new preset or rule addition)
+- [ ] ✨ New feature (e.g. new config or rule addition)
 - [ ] 💥 Breaking change (e.g., turning a 'warn' into an 'error', or removing a rule entirely)
 - [ ] 📚 Documentation update
-- [ ] 🛠️ Refactoring / Chore (dependency updates, internal scripts)
+- [ ] 🛠️ Refactoring / Chore (e.g. dependency updates, internal scripts)
 
 ✅ **Checklist**
 
@@ -37,5 +37,5 @@
 
 <!-- Please describe how you verified your changes. -->
 
-- [ ] Tested locally by applying the updated preset to a sample file and verifying the ESLint output.
+- [ ] Tested locally by applying the updated config to a sample file and verifying the ESLint output.
 - [ ] ...
