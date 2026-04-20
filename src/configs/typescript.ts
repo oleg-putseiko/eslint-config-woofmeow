@@ -1,4 +1,4 @@
-import { type Linter } from 'eslint';
+import { Linter } from 'eslint';
 import tseslint from 'typescript-eslint';
 
 const FILE_EXTENSIONS: string[] = [
@@ -21,7 +21,6 @@ const configs: Linter.Config[] = [
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
   {
-    files: ['**/*.{ts,cts,mts,tsx}'],
     settings: {
       'import/extensions': FILE_EXTENSIONS,
       'import/external-module-folders': ['node_modules', 'node_modules/@types'],
@@ -53,6 +52,8 @@ const configs: Linter.Config[] = [
       'no-unused-vars': 'off',
     },
   },
-];
+].map<Linter.Config>(
+  (config) => ({ ...config, files: ['**/*.{ts,cts,mts,tsx}'] }) as Linter.Config,
+);
 
 export default configs;

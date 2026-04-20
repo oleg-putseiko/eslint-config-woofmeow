@@ -40,4 +40,4 @@ const configure = (...args: (Linter.Config | Linter.Config[])[]): Linter.Config[
 };
 
 export { configure, configs, type FlatConfigs };
-export default configs;
+export default { configure, configs };

@@ -88,8 +88,8 @@ You can combine any number of configs to create a robust configuration. The `rec
 import { configure, configs } from 'eslint-config-woofmeow';
 
 export default configure(
-  configs.next,
   configs.typescript,
+  configs.next,
   configs.tailwind,
   configs['import/fsd'],
 

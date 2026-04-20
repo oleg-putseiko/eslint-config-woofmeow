@@ -17,6 +17,9 @@ const configs: Linter.Config[] = [
       },
     },
   },
-];
+].map<Linter.Config>((config) => ({
+  ...config,
+  files: ['**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
+}));
 
 export default configs;

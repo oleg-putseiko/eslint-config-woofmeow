@@ -8,7 +8,6 @@ const configs: Linter.Config[] = [
   reactPlugin.configs.flat['jsx-runtime'],
   reactHooksPlugin.configs.flat.recommended,
   {
-    files: ['**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -19,6 +18,11 @@ const configs: Linter.Config[] = [
         ecmaFeatures: {
           jsx: true,
         },
+      },
+    },
+    settings: {
+      react: {
+        version: 'detect',
       },
     },
     rules: {
@@ -65,6 +69,8 @@ const configs: Linter.Config[] = [
       'react-hooks/exhaustive-deps': 'off',
     },
   },
-];
+].map<Linter.Config>(
+  (config) => ({ ...config, files: ['**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'] }) as Linter.Config,
+);
 
 export default configs;
