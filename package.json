@@ -32,14 +32,14 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/presets/index.d.ts",
-      "import": "./dist/presets/index.js",
-      "require": "./dist/presets/index.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
     },
-    "./base": {
-      "types": "./dist/presets/base.d.ts",
-      "import": "./dist/presets/base.js",
-      "require": "./dist/presets/base.js"
+    "./recommended": {
+      "types": "./dist/presets/recommended.d.ts",
+      "import": "./dist/presets/recommended.js",
+      "require": "./dist/presets/recommended.js"
     },
     "./import/base": {
       "types": "./dist/presets/import/base.d.ts",
