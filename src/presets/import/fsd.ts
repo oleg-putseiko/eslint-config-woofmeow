@@ -31,8 +31,10 @@ const configs: Linter.Config[] = [
   importFsdPlugin.configs.recommended,
   {
     settings: {
-      rootDir: './src',
-      aliases: { '@/*': './src/*' },
+      fsd: {
+        rootDir: './src',
+        aliases: { '@/*': './src/*' },
+      },
     },
     rules: {
       'simple-import-sort/imports': ['warn', { groups: IMPORT_GROUPS }],
