@@ -162,9 +162,5 @@ For example, to create an ESLint configuration for a project using Next.js, Type
 
 import configs from 'eslint-config-woofmeow/flat';
 
-export default [
-  ...configs.next,
-  ...configs.typescript,
-  ...configs['import-fsd'],
-];
+export default [...configs.next, ...configs.typescript, ...configs['import-fsd']];
 ```

@@ -29,8 +29,7 @@ const config: Linter.Config = {
       'warn',
       {
         rule: '^(is|are|has|can|should)[A-Z]([A-Za-z0-9]?)+',
-        message:
-          "Use one of the 'is', 'are', 'has', 'can' or 'should' prefixes",
+        message: "Use one of the 'is', 'are', 'has', 'can' or 'should' prefixes",
       },
     ],
     'react/button-has-type': 'error',
@@ -45,10 +44,7 @@ const config: Linter.Config = {
     'react/hook-use-state': ['warn', { allowDestructuredState: true }],
     'react/iframe-missing-sandbox': 'error',
     'react/jsx-boolean-value': 'warn',
-    'react/jsx-curly-brace-presence': [
-      'warn',
-      { props: 'never', children: 'never' },
-    ],
+    'react/jsx-curly-brace-presence': ['warn', { props: 'never', children: 'never' }],
     'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
     'react/jsx-fragments': 'error',
     'react/jsx-handler-names': 'warn',

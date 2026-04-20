@@ -13,10 +13,7 @@ const config: Linter.Config = {
     'no-empty-function': 'error',
     'no-floating-decimal': 'warn',
     'no-nested-ternary': 'warn',
-    'no-restricted-exports': [
-      'error',
-      { restrictDefaultExports: { direct: true, named: true } },
-    ],
+    'no-restricted-exports': ['error', { restrictDefaultExports: { direct: true, named: true } }],
     'no-unused-vars': [
       'warn',
       {
