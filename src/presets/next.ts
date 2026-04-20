@@ -6,9 +6,9 @@ import globals from 'globals';
 import reactConfig from './react.js';
 
 const configs: Linter.Config[] = [
-  ...reactConfig,
   ...nextVitals,
   ...nextTs,
+  ...reactConfig,
   {
     languageOptions: {
       globals: {
