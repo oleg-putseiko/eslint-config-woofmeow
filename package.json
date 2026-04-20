@@ -28,53 +28,53 @@
   "type": "module",
   "main": "./dist/index.js",
   "files": [
-    "./dist/configs/**/*"
+    "dist"
   ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "default": "./dist/index.js"
     },
     "./recommended": {
       "types": "./dist/configs/recommended.d.ts",
       "import": "./dist/configs/recommended.js",
-      "require": "./dist/configs/recommended.js"
+      "default": "./dist/configs/recommended.js"
     },
     "./import/base": {
       "types": "./dist/configs/import/base.d.ts",
       "import": "./dist/configs/import/base.js",
-      "require": "./dist/configs/import/base.js"
+      "default": "./dist/configs/import/base.js"
     },
     "./import/atomic": {
       "types": "./dist/configs/import/atomic.d.ts",
       "import": "./dist/configs/import/atomic.js",
-      "require": "./dist/configs/import/atomic.js"
+      "default": "./dist/configs/import/atomic.js"
     },
     "./import/fsd": {
       "types": "./dist/configs/import/fsd.d.ts",
       "import": "./dist/configs/import/fsd.js",
-      "require": "./dist/configs/import/fsd.js"
+      "default": "./dist/configs/import/fsd.js"
     },
     "./next": {
       "types": "./dist/configs/next.d.ts",
       "import": "./dist/configs/next.js",
-      "require": "./dist/configs/next.js"
+      "default": "./dist/configs/next.js"
     },
     "./react": {
       "types": "./dist/configs/react.d.ts",
       "import": "./dist/configs/react.js",
-      "require": "./dist/configs/react.js"
+      "default": "./dist/configs/react.js"
     },
     "./tailwindcss": {
       "types": "./dist/configs/tailwindcss.d.ts",
       "import": "./dist/configs/tailwindcss.js",
-      "require": "./dist/configs/tailwindcss.js"
+      "default": "./dist/configs/tailwindcss.js"
     },
     "./typescript": {
       "types": "./dist/configs/typescript.d.ts",
       "import": "./dist/configs/typescript.js",
-      "require": "./dist/configs/typescript.js"
+      "default": "./dist/configs/typescript.js"
     }
   },
   "scripts": {
