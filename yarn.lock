@@ -2738,6 +2738,7 @@ __metadata:
     eslint: "npm:^9.39.4"
     eslint-config-next: "npm:^16.2.4"
     eslint-config-prettier: "npm:^10.1.8"
+    eslint-plugin-import: "npm:^2.32.0"
     eslint-plugin-import-fsd: "npm:^3.0.0-canary.0"
     eslint-plugin-no-relative-import-paths: "npm:^1.6.1"
     eslint-plugin-react: "npm:^7.37.5"

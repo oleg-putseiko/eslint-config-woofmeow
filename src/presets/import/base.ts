@@ -1,4 +1,5 @@
 import { type Linter } from 'eslint';
+import importPlugin from 'eslint-plugin-import';
 import relativeImportPlugin from 'eslint-plugin-no-relative-import-paths';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
@@ -6,6 +7,7 @@ import unusedImports from 'eslint-plugin-unused-imports';
 const configs: Linter.Config[] = [
   {
     plugins: {
+      import: importPlugin,
       'no-relative-import-paths': relativeImportPlugin,
       'simple-import-sort': simpleImportSort,
       'unused-imports': unusedImports,
