@@ -56,6 +56,11 @@
       "import": "./dist/configs/import/fsd.js",
       "default": "./dist/configs/import/fsd.js"
     },
+    "./json": {
+      "types": "./dist/configs/json.d.ts",
+      "import": "./dist/configs/json.js",
+      "default": "./dist/configs/json.js"
+    },
     "./next": {
       "types": "./dist/configs/next.d.ts",
       "import": "./dist/configs/next.js",
@@ -101,6 +106,7 @@
     "eslint-config-next": "^16.2.4",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-import-fsd": "^3.0.0-canary.0",
+    "eslint-plugin-jsonc": "^3.1.2",
     "eslint-plugin-no-relative-import-paths": "^1.6.1",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",

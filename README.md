@@ -21,6 +21,7 @@ A modular ESLint Flat Config containing multiple configurations for modern JavaS
   - [Frameworks](#frameworks)
   - [Styling](#styling)
   - [Architecture & Imports](#architecture--imports)
+  - [Data & Configuration](#data--configuration)
 - [Usage Examples](#-usage-examples)
   - [Using the configure function (Recommended)](#using-the-configure-function-recommended)
   - [Manual Composition (Without configure)](#manual-composition-without-configure)
@@ -71,6 +72,10 @@ You can mix and match the following configs from the `configs` object to suit yo
 - **`import/base`**: Basic import configuration (sorting, removing unused imports).
 - **`import/atomic`**: Specific configuration for Atomic Design architecture. _> Includes the `import/base` config._
 - **`import/fsd`**: Specific configuration for [Feature-Sliced Design](https://feature-sliced.design/) (up to v2.x.x). _> Includes the `import/base` config._
+
+### Data & Configuration
+
+- **`json`**: Configuration for `.json`, `.jsonc` (like `tsconfig.json` or `.vscode/settings.json`), and `.json5` files. It applies the appropriate parser and safely validates editor settings without breaking your JavaScript rules.
 
 ## 📖 Usage Examples
 
@@ -131,3 +136,4 @@ You do **not** need to install these plugins separately; they are already bundle
 - **Imports Management:** `eslint-plugin-import`, `eslint-plugin-simple-import-sort`, `eslint-plugin-unused-imports`, `eslint-plugin-no-relative-import-paths`
 - **Architecture:** `eslint-plugin-import-fsd`
 - **Styling:** `eslint-plugin-tailwindcss`
+- **Data & Config:** `eslint-plugin-jsonc`

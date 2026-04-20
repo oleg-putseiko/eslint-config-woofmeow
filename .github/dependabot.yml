@@ -28,6 +28,8 @@ updates:
         update-types: ['version-update:semver-minor']
       - dependency-name: '@napi-rs/wasm-runtime'
         update-types: ['version-update:semver-minor']
+      - dependency-name: '@ota-meshi/ast-token-store'
+        update-types: ['version-update:semver-minor']
       - dependency-name: '@pkgr/core'
         update-types: ['version-update:semver-minor']
       - dependency-name: '@reteps/dockerfmt'
@@ -61,6 +63,8 @@ updates:
       - dependency-name: 'eslint-config-woofmeow'
         update-types: ['version-update:semver-minor']
       - dependency-name: 'eslint-import-resolver-node'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'eslint-json-compat-utils'
         update-types: ['version-update:semver-minor']
       - dependency-name: 'for-each'
         update-types: ['version-update:semver-minor']

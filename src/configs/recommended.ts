@@ -3,6 +3,61 @@ import { type Linter } from 'eslint';
 import unicornPlugin from 'eslint-plugin-unicorn';
 
 const configs: Linter.Config[] = [
+  /* --- Global Ignores --- */
+  {
+    ignores: [
+      // Dependencies
+      '**/node_modules',
+      '**/.pnp',
+      '**/.pnp.*',
+      '**/.yarn',
+      '**/yarn.lock',
+      '**/package-lock.json',
+      '**/pnpm-lock.yaml',
+      '**/bun.lockb',
+
+      // Debug
+      '**/*.log',
+      '**/*.log.*',
+
+      // Testing
+      '**/coverage',
+
+      // Artifacts
+      '**/build',
+      '**/dist',
+      '**/.cache',
+      '**/.turbo',
+      '**/.vercel',
+      '**/.next',
+      '**/out',
+      '**/*.tsbuildinfo',
+      '**/*.min.js',
+
+      // Linting
+      '**/.husky',
+      '**/.eslintignore',
+      '**/.prettierignore',
+
+      // Misc
+      '**/.DS_Store',
+      '**/*.pem',
+
+      // Environment
+      '**/.env',
+      '**/.env.*',
+
+      // Code editors
+      '**/.vscode',
+      '**/.idea',
+      '**/*.suo',
+      '**/*.ntvs*',
+      '**/*.njsproj',
+      '**/*.sln',
+      '**/*.sw?',
+    ],
+  },
+
   /* --- Internal --- */
   eslintJs.configs.recommended,
   {
