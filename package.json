@@ -87,7 +87,10 @@
     "format": "prettier -c .",
     "format:fix": "prettier -w .",
     "typecheck": "tsc --noEmit --incremental false",
-    "prepare": "husky && chmod +x ./.husky/*"
+    "setup:husky": "husky && chmod +x ./.husky/*",
+    "deps:audit": "bash ./scripts/deps/audit.sh",
+    "scripts:perms": "find ./scripts -type f -name \"*.sh\" -exec chmod +x {} +",
+    "scripts:perms:track": "find ./scripts -type f -name \"*.sh\" -exec git update-index --chmod=+x {} +"
   },
   "dependencies": {
     "@eslint/eslintrc": "^3.3.5",

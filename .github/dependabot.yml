@@ -1,0 +1,122 @@
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    target-branch: 'canary'
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@eslint/config-array'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: '@eslint/config-helpers'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: '@eslint/core'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: '@eslint/plugin-kit'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: '@humanfs/core'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: '@humanfs/node'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: '@humanwhocodes/retry'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: '@jridgewell/gen-mapping'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: '@jridgewell/trace-mapping'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: '@napi-rs/wasm-runtime'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: '@pkgr/core'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: '@sec-ant/readable-stream'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: '@swc/cli'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: '@swc/counter'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: '@swc/types'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: '@tokenizer/token'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: '@tybys/wasm-util'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: '@types/json5'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'ast-types-flow'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'buffer-crc32'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'concat-map'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'confbox'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'content-disposition'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'deep-is'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'eslint-config-woofmeow'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'eslint-import-resolver-node'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'for-each'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'hermes-estree'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'hermes-parser'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'imurmurhash'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'is-arrayish'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'json-schema-traverse'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'language-subtag-registry'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'levn'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'optionator'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'quansync'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'regexp-tree'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'regjsparser'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'source-map'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'stable-hash'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'string-argv'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'synckit'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'tinyglobby'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'type-check'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'yocto-queue'
+        update-types: ['version-update:semver-minor']
+    groups:
+      nodejs-dependencies:
+        patterns:
+          - '*'
+    labels:
+      - 'dependencies'
+      - 'javascript'
+      - 'dependabot'
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    target-branch: 'canary'
+    groups:
+      actions-dependencies:
+        patterns:
+          - '*'
+    labels:
+      - 'dependencies'
+      - 'github-actions'
+      - 'dependabot'
