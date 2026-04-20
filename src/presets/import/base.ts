@@ -14,6 +14,10 @@ const configs: Linter.Config[] = [
       'unused-imports': unusedImports,
     },
     rules: {
+      'import/first': 'error',
+      'import/newline-after-import': 'warn',
+      'import/no-duplicates': 'error',
+
       'no-relative-import-paths/no-relative-import-paths': [
         'warn',
         { allowSameFolder: false, rootDir: 'src', prefix: '@' },
