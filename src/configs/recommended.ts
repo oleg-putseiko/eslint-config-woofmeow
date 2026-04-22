@@ -10,7 +10,7 @@ const configs: Linter.Config[] = [
       '**/node_modules',
       '**/.pnp',
       '**/.pnp.*',
-      '**/.yarn',
+      '**/.yarn/**',
       '**/yarn.lock',
       '**/package-lock.json',
       '**/pnpm-lock.yaml',
@@ -21,7 +21,7 @@ const configs: Linter.Config[] = [
       '**/*.log.*',
 
       // Testing
-      '**/coverage',
+      '**/coverage/**',
 
       // Artifacts
       '**/build',
@@ -35,7 +35,7 @@ const configs: Linter.Config[] = [
       '**/*.min.js',
 
       // Linting
-      '**/.husky',
+      '**/.husky/**',
       '**/.eslintignore',
       '**/.prettierignore',
 
@@ -48,8 +48,8 @@ const configs: Linter.Config[] = [
       '**/.env.*',
 
       // Code editors
-      '**/.vscode',
-      '**/.idea',
+      '**/.vscode/**',
+      '**/.idea/**',
       '**/*.suo',
       '**/*.ntvs*',
       '**/*.njsproj',
