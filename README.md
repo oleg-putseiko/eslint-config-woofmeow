@@ -65,7 +65,7 @@ You can mix and match the following configs from the `configs` object to suit yo
 
 ### Styling
 
-- **`tailwind`**: Enforces class sorting and best practices using `eslint-plugin-tailwindcss`.
+- **`tailwindcss`**: Enforces class sorting and best practices using `eslint-plugin-tailwindcss`.
 
 ### Architecture & Imports
 
@@ -90,7 +90,7 @@ import { configure, configs } from 'eslint-config-woofmeow';
 export default configure(
   configs.typescript,
   configs.next,
-  configs.tailwind,
+  configs.tailwindcss,
   configs['import/fsd'],
 
   // Custom overrides (optional)
