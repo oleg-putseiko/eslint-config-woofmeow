@@ -6,6 +6,12 @@ const configs: Linter.Config[] = [
   ...jsoncPlugin.configs['flat/recommended-with-json'],
   ...jsoncPlugin.configs['flat/recommended-with-jsonc'],
   ...jsoncPlugin.configs['flat/recommended-with-json5'],
+  {
+    files: ['**/*.jsonc', '**/*.json5'],
+    rules: {
+      'jsonc/no-comments': 'off',
+    },
+  },
 ];
 
 export default configs;
