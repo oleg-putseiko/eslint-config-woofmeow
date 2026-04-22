@@ -30,7 +30,7 @@ A modular ESLint Flat Config containing multiple configurations for modern JavaS
 ## 🚀 Getting started
 
 Install `eslint-config-woofmeow` as a dev dependency.
-_Note: This package requires `eslint >= 9.0.0` as a peer dependency._
+_Note: This package requires `eslint ^9.0.0` as a peer dependency._
 
 ```bash
 npm install eslint-config-woofmeow --save-dev
@@ -61,21 +61,21 @@ You can mix and match the following configs from the `configs` object to suit yo
 ### Frameworks
 
 - **`react`**: Configuration for React projects (Hooks, JSX accessibility, etc.).
-- **`next`**: Specific configuration for Next.js projects. _> Includes the `react` config._
+- **`next`**: Specific configuration for Next.js projects. _Includes the `react` config._
 
 ### Styling
 
-- **`tailwind`**: Enforces class sorting and best practices using `eslint-plugin-tailwindcss`.
+- **`tailwindcss`**: Enforces class sorting and best practices using `eslint-plugin-tailwindcss`.
 
 ### Architecture & Imports
 
 - **`import/base`**: Basic import configuration (sorting, removing unused imports).
-- **`import/atomic`**: Specific configuration for Atomic Design architecture. _> Includes the `import/base` config._
-- **`import/fsd`**: Specific configuration for [Feature-Sliced Design](https://feature-sliced.design/) (up to v2.x.x). _> Includes the `import/base` config._
+- **`import/atomic`**: Specific configuration for Atomic Design architecture. _Includes the `import/base` config._
+- **`import/fsd`**: Specific configuration for [Feature-Sliced Design](https://feature-sliced.design/) (up to v2.x.x). _Includes the `import/base` config._
 
 ### Data & Configuration
 
-- **`json`**: Configuration for `.json`, `.jsonc` (like `tsconfig.json` or `.vscode/settings.json`), and `.json5` files. It applies the appropriate parser and safely validates editor settings without breaking your JavaScript rules.
+- **`json`**: Configuration for `.json`, `.jsonc` and `.json5` files. It applies the appropriate parser and safely validates editor settings without breaking your JavaScript rules.
 
 ## 📖 Usage Examples
 
@@ -90,14 +90,13 @@ import { configure, configs } from 'eslint-config-woofmeow';
 export default configure(
   configs.typescript,
   configs.next,
-  configs.tailwind,
+  configs.tailwindcss,
   configs['import/fsd'],
 
   // Custom overrides (optional)
   {
     rules: {
       'no-console': 'warn',
-      // Override a default unicorn rule if it's too strict for your project
       'unicorn/prefer-string-slice': 'off',
     },
   },

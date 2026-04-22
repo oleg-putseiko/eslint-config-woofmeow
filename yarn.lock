@@ -2659,7 +2659,7 @@ __metadata:
     eslint-config-next: "npm:^16.2.4"
     eslint-config-prettier: "npm:^10.1.8"
     eslint-plugin-import: "npm:^2.32.0"
-    eslint-plugin-import-fsd: "npm:^3.0.0-canary.0"
+    eslint-plugin-import-fsd: "npm:^3.0.1"
     eslint-plugin-jsonc: "npm:^3.1.2"
     eslint-plugin-no-relative-import-paths: "npm:^1.6.1"
     eslint-plugin-react: "npm:^7.37.5"
@@ -2746,12 +2746,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-import-fsd@npm:^3.0.0-canary.0":
-  version: 3.0.0-canary.0
-  resolution: "eslint-plugin-import-fsd@npm:3.0.0-canary.0"
+"eslint-plugin-import-fsd@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "eslint-plugin-import-fsd@npm:3.0.1"
   peerDependencies:
-    eslint: ^9.0.0 || ^10.0.0
-  checksum: 10/b2ed844002a2500df4d37ce568676224ef4ba767b56a9db718eefb66854176f79c0a0f2ebeebe4f0dc773c357527c5a0b2a3b6d52179b0de46334a9b8b05d8e7
+    eslint: ">=9.0.0 <10.0.0"
+  checksum: 10/87b2c0c18fcaf2fb67b5138b50af87f59c44e1a328e7642e640c2de34a54f78e16508b1a8e5ba3b0445a64787a3be50e42e52f392f17fd4084f4b3747f378de8
   languageName: node
   linkType: hard
 
