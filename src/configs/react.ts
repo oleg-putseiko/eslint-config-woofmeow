@@ -64,6 +64,7 @@ const configs: Linter.Config[] = [
       'react/no-this-in-sfc': 'error',
       'react/no-unstable-nested-components': 'error',
       'react/no-unused-prop-types': 'error',
+      'react/prop-types': 'off',
       'react/self-closing-comp': ['warn', { component: true, html: true }],
       'react/void-dom-elements-no-children': 'error',
       'react-hooks/exhaustive-deps': 'off',
