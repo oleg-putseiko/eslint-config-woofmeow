@@ -40,6 +40,10 @@ const configs: Linter.Config[] = [
         { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
       ],
       '@typescript-eslint/explicit-module-boundary-types': 'off',
+      '@typescript-eslint/no-empty-function': [
+        'warn',
+        { allow: ['constructors', 'arrowFunctions'] },
+      ],
       '@typescript-eslint/no-unused-vars': [
         'warn',
         { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
