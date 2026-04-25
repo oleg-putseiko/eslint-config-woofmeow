@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-woofmeow",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A modular ESLint Flat Config for modern JS/TS projects. Includes presets for React, Next.js, Tailwind CSS, FSD, Atomic Design, and JSON.",
   "license": "MIT",
   "author": "Oleg Putseiko <oleg.putseiko@gmail.com> (https://github.com/oleg-putseiko)",

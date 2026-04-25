@@ -91,6 +91,7 @@ const configs: Linter.Config[] = [
       'unicorn/no-array-callback-reference': 'off',
       'unicorn/no-array-reduce': 'off',
       'unicorn/no-null': 'off',
+      'unicorn/prefer-at': 'off',
       'unicorn/prefer-node-protocol': 'warn',
       'unicorn/prefer-array-find': 'error',
       'unicorn/prefer-dom-node-append': 'error',

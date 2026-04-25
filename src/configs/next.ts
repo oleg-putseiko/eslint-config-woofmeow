@@ -18,17 +18,28 @@ const configs: Linter.Config[] = [
       },
     },
   },
+
+  {
+    files: [
+      '**/app/**/{page,layout,loading,error,not-found,global-error,template}.{ts,tsx}',
+      '**/app/**/route.{ts,tsx}',
+      '**/pages/**/*.{ts,tsx}',
+    ],
+    rules: {
+      'no-restricted-exports': 'off',
+    },
+  },
 ].map<Linter.Config>((config) => {
   const formattedConfig = {
     ...config,
-    files: ['**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
+    files: config.files ?? ['**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
   };
 
-  if (formattedConfig.plugins?.['@typescript-eslint']) {
+  if ('plugins' in formattedConfig && formattedConfig.plugins?.['@typescript-eslint']) {
     formattedConfig.plugins['@typescript-eslint'] = tseslint.plugin;
   }
 
-  return formattedConfig;
+  return formattedConfig as Linter.Config;
 });
 
 export default configs;

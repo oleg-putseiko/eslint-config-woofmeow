@@ -33,12 +33,17 @@ const configs: Linter.Config[] = [
       },
     },
     rules: {
+      '@typescript-eslint/consistent-indexed-object-style': 'off',
       '@typescript-eslint/consistent-type-definitions': 'off',
       '@typescript-eslint/consistent-type-imports': [
         'error',
         { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
       ],
       '@typescript-eslint/explicit-module-boundary-types': 'off',
+      '@typescript-eslint/no-empty-function': [
+        'warn',
+        { allow: ['constructors', 'arrowFunctions'] },
+      ],
       '@typescript-eslint/no-unused-vars': [
         'warn',
         { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
@@ -47,7 +52,19 @@ const configs: Linter.Config[] = [
         'warn',
         { ignorePrimitives: true, ignoreBooleanCoercion: true },
       ],
+      '@typescript-eslint/restrict-template-expressions': [
+        'error',
+        {
+          allowAny: true,
+          allowArray: true,
+          allowBoolean: true,
+          allowNever: true,
+          allowNullish: true,
+          allowNumber: true,
+        },
+      ],
       '@typescript-eslint/switch-exhaustiveness-check': 'error',
+      '@typescript-eslint/unbound-method': 'off',
       'no-undef': 'off',
       'no-unused-vars': 'off',
     },
