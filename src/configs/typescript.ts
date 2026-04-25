@@ -48,6 +48,17 @@ const configs: Linter.Config[] = [
         'warn',
         { ignorePrimitives: true, ignoreBooleanCoercion: true },
       ],
+      '@typescript-eslint/restrict-template-expressions': [
+        'error',
+        {
+          allowAny: true,
+          allowArray: true,
+          allowBoolean: true,
+          allowNever: true,
+          allowNullish: true,
+          allowNumber: true,
+        },
+      ],
       '@typescript-eslint/switch-exhaustiveness-check': 'error',
       'no-undef': 'off',
       'no-unused-vars': 'off',
