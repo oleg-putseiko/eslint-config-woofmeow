@@ -64,6 +64,7 @@ const configs: Linter.Config[] = [
         },
       ],
       '@typescript-eslint/switch-exhaustiveness-check': 'error',
+      '@typescript-eslint/unbound-method': 'off',
       'no-undef': 'off',
       'no-unused-vars': 'off',
     },
