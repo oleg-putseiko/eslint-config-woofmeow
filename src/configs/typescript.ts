@@ -33,6 +33,7 @@ const configs: Linter.Config[] = [
       },
     },
     rules: {
+      '@typescript-eslint/consistent-indexed-object-style': 'off',
       '@typescript-eslint/consistent-type-definitions': 'off',
       '@typescript-eslint/consistent-type-imports': [
         'error',
