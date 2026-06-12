@@ -125,7 +125,7 @@
   },
   "peerDependencies": {
     "eslint": ">=9.0.0 <10.0.0",
-    "typescript": ">=3.3.1 <6.0.0"
+    "typescript": ">=3.3.1 <7.0.0"
   },
   "peerDependenciesMeta": {
     "typescript": {
@@ -147,7 +147,7 @@
     "lint-staged": "^16.4.0",
     "prettier": "^3.8.3",
     "prettier-plugin-sh": "^0.18.1",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "engines": {
     "node": "^20.9.0 || >=21.1.0 <25.0.0"

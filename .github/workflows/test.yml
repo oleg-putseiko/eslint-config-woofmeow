@@ -1,0 +1,35 @@
+name: Test
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+  workflow_call:
+
+jobs:
+  test-matrix:
+    name: Test with TypeScript ${{ matrix.ts-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ts-version: ['^5.9.3', '^6.0.3']
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node via Volta
+        uses: volta-cli/action@v5
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Switch TypeScript Version
+        run: npm install --no-save typescript@"${{ matrix.ts-version }}"
+
+      - name: Build
+        run: npm run build
+
+      - name: Run Tests
+        run: npx tsc --noEmit --incremental false

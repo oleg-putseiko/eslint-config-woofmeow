@@ -5,11 +5,15 @@ on:
     types: [published]
 
 jobs:
+  test:
+    uses: ./.github/workflows/test.yml
+
   publish-npm:
     name: Publish to npm registry
     runs-on: ubuntu-latest
     permissions:
       id-token: write
+    needs: test
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
