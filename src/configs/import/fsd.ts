@@ -1,7 +1,9 @@
 import { type Linter } from 'eslint';
-import importFsdPlugin from 'eslint-plugin-import-fsd';
+import { createRequire } from 'node:module';
+import baseImportConfigFactory from './base.js';
+import { type LazyFactory } from '../../utils/lazy.js';
 
-import baseImportConfig from './base.js';
+const require = createRequire(import.meta.url);
 
 const LAYER_GROUPS: string[][] = [
   ['app', 'apps', 'core', 'init'],
@@ -26,20 +28,24 @@ const IMPORT_GROUPS: string[][] = [
   ['^'],
 ];
 
-const configs: Linter.Config[] = [
-  ...baseImportConfig,
-  importFsdPlugin.configs.recommended,
-  {
-    settings: {
-      fsd: {
-        rootDir: './src',
-        aliases: { '@/*': './src/*' },
+const configsFactory: LazyFactory<Linter.Config[]> = () => {
+  const importFsdPlugin = require('eslint-plugin-import-fsd');
+
+  return [
+    ...baseImportConfigFactory(),
+    importFsdPlugin.configs.recommended,
+    {
+      settings: {
+        fsd: {
+          rootDir: './src',
+          aliases: { '@/*': './src/*' },
+        },
+      },
+      rules: {
+        'simple-import-sort/imports': ['warn', { groups: IMPORT_GROUPS }],
       },
     },
-    rules: {
-      'simple-import-sort/imports': ['warn', { groups: IMPORT_GROUPS }],
-    },
-  },
-];
+  ];
+};
 
-export default configs;
+export default configsFactory;

@@ -1,5 +1,6 @@
-import { Linter } from 'eslint';
+import { type Linter } from 'eslint';
 import jsoncPlugin from 'eslint-plugin-jsonc';
+import { type LazyFactory } from '../utils/lazy';
 
 const JSONC_LIKE_FILES = [
   '**/.vscode/**/*.json',
@@ -11,7 +12,7 @@ const JSONC_LIKE_FILES = [
   '**/turbo.json',
 ];
 
-const configs: Linter.Config[] = [
+const configsFactory: LazyFactory<Linter.Config[]> = () => [
   {
     ignores: [
       '!**/.vscode',
@@ -50,4 +51,4 @@ const configs: Linter.Config[] = [
   })),
 ];
 
-export default configs;
+export default configsFactory;
