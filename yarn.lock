@@ -2669,7 +2669,7 @@ __metadata:
     eslint-config-next: "npm:^16.2.9"
     eslint-config-prettier: "npm:^10.1.8"
     eslint-plugin-import: "npm:^2.32.0"
-    eslint-plugin-import-fsd: "npm:^3.0.1"
+    eslint-plugin-import-fsd: "npm:^3.0.2"
     eslint-plugin-jsonc: "npm:^3.2.0"
     eslint-plugin-no-relative-import-paths: "npm:^1.6.1"
     eslint-plugin-react: "npm:^7.37.5"
@@ -2756,12 +2756,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-import-fsd@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "eslint-plugin-import-fsd@npm:3.0.1"
+"eslint-plugin-import-fsd@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "eslint-plugin-import-fsd@npm:3.0.2"
   peerDependencies:
     eslint: ">=9.0.0 <10.0.0"
-  checksum: 10/87b2c0c18fcaf2fb67b5138b50af87f59c44e1a328e7642e640c2de34a54f78e16508b1a8e5ba3b0445a64787a3be50e42e52f392f17fd4084f4b3747f378de8
+  checksum: 10/318f0f1b54bfe22e84e4142c0138163efe26533aa100482d24a13264dab02d01c30b4789eb95c61383a53c0414ab90e159b2e33aa8d4e504c3bcafd30dfa755c
   languageName: node
   linkType: hard
 
