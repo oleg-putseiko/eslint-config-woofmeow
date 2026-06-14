@@ -29,6 +29,7 @@ const configsFactory: LazyFactory<Linter.Config[]> = () => [
       '**/dist',
       '**/target',
       '**/temp',
+      '**/.temp',
       '**/.cache',
       '**/.turbo',
       '**/.vercel',
