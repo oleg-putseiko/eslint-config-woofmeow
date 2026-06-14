@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-woofmeow",
-  "version": "2.1.0",
+  "version": "3.0.0-canary.0",
   "description": "A modular ESLint Flat Config for modern JS/TS projects. Includes presets for React, Next.js, Tailwind CSS, FSD, Atomic Design, and JSON.",
   "license": "MIT",
   "author": "Oleg Putseiko <oleg.putseiko@gmail.com> (https://github.com/oleg-putseiko)",
@@ -109,10 +109,10 @@
     "@eslint/js": "^9.39.4",
     "@typescript-eslint/eslint-plugin": "^8.57.2",
     "@typescript-eslint/parser": "^8.57.2",
-    "eslint-config-next": "^16.2.4",
+    "eslint-config-next": "^16.2.9",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-import-fsd": "^3.0.1",
-    "eslint-plugin-jsonc": "^3.1.2",
+    "eslint-plugin-jsonc": "^3.2.0",
     "eslint-plugin-no-relative-import-paths": "^1.6.1",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
@@ -125,7 +125,7 @@
   },
   "peerDependencies": {
     "eslint": ">=9.0.0 <10.0.0",
-    "typescript": ">=3.3.1 <6.0.0"
+    "typescript": ">=3.3.1 <7.0.0"
   },
   "peerDependenciesMeta": {
     "typescript": {
@@ -133,21 +133,21 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.5.0",
-    "@commitlint/config-conventional": "^20.5.0",
+    "@commitlint/cli": "^20.5.3",
+    "@commitlint/config-conventional": "^20.5.3",
     "@swc/cli": "^0.5.2",
-    "@swc/core": "^1.15.30",
+    "@swc/core": "^1.15.41",
     "@types/eslint-plugin-tailwindcss": "^3",
     "@types/eslint__eslintrc": "^3.3.0",
     "@types/eslint__js": "^9.14.0",
-    "@types/node": "^24.12.2",
+    "@types/node": "^24.13.2",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
-    "prettier": "^3.8.3",
+    "prettier": "^3.8.4",
     "prettier-plugin-sh": "^0.18.1",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "engines": {
     "node": "^20.9.0 || >=21.1.0 <25.0.0"

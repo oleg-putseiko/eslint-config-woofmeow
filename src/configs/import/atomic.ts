@@ -1,6 +1,6 @@
 import { type Linter } from 'eslint';
-
-import baseImportConfig from './base.js';
+import baseImportConfigFactory from './base.js';
+import { type LazyFactory } from '../../utils/lazy.js';
 
 const LAYER_GROUPS: string[][] = [
   ['types?', 'declarations?', 'definitions?'],
@@ -27,8 +27,8 @@ const IMPORT_GROUPS: string[][] = [
   ['^'],
 ];
 
-const configs: Linter.Config[] = [
-  ...baseImportConfig,
+const configsFactory: LazyFactory<Linter.Config[]> = () => [
+  ...baseImportConfigFactory(),
   {
     rules: {
       'simple-import-sort/imports': ['warn', { groups: IMPORT_GROUPS }],
@@ -36,4 +36,4 @@ const configs: Linter.Config[] = [
   },
 ];
 
-export default configs;
+export default configsFactory;

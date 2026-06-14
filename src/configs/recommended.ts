@@ -1,8 +1,9 @@
 import eslintJs from '@eslint/js';
 import { type Linter } from 'eslint';
 import unicornPlugin from 'eslint-plugin-unicorn';
+import { type LazyFactory } from '../utils/lazy';
 
-const configs: Linter.Config[] = [
+const configsFactory: LazyFactory<Linter.Config[]> = () => [
   /* --- Global Ignores --- */
   {
     ignores: [
@@ -26,6 +27,9 @@ const configs: Linter.Config[] = [
       // Artifacts
       '**/build',
       '**/dist',
+      '**/target',
+      '**/temp',
+      '**/.temp',
       '**/.cache',
       '**/.turbo',
       '**/.vercel',
@@ -125,4 +129,4 @@ const configs: Linter.Config[] = [
   },
 ];
 
-export default configs;
+export default configsFactory;

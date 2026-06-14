@@ -3,8 +3,9 @@ import importPlugin from 'eslint-plugin-import';
 import relativeImportPlugin from 'eslint-plugin-no-relative-import-paths';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
+import { type LazyFactory } from '../../utils/lazy';
 
-const configs: Linter.Config[] = [
+const configsFactory: LazyFactory<Linter.Config[]> = () => [
   {
     plugins: {
       import: importPlugin,
@@ -27,4 +28,4 @@ const configs: Linter.Config[] = [
   },
 ];
 
-export default configs;
+export default configsFactory;
