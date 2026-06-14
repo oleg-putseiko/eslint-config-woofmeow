@@ -136,7 +136,7 @@
     "@commitlint/cli": "^20.5.3",
     "@commitlint/config-conventional": "^20.5.3",
     "@swc/cli": "^0.5.2",
-    "@swc/core": "^1.15.30",
+    "@swc/core": "^1.15.41",
     "@types/eslint-plugin-tailwindcss": "^3",
     "@types/eslint__eslintrc": "^3.3.0",
     "@types/eslint__js": "^9.14.0",
