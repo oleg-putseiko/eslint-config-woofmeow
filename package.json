@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-woofmeow",
-  "version": "3.0.0-canary.1",
+  "version": "3.0.0",
   "description": "A modular ESLint Flat Config for modern JS/TS projects. Includes presets for React, Next.js, Tailwind CSS, FSD, Atomic Design, and JSON.",
   "license": "MIT",
   "author": "Oleg Putseiko <oleg.putseiko@gmail.com> (https://github.com/oleg-putseiko)",
@@ -111,7 +111,7 @@
     "@typescript-eslint/parser": "^8.57.2",
     "eslint-config-next": "^16.2.9",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-import-fsd": "^3.0.2",
+    "eslint-plugin-import-fsd": "^3.0.4",
     "eslint-plugin-jsonc": "^3.2.0",
     "eslint-plugin-no-relative-import-paths": "^1.6.1",
     "eslint-plugin-react": "^7.37.5",
@@ -154,6 +154,6 @@
   },
   "volta": {
     "node": "24.14.1",
-    "yarn": "4.13.0"
+    "yarn": "4.17.0"
   }
 }
